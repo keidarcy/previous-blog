@@ -1,0 +1,173 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+// Variables
+@import "variables";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+// Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+// bluma
+@import "node_modules/bulma/bulma";
+@import "./hamburger.css";
+@import "./rolling-words.scss";
+//gerneal setting
+body {
+    color: #4b5d73;
+    font-family: Nunito-Bold, Arial, Helvetica Neue, Helvetica, serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    background-color: #34495e;
+}
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body>footer {
+    margin-top: auto;
+}
+
+.center {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.center,
+.right,
+.left,
+.top,
+.bottom,
+.center-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    align-items: flex-start;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.bottom {
+    align-items: flex-end;
+}
+
+.single-spaced,
+.single-spaced * {
+    line-height: 1;
+}
+
+// }
+.hamburger {
+    z-index: 10;
+}
+
+//overlay setting
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay-icon {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 55%;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    background-color: $dark-green;
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+    .footer-height {
+        padding: 1.5rem;
+    }
+    .mobile-text {
+        font-size: 12px;
+    }
+    .mobile-logo {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 10px;
+        z-index: 11;
+    }
+    .footer {
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .mobile {
+        display: none;
+    }
+    .logo {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 10px;
+    }
+}
+
+.footer {
+    padding: 2rem;
+    z-index: 2;
+}
+
+.hovered-link:hover {
+    text-shadow: 2px 2px 5px $dark-green;
+    box-shadow: 0 0 0 1px $dark-green;
+}
