@@ -15903,8 +15903,9 @@ label.panel-block:hover {
   }
 
   .content__container__list__item {
-    line-height: 40px;
+    line-height: 20px;
     margin-top: 8px;
+    padding-top: 5px;
   }
 }
 
@@ -15978,8 +15979,8 @@ label.panel-block:hover {
 
   .content__container__list__item {
     width: 125px;
-    line-height: 18px;
-    padding-top: 18px;
+    line-height: 5px;
+    padding-top: 9px;
     margin: 0;
   }
 }

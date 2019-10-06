@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('/images/logo-no-background.png') }}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Hi,there! yang zong niu bi</title>
+    <title>Hi,there🔥😻🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
 
@@ -18,9 +18,9 @@
         {{-- overlay --}}
         <div class="overlay moblie" :style="overlay">
             <div class="overlay-content">
-                <a href="#" class=" hovered-link">HOME</a>
-                <a href="#" class=" hovered-link">BLOG</a>
-                <a href="#" class=" hovered-link">ABOUT</a>
+                <a href="/home" class=" hovered-link">HOME</a>
+                <a href="/blog" class=" hovered-link">BLOG</a>
+                <a href="/about" class=" hovered-link">ABOUT</a>
             </div>
             <div class="center bottom overlay-icon">
                 <figure class="media-left">
@@ -52,7 +52,8 @@
                 <div class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
                     <div class="column center">
 
-                        <img src=" {{asset('/images/logo-no-background.png')}} " alt="logo" class="logo mobile-logo" />
+                        <a href="/home"><img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
+                                class="logo mobile-logo" /></a>
                         <div style="flex-direction: row">
                             <p class="center has-text-white">xyyyo</p>
                             <p class="center has-text-white mobile mobile-text">no template</p>
@@ -60,9 +61,15 @@
                         </div>
                     </div>
                     <div class="column center desktop">
-                        <p class="navbar-item has-text-white hovered-link">HOME</p>
-                        <p class="navbar-item has-text-white hovered-link">BLOG</p>
-                        <p class="navbar-item has-text-white hovered-link">ABOUT</p>
+                        <a href="/home">
+                            <p class="navbar-item has-text-white hovered-link">HOME</p>
+                        </a>
+                        <a href="/blog">
+                            <p class=" navbar-item has-text-white hovered-link">BLOG</p>
+                        </a>
+                        <a href="/about">
+                            <p class="navbar-item has-text-white hovered-link">ABOUT</p>
+                        </a>
                     </div>
                     <div class="column right">
                         <button @click='clickBurger' :class="burger" class="hamburger hamburger--emphatic mobile"

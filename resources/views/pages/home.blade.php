@@ -12,6 +12,8 @@
                 <li class="content__container__list__item">xyyyo 🐸 !</li>
                 <li class="content__container__list__item">everybody 💃 !</li>
                 <li class="content__container__list__item">there 🔥 !</li>
+                <li class="content__container__list__item">tokyo 🍣!</li>
+                <li class="content__container__list__item">magic 🎩!</li>
             </ul>
         </div>
     </div>
