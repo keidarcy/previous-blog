@@ -4,16 +4,16 @@
 <main>
     <div class="content_">
         <div class="content__container">
-            <p class="content__container__text">
+            <p class="content__container__text has-text-weight-bold">
                 Hello
             </p>
             <ul class="content__container__list">
-                <li class="content__container__list__item">world 🤖 !</li>
-                <li class="content__container__list__item">xyyyo 🐸 !</li>
-                <li class="content__container__list__item">everybody 💃 !</li>
-                <li class="content__container__list__item">there 🔥 !</li>
-                <li class="content__container__list__item">tokyo 🍣!</li>
-                <li class="content__container__list__item">magic 🎩!</li>
+                <li class="content__container__list__item has-text-weight-bold">world 🤖 !</li>
+                <li class="content__container__list__item has-text-weight-bold">
+                    <span class="has-text-primary">xy</span>yo 🐸 !
+                </li>
+                <li class="content__container__list__item has-text-weight-bold">wizard 🧙‍♀️</li>
+                <li class="content__container__list__item has-text-weight-bold">lab 🧪 !</li>
             </ul>
         </div>
     </div>

@@ -7,10 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('/images/logo-no-background.png') }}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Hi,there🔥😻🔥</title>
+    <title>xyyo 🔥😻🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
+    <style>
+        html body {
+            font-family: Nunito, Arial, Helvetica Neue, Helvetica, serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,23 +24,23 @@
         {{-- overlay --}}
         <div class="overlay moblie" :style="overlay">
             <div class="overlay-content">
-                <a href="/home" class=" hovered-link">HOME</a>
-                <a href="/blog" class=" hovered-link">BLOG</a>
-                <a href="/about" class=" hovered-link">ABOUT</a>
+                <a href="/home" class=" hovered-link has-text-weight-bold">HOME</a>
+                <a href="/blog" class=" hovered-link has-text-weight-bold">BLOG</a>
+                <a href="/about" class=" hovered-link has-text-weight-bold">ABOUT</a>
             </div>
             <div class="center bottom overlay-icon">
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa fa-3x fa-facebook-square"></i>
                     </span>
                 </figure>
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa fa-3x fa-github"></i>
                     </span>
                 </figure>
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa  fa-3x fa-wechat"></i>
                     </span>
                 </figure>
@@ -50,14 +56,19 @@
             {{-- navbar --}}
             <div class="hero-head ">
                 <div class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
-                    <div class="column center">
+                    <div class="column center" style="z-index:11;">
 
                         <a href="/home"><img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
-                                class="logo mobile-logo" /></a>
+                                class="logo-pic mobile-logo-pic" /></a>
                         <div style="flex-direction: row">
-                            <p class="center has-text-white">xyyyo</p>
-                            <p class="center has-text-white mobile mobile-text">no template</p>
-                            <p class="center has-text-white desktop">no template life</p>
+                            <div class="logo-word">
+                                <p class="logo-word-top-mobile center has-text-white mobile"><strong
+                                        class="has-text-primary is-4">xy</strong>yo</p>
+                                <p class="logo-word-top-desktop center has-text-white desktop"><strong
+                                        class="has-text-primary is-4">xy</strong>yo</p>
+                                <p class="logo-word-bottom-mobile center has-text-white mobile">Laboratory.</p>
+                                <p class="logo-word-bottom-desktop center has-text-white desktop">Laboratory.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="column center desktop">
@@ -94,23 +105,24 @@
         <div style="flex-direction: row">
             <div class="center">
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa fa-lg fa-facebook-square"></i>
                     </span>
                 </figure>
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa fa-lg fa-github"></i>
                     </span>
                 </figure>
                 <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-link">
+                    <span class="icon has-text-light is-large hovered-shadow">
                         <i class="fa  fa-lg fa-wechat"></i>
                     </span>
                 </figure>
             </div>
             <div>
-                <p class="center mobile-text"> © Copyright 2019 xyyyo</p>
+                <p class="center mobile-text"> © Copyright 2019 &nbsp;<span class="has-text-primary">xy</span>yo Lab.
+                </p>
             </div>
         </div>
     </footer>

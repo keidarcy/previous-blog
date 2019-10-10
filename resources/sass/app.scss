@@ -1,5 +1,3 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
 // Variables
 @import "variables";
 @import "node_modules/font-awesome/scss/font-awesome.scss";
@@ -12,8 +10,8 @@
 //gerneal setting
 body {
     color: #4b5d73;
-    font-family: Nunito-Bold, Arial, Helvetica Neue, Helvetica, serif;
     font-size: 16px;
+    font-family: Nunito, Arial, Helvetica Neue, Helvetica, serif;
     font-weight: 400;
     line-height: 1.6;
     letter-spacing: 0.02em;
@@ -72,7 +70,7 @@ body>footer {
 
 // }
 .hamburger {
-    z-index: 10;
+    z-index: 11;
 }
 
 //overlay setting
@@ -131,31 +129,49 @@ body>footer {
 }
 
 @media (max-width: 768px) {
+    body {
+        font-family: Nunito-Bold, Arial, Helvetica Neue, Helvetica, serif;
+    }
     .desktop {
         display: none;
     }
     .footer-height {
         padding: 1.5rem;
     }
-    .mobile-text {
-        font-size: 12px;
-    }
-    .mobile-logo {
+    .mobile-logo-pic {
         width: 3rem;
         height: 3rem;
-        margin-bottom: 10px;
-        z-index: 11;
+        z-index: 14;
     }
     .footer {
         padding: 1.25rem;
     }
+    .logo-word-top-mobile {
+        font-size: 20px;
+    }
+    .logo-word-bottom-mobile {
+        font-size: 15px;
+    }
+}
+
+.logo-word {
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.logo-word-top-desktop {
+    font-size: 30px;
+}
+
+.logo-word-bottom-desktop {
+    font-size: 20px;
 }
 
 @media (min-width: 768px) {
     .mobile {
         display: none;
     }
-    .logo {
+    .logo-pic {
         width: 4rem;
         height: 4rem;
         margin-bottom: 10px;
@@ -170,4 +186,32 @@ body>footer {
 .hovered-link:hover {
     text-shadow: 2px 2px 5px $dark-green;
     box-shadow: 0 0 0 1px $dark-green;
+}
+
+.hovered-shadow:hover {
+    text-shadow: 2px 2px 5px $dark-green;
+}
+
+.artical {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    box-shadow: 0px 3px 6px rgba(113, 219, 119, 0.8);
+    transition: 400ms all 0ms ease-in-out;
+}
+
+.artical:hover {
+    top: -5px;
+    right: -5px;
+    box-shadow: 0px 5px 30px rgba(113, 219, 119, 0.8);
+    color: #71db77;
+}
+
+.bg-img {
+    background-image: url("https://www.iamtimsmith.com/static/c18b81c1623368040aafdb33e6fcd9cc/ec873/featured_image.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #999;
 }
