@@ -3,10 +3,6 @@
 
 <link rel="stylesheet" href="{{ asset('/css/0debug.css') }}">
 
-{{-- <div class="box">
-
-</div> --}}
-
 <section class="hero">
     <figure class="image">
         <img style="opacity: 0.7;-webkit-filter: blur(4px);filter: blur(4px);"
