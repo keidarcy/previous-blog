@@ -12,11 +12,6 @@
     <link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
-    <style>
-        html body {
-            font-family: Nunito, Arial, Helvetica Neue, Helvetica, serif;
-        }
-    </style>
 </head>
 
 <body>

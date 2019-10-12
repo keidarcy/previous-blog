@@ -49331,6 +49331,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49349,7 +49355,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49358,18 +49364,148 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 Vue.config.productionTip = false;
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    'test': '',
-    'burger': '',
-    'overlay': ''
+    test: "",
+    burger: "",
+    overlay: ""
   },
   methods: {
     clickBurger: function clickBurger() {
-      this.burger = !this.burger ? 'is-active' : '';
-      this.overlay = !this.overlay ? 'width:100%' : '';
+      this.burger = !this.burger ? "is-active" : "";
+      this.overlay = !this.overlay ? "width:100%" : "";
     }
   }
+}); // ——————————————————————————————————————————————————
+// TextScramble
+// ——————————————————————————————————————————————————
+
+var TextScramble =
+/*#__PURE__*/
+function () {
+  function TextScramble(el) {
+    _classCallCheck(this, TextScramble);
+
+    this.el = el;
+    this.chars = "!<>-_\\/[]{}—=+*^?#________";
+    this.update = this.update.bind(this);
+  }
+
+  _createClass(TextScramble, [{
+    key: "setText",
+    value: function setText(newText) {
+      var _this = this;
+
+      var oldText = this.el.innerText;
+      var length = Math.max(oldText.length, newText.length);
+      var promise = new Promise(function (resolve) {
+        return _this.resolve = resolve;
+      });
+      this.queue = [];
+
+      for (var i = 0; i < length; i++) {
+        var from = oldText[i] || "";
+        var to = newText[i] || "";
+        var start = Math.floor(Math.random() * 40);
+        var end = start + Math.floor(Math.random() * 40);
+        this.queue.push({
+          from: from,
+          to: to,
+          start: start,
+          end: end
+        });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      var output = "";
+      var complete = 0;
+
+      for (var i = 0, n = this.queue.length; i < n; i++) {
+        var _this$queue$i = this.queue[i],
+            from = _this$queue$i.from,
+            to = _this$queue$i.to,
+            start = _this$queue$i.start,
+            end = _this$queue$i.end,
+            _char = _this$queue$i["char"];
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!_char || Math.random() < 0.28) {
+            _char = this.randomChar();
+            this.queue[i]["char"] = _char;
+          }
+
+          output += "<span class=\"dud\">".concat(_char, "</span>");
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }, {
+    key: "randomChar",
+    value: function randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }]);
+
+  return TextScramble;
+}(); // ——————————————————————————————————————————————————
+// Example
+// ——————————————————————————————————————————————————
+
+
+var phrases = ["Hi, there 😈", "My name is xyh 🐸", "Here is my lab 🧪", "Welcome 🧙‍♀️🧨"];
+var el = document.querySelector(".changing-words");
+var fx = new TextScramble(el);
+var counter = 0;
+
+var next = function next() {
+  fx.setText(phrases[counter]).then(function () {
+    setTimeout(next, 800);
+  });
+  counter = (counter + 1) % phrases.length;
+};
+
+next();
+var userInput = document.getElementsByClassName("my-input")[0];
+userInput.addEventListener("blur", function (e) {
+  if (window.innerWidth < 700) {
+    phrases.unshift(userInput.value);
+    phrases.push(userInput.value);
+    userInput.value = "";
+  }
+});
+userInput.addEventListener("keypress", function (e) {
+  var key = e.which || e.keyCode;
+
+  if (key === 13) {
+    // 13 is enter
+    phrases.push(userInput.value);
+    userInput.value = "";
+  }
+});
+var addButton = document.getElementsByClassName("add-words")[0];
+addButton.addEventListener("click", function (e) {
+  phrases.push(userInput.value);
+  userInput.value = "";
 });
 
 /***/ }),

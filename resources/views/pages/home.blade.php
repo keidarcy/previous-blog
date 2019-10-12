@@ -1,21 +1,41 @@
 @extends('layouts.main')
 @section('content')
-{{-- <link rel="stylesheet" href="{{ asset('/css/-debug.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
 <main>
-    <div class="content_">
-        <div class="content__container">
-            <p class="content__container__text has-text-weight-bold">
-                Hello
-            </p>
-            <ul class="content__container__list">
-                <li class="content__container__list__item has-text-weight-bold">world 🤖 !</li>
-                <li class="content__container__list__item has-text-weight-bold">
-                    <span class="has-text-primary">xy</span>yo 🐸 !
-                </li>
-                <li class="content__container__list__item has-text-weight-bold">wizard 🧙‍♀️</li>
-                <li class="content__container__list__item has-text-weight-bold">lab 🧪 !</li>
-            </ul>
+    <section class="section">
+        <div class="container">
+            <div class="mobile-changing-words changing-words has-text-weight-bold center tooltip is-tooltip-bottom is-family-code"
+                data-tooltip="WHY NOT TYPE SOME WORDS!" style="padding-top:100px;"></div>
         </div>
-    </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input my-input is-primary is-large" type="text"
+                                placeholder="ADD SOME MAGIC TO ME🧙‍♀️❓" />
+                            <span class="icon is-large is-left">
+                                <i class="fa fa-magic"></i>
+                            </span>
+                            <section class="section">
+                                <div class="buttons center" style="padding-top:10px;">
+                                    <button class="my-button-2 button add-words">ADD</button>
+
+                                    <a href="/blog">
+                                        <button class="my-button button">EXPLORE</button>
+                                    </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 </main>
 @endsection

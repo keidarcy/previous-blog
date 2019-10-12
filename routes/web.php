@@ -31,3 +31,7 @@ Route::get('/about', function () {
 Route::get('/show', function () {
     return view('pages.show');
 });
+
+Route::get('/thanks', function () {
+    return view('blocks.thanks');
+});
