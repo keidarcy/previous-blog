@@ -20,9 +20,10 @@
         {{-- overlay --}}
         <div class="overlay moblie" :style="overlay">
             <div class="overlay-content">
-                <a href="/home" class=" hovered-link has-text-weight-bold">HOME</a>
-                <a href="/blog" class=" hovered-link has-text-weight-bold">BLOG</a>
-                <a href="/about" class=" hovered-link has-text-weight-bold">ABOUT</a>
+                <a href="{{ config('frontend.inside-link.home') }}" class=" hovered-link has-text-weight-bold">HOME</a>
+                <a href="{{ config('frontend.inside-link.blog') }}" class=" hovered-link has-text-weight-bold">BLOG</a>
+                <a href="{{ config('frontend.inside-link.about') }}"
+                    class=" hovered-link has-text-weight-bold">ABOUT</a>
             </div>
             <div class="center bottom overlay-icon">
 
@@ -65,7 +66,8 @@
 
                         {{-- logo-start --}}
                         <div class="column center" style="z-index:11;">
-                            <a href="/home"><img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
+                            <a href="{{ config('frontend.inside-link.home') }}"><img
+                                    src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
                                     class="logo-pic mobile-logo-pic" /></a>
                             <div style="flex-direction: row">
                                 <div class="logo-word">
@@ -83,13 +85,13 @@
 
                         {{-- nav-start --}}
                         <div class="column center desktop">
-                            <a href="/home">
+                            <a href="{{ config('frontend.inside-link.home') }}">
                                 <p class="navbar-item has-text-white hovered-link">HOME</p>
                             </a>
-                            <a href="/blog">
+                            <a href="{{ config('frontend.inside-link.blog') }}">
                                 <p class=" navbar-item has-text-white hovered-link">BLOG</p>
                             </a>
-                            <a href="/about">
+                            <a href="{{ config('frontend.inside-link.about') }}">
                                 <p class="navbar-item has-text-white hovered-link">ABOUT</p>
                             </a>
                         </div>

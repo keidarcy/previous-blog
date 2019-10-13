@@ -20,7 +20,7 @@ Route::get('/home', function () {
     return view('pages.home');
 });
 
-Route::get('/blog', function () {
+Route::get('/blogs', function () {
     return view('pages.blog');
 });
 
@@ -32,6 +32,14 @@ Route::get('/show', function () {
     return view('pages.show');
 });
 
-Route::get('/thanks', function () {
-    return view('blocks.thanks');
+
+Auth::routes();
+
+//oute::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('blog')->group(function () {
+    Route::get('/', 'BlogController@getPosts')->name('blog.index');
+    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@findPostBySlug')->name('blog.post');
+    Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag');
+    Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });

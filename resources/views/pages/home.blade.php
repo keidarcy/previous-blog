@@ -29,7 +29,7 @@
 
                             <div class="buttons center" style="padding-top:80px;">
                                 <a class="my-button-2 button add-words is-uppercase">add words</a>
-                                <a href="/blog" class="my-button button">EXPLORE</a>
+                                <a href="{{ config('frontend.inside-link.blog') }}" class="my-button button">EXPLORE</a>
                             </div>
 
                         </div>

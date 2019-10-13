@@ -17,7 +17,7 @@
             <p class="title is-4 center">you seem to be lost here </p>
             <p class="subtitle is-6 center ">let me guide you somewhere</p>
             <div class="buttons center" style="padding-top:10px;">
-                <a href="/home" class="my-button button">believe cat</a>
+                <a href="{{ config('frontend.inside-link.home') }}" class="my-button button">believe cat</a>
                 <a href="https://artsandculture.google.com/explore" class="my-button-2 button">run away</a>
             </div>
 
