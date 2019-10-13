@@ -19,7 +19,7 @@
 
                             <div class="content">
                                 Hey there! I'm
-                                <a href="https://www.facebook.com/profile.php?id=100010633425743">
+                                <a href="{{ config('forntend.sms.facebook') }}">
                                     Xing Yahao
                                 </a>, consectetur adipiscing elit.
 
@@ -28,14 +28,14 @@
 
                     </div>
                 </div>
-                <div class="column is-half">
+                <div class=" column is-half">
                     <form action="#">
                         <div class="field">
 
                             <div class="control has-icons-left">
                                 <input type="text" class="input is-success" placeholder="Name">
                                 <span class="icon is-left">
-                                    <i class="fa fa-lg fa-id-card"></i>
+                                    <i class="fa-lg fas fa-address-card"></i>
                                 </span>
                             </div>
 
@@ -44,7 +44,7 @@
                             <div class="control has-icons-left">
                                 <input type="text" class="input is-success" placeholder="Email">
                                 <span class="icon is-left">
-                                    <i class="fa-lg fa fa-envelope"></i>
+                                    <i class="fa-lg fas fa-envelope"></i>
                                 </span>
                             </div>
                         </div>
@@ -61,7 +61,6 @@
                 </form>
             </div>
         </div>
-
     </section>
     @include('blocks.thanks')
 </div>
