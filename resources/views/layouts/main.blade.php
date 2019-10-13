@@ -66,18 +66,21 @@
 
                         {{-- logo-start --}}
                         <div class="column center" style="z-index:11;">
-                            <a href="{{ config('frontend.inside-link.home') }}"><img
-                                    src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
+                            <a href="{{ config('frontend.inside-link.home') }}">
+                                <img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
                                     class="logo-pic mobile-logo-pic" /></a>
                             <div style="flex-direction: row">
-                                <div class="logo-word">
-                                    <p class="logo-word-top-mobile center has-text-white mobile"><strong
-                                            class="has-text-primary is-4">xy</strong>yo</p>
-                                    <p class="logo-word-top-desktop center has-text-white desktop"><strong
-                                            class="has-text-primary is-4">xy</strong>yo</p>
-                                    <p class="logo-word-bottom-mobile center has-text-white mobile">Laboratory.</p>
-                                    <p class="logo-word-bottom-desktop center has-text-white desktop">Laboratory.</p>
-                                </div>
+                                <a href="{{ config('frontend.inside-link.home') }}">
+                                    <div class="logo-word">
+                                        <p class="logo-word-top-mobile center has-text-white mobile"><strong
+                                                class="has-text-primary is-4">xy</strong>yo</p>
+                                        <p class="logo-word-top-desktop center has-text-white desktop"><strong
+                                                class="has-text-primary is-4">xy</strong>yo</p>
+                                        <p class="logo-word-bottom-mobile center has-text-white mobile">Laboratory.</p>
+                                        <p class="logo-word-bottom-desktop center has-text-white desktop">Laboratory.
+                                        </p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         {{-- logo-end --}}
@@ -101,7 +104,7 @@
 
                         <div class="column right">
                             <label class="switch-button desktop tooltip is-tooltip-left"
-                                data-tooltip="In Process 👨‍🔬!">
+                                data-tooltip="Dark Appearance In Process 👨‍💻">
                                 <input class="switch-input" type="checkbox">
                                 <span class="switch-slider switch-round"></span>
                             </label>

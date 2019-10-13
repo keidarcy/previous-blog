@@ -12,25 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('pages.home');
+    return view('frontend.pages.home');
 });
 
+Route::get('/home', 'XControllers\HomeController@home')->name('home');
+Route::get('/about', 'XControllers\HomeController@about')->name('about');
 
-Route::get('/home', function () {
-    return view('pages.home');
-});
-
-Route::get('/blogs', function () {
-    return view('pages.blog');
-});
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
-Route::get('/show', function () {
-    return view('pages.show');
-});
 
 
 Auth::routes();
@@ -43,3 +30,9 @@ Route::prefix('blog')->group(function () {
     Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag');
     Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });
+
+Route::get('/blogs', 'XControllers\PostController@index');
+Route::get('/show/{id}', 'XControllers\PostController@show');
+
+
+Route::post('/message/create', 'XControllers\MessageController@create');

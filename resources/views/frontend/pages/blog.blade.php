@@ -1,8 +1,6 @@
 @extends('layouts.main')
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
-
 <section class="section">
     <div class="container">
         <form action="#" class="form">
@@ -23,5 +21,6 @@
     </div>
 </section>
 
-@include('blocks.articals')
+@include('frontend.partials.articals')
+
 @endsection

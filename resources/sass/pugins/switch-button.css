@@ -36,11 +36,11 @@
 }
 
 .switch-input:checked+.switch-slider {
-    background-color: #63d861;
+    background-color: #3CD160;
 }
 
 .switch-input:focus+.switch-slider {
-    box-shadow: 0 0 1px #63d861;
+    box-shadow: 0 0 1px #3CD160;
 }
 
 .switch-input:checked+.switch-slider:before {

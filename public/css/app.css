@@ -1111,11 +1111,11 @@
 }
 
 .switch-input:checked+.switch-slider {
-    background-color: #63d861;
+    background-color: #3CD160;
 }
 
 .switch-input:focus+.switch-slider {
-    box-shadow: 0 0 1px #63d861;
+    box-shadow: 0 0 1px #3CD160;
 }
 
 .switch-input:checked+.switch-slider:before {
@@ -1131,8 +1131,7 @@
 
 .switch-slider.switch-round:before {
     border-radius: 50%;
-}
-@charset "UTF-8";
+}@charset "UTF-8";
 
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
 
@@ -13177,16 +13176,5 @@ textarea {
           font-kerning: normal;
   line-height: 7rem;
   text-align: center;
-}
-
-.big-pic {
-  background-image: url("https://images.unsplash.com/photo-1468730533502-216da872eab2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  opacity: 0.7;
-  -webkit-filter: blur(0.8px);
-          filter: blur(0.8px);
 }
 

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
-<link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
-<main>
+
+<div class="home">
 
     <section class="section">
         <div class="container">
@@ -41,5 +41,5 @@
 
 
 
-</main>
+</div>
 @endsection

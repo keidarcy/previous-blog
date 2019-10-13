@@ -10,5 +10,9 @@ return [
         'home' => '/home',
         'blog' => '/blogs',
         'about' =>  '/about',
+    ],
+    'message' => [
+        'sent' => 'I got your message. I\'ll check it out as soon as possible!',
+        'more' => 'More Posts About',
     ]
 ];
