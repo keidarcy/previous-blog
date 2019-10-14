@@ -218,16 +218,20 @@ if (location.href.includes("home")) {
     var key = e.which || e.keyCode;
 
     if (key === 13) {
-      phrases.push(userInputDesk.value);
-      userInputDesk.value = "";
+      if (userInputDesk.value != '') {
+        phrases.push(userInputDesk.value);
+        userInputDesk.value = "";
+      }
     }
   });
 
   if (screen.width >= 768) {
     var addButton = document.getElementsByClassName("add-words")[0];
     addButton.addEventListener("click", function (e) {
-      phrases.push(userInputDesk.value);
-      userInputDesk.value = "";
+      if (userInputDesk.value != '') {
+        phrases.push(userInputDesk.value);
+        userInputDesk.value = "";
+      }
     });
   }
 
@@ -236,8 +240,10 @@ if (location.href.includes("home")) {
     var userInputMoblie = document.getElementsByClassName("my-input")[1];
     var addButton = document.getElementsByClassName("add-words")[0];
     addButton.addEventListener("touchend", function (e) {
-      phrases.push(userInputMoblie.value);
-      userInputMoblie.value = "";
+      if (userInputMoblie.value != '') {
+        phrases.push(userInputMoblie.value);
+        userInputMoblie.value = "";
+      }
     });
   }
 }

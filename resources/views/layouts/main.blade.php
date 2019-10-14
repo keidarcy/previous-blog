@@ -23,6 +23,13 @@
                 <a href="{{ config('frontend.inside-link.blog') }}" class=" hovered-link has-text-weight-bold">BLOG</a>
                 <a href="{{ config('frontend.inside-link.about') }}"
                     class=" hovered-link has-text-weight-bold">ABOUT</a>
+                <div style="padding-top:2px;">
+                    <label class="switch-button mobile tooltip is-tooltip-bottom"
+                        data-tooltip="Appearance Changing In Process 👨‍💻">
+                        <input class="switch-input" type="checkbox">
+                        <span class="switch-slider switch-round"></span>
+                    </label>
+                </div>
             </div>
             <div class="center bottom overlay-icon">
 

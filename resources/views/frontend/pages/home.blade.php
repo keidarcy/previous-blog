@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div id="home">
+<div id="home" data-aos="fade-in" data-aos-once="true">
     {{-- <home></home> --}}
     <section class="section">
         <div class="container">

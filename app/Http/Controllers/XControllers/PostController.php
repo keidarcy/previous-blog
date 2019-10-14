@@ -16,13 +16,20 @@ class PostController extends Controller
      * api get all posts data with json list.
      *
      * @return array
+     *
      */
     public function list()
     {
         $posts = Post::select('id', 'title', 'summary', 'body', 'published_at', 'featured_image', 'created_at')
             ->orderByDesc('created_at')
             ->get();
-        return ($posts);
+        $data = [];
+        foreach ($posts as $post) {
+            $post['slug'] = '/show/'.str_replace(' ', '-', $post->title);
+            $post['tags'] = $post->tags;
+            $data[] = $post;
+        }
+        return ($data);
     }
 
     /**

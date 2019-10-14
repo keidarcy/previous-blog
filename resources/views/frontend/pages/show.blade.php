@@ -26,7 +26,7 @@
 
 
 
-    <section class=" section" data-aos="fade-up">
+    <section class=" section" data-aos="fade-up" data-aos-once="true">
         <div class="container">
             <div class="is-divider"></div>
             @include('frontend.partials.more')
