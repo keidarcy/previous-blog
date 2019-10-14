@@ -2,7 +2,6 @@
 @section('content')
 
 <div id="home" data-aos="fade-in" data-aos-once="true">
-    {{-- <home></home> --}}
     <section class="section">
         <div class="container">
             <div class="mobile-changing-words changing-words has-text-weight-bold center tooltip is-tooltip-bottom is-family-code"

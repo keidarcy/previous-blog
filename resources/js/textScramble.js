@@ -52,21 +52,8 @@ class TextScramble {
     }
 }
 
-
-
-// let somestore = [];
-// async function getPhrase() {
-//     try {
-//         const response = await axios.get('/api/phrases/list');
-//         somestore.push(response.data);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-// getPhrase();
-// console.log(somestore);
-
-if (location.href.includes("home")) {
+console.log(location.pathname);
+if (location.href.includes("home") || location.pathname == '/') {
     const phrases = [
         "Hi, there 😈",
         "My name is xyh 🐸",
