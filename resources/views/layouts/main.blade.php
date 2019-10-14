@@ -9,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>xyyo 🔥😻🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -163,6 +162,7 @@
     </footer>
     {{-- footer-end --}}
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/textScramble.js') }}"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <div class="thanks">
-    <section class="section">
+    <section class="section" style="padding-top:10rem;" data-aos="fade-left">
         <div class="container">
             <div class="center">
                 <svg id="sunglasses" enable-background="new 0 0 64 64" viewBox="0 0 64 64">
@@ -31,7 +31,7 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" style="padding-top:10rem;padding-bottom:10rem;" data-aos="fade-right">
         <div class="container">
             <div class="center">
                 <span class="ty strokelight">thank you !</span>

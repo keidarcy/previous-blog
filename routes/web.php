@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'XControllers\HomeController@home')->name('home');
 Route::get('/about', 'XControllers\HomeController@about')->name('about');
+Route::get('/nihao', 'XControllers\PhraseController@insert');
 
 
 

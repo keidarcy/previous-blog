@@ -24,14 +24,13 @@
     position: relative;
     top: 0px;
     right: 0px;
-    box-shadow: 0px 3px 6px rgba(113, 219, 119, 0.8);
+    box-shadow: 0px 2px 3px rgba(113, 219, 119, 0.5);
     transition: 400ms all 0ms ease-in-out;
 }
 
 .artical:hover {
     top: -5px;
-    right: -5px;
-    box-shadow: 0px 5px 30px rgba(113, 219, 119, 0.8);
+    box-shadow: 0px 2px 10px rgba(113, 219, 119, 0.5);
     color: #71db77;
 }
 
@@ -135,25 +134,6 @@
     box-shadow: 0px 15px 20px rgba(222, 44, 71, 0.4);
     color: #fff;
     transform: translateY(-7px);
-}
-
-#about,
-#show {
-    opacity: 0;
-    animation: fadein;
-    animation-duration: 2.5s;
-    animation-iteration-count: 1;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
 }
 
 #sunglasses {

@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/posts/list', 'XControllers\PostController@list');
+Route::get('/phrases/list', 'XControllers\PhraseController@list');

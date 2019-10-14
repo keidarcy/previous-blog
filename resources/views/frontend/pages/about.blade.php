@@ -1,15 +1,19 @@
 @extends('layouts.main')
 @section('content')
 
-@if (session('status'))
-<div class="notification is-success is-small">
-    <button class="delete"></button>
-    {{ session('status') }}
-</div>
-@endif
-
 <div id="about">
-    <section class="section">
+    @if (session('status'))
+    <div class="notification is-success is-small">
+        <button class="delete"></button>
+        {{ session('status') }}
+    </div>
+    @endif
+    <section class="section" style="padding-top:10rem;" data-aos="fade-in">
+        <div class="container center">
+            <h1 class="title is-1">Hey, there!</h1>
+        </div>
+    </section>
+    <section class="section" style="padding-top:10rem;" data-aos="fade-left">
         <div class="container">
             <div class="columns">
                 <div class="column is-6 is-offset-3">
@@ -33,7 +37,7 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" style="padding-top:10rem;" data-aos="fade-right">
         <div class="container">
             <div class="columns">
                 <div class="column is-6 is-offset-3">
@@ -42,10 +46,8 @@
             </div>
         </div>
     </section>
-    <section class="section">
-        <div class="container">
-            @include('frontend.partials.thanks')
-        </div>
-    </section>
+
+    @include('frontend.partials.thanks')
+
 </div>
 @endsection

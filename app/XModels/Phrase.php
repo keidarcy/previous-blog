@@ -4,11 +4,11 @@ namespace App\XModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Word extends Model
+class Phrase extends Model
 {
-    protected $table = 'words';
+    protected $table = 'phrases';
 
     protected $fillable = [
-        'word'
+        'phrase'
     ];
 }

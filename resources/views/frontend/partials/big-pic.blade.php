@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="{{ asset('/css/-debug.css') }}">
-<div class="big-pic">
+<div class="big-pic" data-aos="fade-right">
     <section class="hero is-medium big-pic">
         <div class=" hero-body">
             <div class="container">

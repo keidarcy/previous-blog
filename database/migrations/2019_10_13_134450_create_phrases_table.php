@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWordsTable extends Migration
+class CreatePhrasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('phrases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('word');
+            $table->string('phrase', 32);
+            $table->string('ip')->nullable();
+            $table->integer('my_flg')->nullable()->default(0)->comment('{0:user;1:mine}');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('phrases');
     }
 }
