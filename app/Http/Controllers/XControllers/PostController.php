@@ -20,12 +20,12 @@ class PostController extends Controller
      */
     public function list()
     {
-        $posts = Post::select('id', 'title', 'summary', 'body', 'published_at', 'featured_image', 'created_at')
+        $posts = Post::select('id', 'title', 'summary', 'slug', 'body', 'published_at', 'featured_image', 'created_at')
             ->orderByDesc('created_at')
             ->get();
         $data = [];
         foreach ($posts as $post) {
-            $post['slug'] = '/show/'.str_replace(' ', '-', $post->title);
+            $post['slug'] = '/show/'. $post->slug;
             $post['tags'] = $post->tags;
             $data[] = $post;
         }
@@ -47,15 +47,14 @@ class PostController extends Controller
     }
 
     /**
-     * show the given post data with title.
+     * show the given post data with slug.
      *
-     * @param string $title
+     * @param string $slug
      * @return array
      */
-    public function show(string $title)
+    public function show(string $slug)
     {
-        $title = str_replace("-", " ", $title);
-        $post = Post::where('title', $title)->firstOrFail();
+        $post = Post::where('slug', $slug)->firstOrFail();
         $post = [
             'post'   => $post,
             'meta'   => $post->meta,

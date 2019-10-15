@@ -52,8 +52,7 @@ class TextScramble {
     }
 }
 
-console.log(location.pathname);
-if (location.href.includes("home") || location.pathname == '/') {
+if (location.href.includes("home") || location.pathname == "/") {
     const phrases = [
         "Hi, there 😈",
         "My name is xyh 🐸",
@@ -78,7 +77,7 @@ if (location.href.includes("home") || location.pathname == '/') {
     userInputDesk.addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
-            if (userInputDesk.value != '') {
+            if (userInputDesk.value != "") {
                 phrases.push(userInputDesk.value);
                 userInputDesk.value = "";
             }
@@ -87,18 +86,18 @@ if (location.href.includes("home") || location.pathname == '/') {
     if (screen.width >= 768) {
         var addButton = document.getElementsByClassName("add-words")[0];
         addButton.addEventListener("click", function(e) {
-            if (userInputDesk.value != '') {
+            if (userInputDesk.value != "") {
                 phrases.push(userInputDesk.value);
                 userInputDesk.value = "";
             }
         });
     }
     if (screen.width < 768) {
-        console.log(231)
+        console.log(231);
         var userInputMoblie = document.getElementsByClassName("my-input")[1];
         var addButton = document.getElementsByClassName("add-words")[0];
         addButton.addEventListener("touchend", function(e) {
-            if (userInputMoblie.value != '') {
+            if (userInputMoblie.value != "") {
                 phrases.push(userInputMoblie.value);
                 userInputMoblie.value = "";
             }
