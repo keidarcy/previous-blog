@@ -17,7 +17,6 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        opacity: 0.7;
         filter: blur(0.8px);
     }
 </style>

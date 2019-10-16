@@ -1,1 +1,254 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var a=t[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,n),a.l=!0,a.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)n.d(r,a,function(t){return e[t]}.bind(null,a));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=40)}({40:function(e,t,n){e.exports=n(41)},41:function(e,t){function n(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}var r=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.el=t,this.chars="!<>-_\\/[]{}—=+*^?#________",this.update=this.update.bind(this)}var t,r,a;return t=e,(r=[{key:"setText",value:function(e){var t=this,n=this.el.innerText,r=Math.max(n.length,e.length),a=new Promise((function(e){return t.resolve=e}));this.queue=[];for(var o=0;o<r;o++){var u=n[o]||"",i=e[o]||"",s=Math.floor(40*Math.random()),l=s+Math.floor(40*Math.random());this.queue.push({from:u,to:i,start:s,end:l})}return cancelAnimationFrame(this.frameRequest),this.frame=0,this.update(),a}},{key:"update",value:function(){for(var e="",t=0,n=0,r=this.queue.length;n<r;n++){var a=this.queue[n],o=a.from,u=a.to,i=a.start,s=a.end,l=a.char;this.frame>=s?(t++,e+=u):this.frame>=i?((!l||Math.random()<.28)&&(l=this.randomChar(),this.queue[n].char=l),e+='<span class="dud">'.concat(l,"</span>")):e+=o}this.el.innerHTML=e,t===this.queue.length?this.resolve():(this.frameRequest=requestAnimationFrame(this.update),this.frame++)}},{key:"randomChar",value:function(){return this.chars[Math.floor(Math.random()*this.chars.length)]}}])&&n(t.prototype,r),a&&n(t,a),e}();if(console.log(location.pathname),location.href.includes("home")||"/"==location.pathname){var a=["Hi, there 😈","My name is xyh 🐸","Here is my lab 🧪","Welcome 🧙‍♀️🧨"],o=new r(document.querySelector(".changing-words")),u=0;!function e(){o.setText(a[u]).then((function(){setTimeout(e,800)})),u=(u+1)%a.length}();var i=document.getElementsByClassName("my-input")[0];if(i.addEventListener("keypress",(function(e){13===(e.which||e.keyCode)&&""!=i.value&&(a.push(i.value),i.value="")})),screen.width>=768)document.getElementsByClassName("add-words")[0].addEventListener("click",(function(e){""!=i.value&&(a.push(i.value),i.value="")}));if(screen.width<768){console.log(231);var s=document.getElementsByClassName("my-input")[1];document.getElementsByClassName("add-words")[0].addEventListener("touchend",(function(e){""!=s.value&&(a.push(s.value),s.value="")}))}}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/textScramble.js":
+/*!**************************************!*\
+  !*** ./resources/js/textScramble.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TextScramble =
+/*#__PURE__*/
+function () {
+  function TextScramble(el) {
+    _classCallCheck(this, TextScramble);
+
+    this.el = el;
+    this.chars = "!<>-_\\/[]{}—=+*^?#________";
+    this.update = this.update.bind(this);
+  }
+
+  _createClass(TextScramble, [{
+    key: "setText",
+    value: function setText(newText) {
+      var _this = this;
+
+      var oldText = this.el.innerText;
+      var length = Math.max(oldText.length, newText.length);
+      var promise = new Promise(function (resolve) {
+        return _this.resolve = resolve;
+      });
+      this.queue = [];
+
+      for (var i = 0; i < length; i++) {
+        var from = oldText[i] || "";
+        var to = newText[i] || "";
+        var start = Math.floor(Math.random() * 40);
+        var end = start + Math.floor(Math.random() * 40);
+        this.queue.push({
+          from: from,
+          to: to,
+          start: start,
+          end: end
+        });
+      }
+
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      var output = "";
+      var complete = 0;
+
+      for (var i = 0, n = this.queue.length; i < n; i++) {
+        var _this$queue$i = this.queue[i],
+            from = _this$queue$i.from,
+            to = _this$queue$i.to,
+            start = _this$queue$i.start,
+            end = _this$queue$i.end,
+            _char = _this$queue$i["char"];
+
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!_char || Math.random() < 0.28) {
+            _char = this.randomChar();
+            this.queue[i]["char"] = _char;
+          }
+
+          output += "<span class=\"dud\">".concat(_char, "</span>");
+        } else {
+          output += from;
+        }
+      }
+
+      this.el.innerHTML = output;
+
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }, {
+    key: "randomChar",
+    value: function randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }]);
+
+  return TextScramble;
+}();
+
+if (location.href.includes("home") || location.pathname == "/") {
+  var phrases = ["Hi, there 😈", "My name is xyh 🐸", "Here is my lab 🧪", "Welcome 🧙‍♀️🧨"];
+  var el = document.querySelector(".changing-words");
+  var fx = new TextScramble(el);
+  var counter = 0;
+
+  var next = function next() {
+    fx.setText(phrases[counter]).then(function () {
+      setTimeout(next, 800);
+    });
+    counter = (counter + 1) % phrases.length;
+  };
+
+  next();
+  var userInputDesk = document.getElementsByClassName("my-input")[0];
+  userInputDesk.addEventListener("keypress", function (e) {
+    var key = e.which || e.keyCode;
+
+    if (key === 13) {
+      if (userInputDesk.value != "") {
+        phrases.push(userInputDesk.value);
+        userInputDesk.value = "";
+      }
+    }
+  });
+
+  if (screen.width >= 768) {
+    var addButton = document.getElementsByClassName("add-words")[0];
+    addButton.addEventListener("click", function (e) {
+      if (userInputDesk.value != "") {
+        phrases.push(userInputDesk.value);
+        userInputDesk.value = "";
+      }
+    });
+  }
+
+  if (screen.width < 768) {
+    console.log(231);
+    var userInputMoblie = document.getElementsByClassName("my-input")[1];
+    var addButton = document.getElementsByClassName("add-words")[0];
+    addButton.addEventListener("touchend", function (e) {
+      if (userInputMoblie.value != "") {
+        phrases.push(userInputMoblie.value);
+        userInputMoblie.value = "";
+      }
+    });
+  }
+}
+
+/***/ }),
+
+/***/ 1:
+/*!********************************************!*\
+  !*** multi ./resources/js/textScramble.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/xyh/Code/Sites/blog/resources/js/textScramble.js */"./resources/js/textScramble.js");
+
+
+/***/ })
+
+/******/ });

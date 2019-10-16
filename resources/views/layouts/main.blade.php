@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -71,19 +71,19 @@
                     <div class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
 
                         {{-- logo-start --}}
-                        <div class="column center" style="z-index:11;">
+                        <div class="column left" style="z-index:11;">
                             <a href="{{ config('frontend.inside-link.home') }}">
                                 <img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
-                                    class="logo-pic mobile-logo-pic" /></a>
+                                    class="logo-pic" /></a>
                             <div style="flex-direction: row">
                                 <a href="{{ config('frontend.inside-link.home') }}">
                                     <div class="logo-word">
-                                        <p class="logo-word-top-mobile center has-text-white mobile"><strong
+                                        <p class="logo-word-top-mobile left has-text-white mobile"><strong
                                                 class="has-text-primary is-4">xy</strong>yo</p>
-                                        <p class="logo-word-top-desktop center has-text-white desktop"><strong
+                                        <p class="logo-word-top-desktop left has-text-white desktop"><strong
                                                 class="has-text-primary is-4">xy</strong>yo</p>
-                                        <p class="logo-word-bottom-mobile center has-text-white mobile">Laboratory.</p>
-                                        <p class="logo-word-bottom-desktop center has-text-white desktop">Laboratory.
+                                        <p class="logo-word-bottom-mobile left has-text-white mobile">Laboratory.</p>
+                                        <p class="logo-word-bottom-desktop left has-text-white desktop">Laboratory.
                                         </p>
                                     </div>
                                 </a>

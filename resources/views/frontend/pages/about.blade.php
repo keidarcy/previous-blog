@@ -8,17 +8,18 @@
         {{ session('status') }}
     </div>
     @endif
+    @include('frontend.partials.dance')
     <section class="section" style="padding-top:10rem;" data-aos="fade-up">
         <div class="container center">
             <h1 class="title is-1">Hey, there!</h1>
         </div>
     </section>
-    <section class="section" style="padding-top:15rem;">
+    <section class="section" style="padding-top:15rem;" data-aos="fade-right">
         <div class="container">
             <div class="columns">
                 <div class="column is-6 is-offset-3" style="padding-top:15rem;">
                     <div class="card">
-                        <div class="card-image" data-aos="fade-right">
+                        <div class="card-image">
                             <figure class="image is-4by3">
                                 <img src="{{asset('/images/self-squar.png')}}" alt="Placeholder image">
                             </figure>

@@ -41,15 +41,15 @@
     .footer-height {
         padding: 1.5rem;
     }
-    .mobile-logo-pic {
+    .logo-pic {
         width: 3rem;
         height: 3rem;
         margin-bottom: 10px;
-        transition: all 2s;
+        transition: all 0.5s;
         transition-timing-function: ease-in-out;
     }
-    .mobile-logo-pic :hover {
-        transform: rotateZ(720deg);
+    .logo-pic:hover {
+        transform: rotateZ(360deg);
     }
     .footer {
         padding: 1.25rem;
@@ -148,4 +148,8 @@
     font-kerning: normal;
     line-height: 7rem;
     text-align: center;
+}
+
+.artical-body {
+    font-size: 25px;
 }

@@ -55,11 +55,13 @@ class PostController extends Controller
     public function show(string $slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
+        $related = Post::all()->except($post->id)->random(3);
         $post = [
             'post'   => $post,
             'meta'   => $post->meta,
             'tags'   => $post->tags,
-            'topics' => $post->topics,
+            'topic'  => $post->topic[0]['name'],
+            'related'=> $related
         ];
         return  view('frontend.pages.show', compact('post'));
     }
