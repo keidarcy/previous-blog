@@ -75,11 +75,11 @@
         width: 4rem;
         height: 4rem;
         margin-bottom: 10px;
-        transition: all 2s;
+        transition: all 0.5s;
         transition-timing-function: ease-in-out;
     }
     .logo-pic:hover {
-        transform: rotateZ(720deg);
+        transform: rotateZ(360deg);
     }
     .changing-words {
         font-size: 35px;

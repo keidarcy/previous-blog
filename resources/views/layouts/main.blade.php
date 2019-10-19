@@ -20,7 +20,7 @@
         <div class="overlay moblie" :style="overlay">
             <div class="overlay-content">
                 <a href="{{ config('frontend.inside-link.home') }}" class=" hovered-link has-text-weight-bold">HOME</a>
-                <a href="{{ config('frontend.inside-link.blog') }}" class=" hovered-link has-text-weight-bold">BLOG</a>
+                <a href="{{ config('frontend.inside-link.post') }}" class=" hovered-link has-text-weight-bold">BLOG</a>
                 <a href="{{ config('frontend.inside-link.about') }}"
                     class=" hovered-link has-text-weight-bold">ABOUT</a>
                 <div style="padding-top:2px;">
@@ -35,7 +35,7 @@
 
                 <figure class="media-left">
                     <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ config('frontend.sms-link.facebook') }}">
+                        <a href="{{ $basic->facebook }}">
                             <i class="fa-lg fab fa-facebook-square"></i>
                         </a>
                     </span>
@@ -43,7 +43,7 @@
 
                 <figure class="media-left">
                     <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ config('frontend.sms-link.github') }}">
+                        <a href="{{ $basic->github }}">
                             <i class="fa-lg fab fa-github-square"></i>
                         </a>
                     </span>
@@ -51,7 +51,7 @@
 
                 <figure class="media-left">
                     <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ config('frontend.sms-link.wechat') }}">
+                        <a href="{{ $basic->wechat }}">
                             <i class="fa-lg fab fa-weixin"></i>
                         </a>
                     </span>
@@ -97,7 +97,7 @@
                             <a href="{{ config('frontend.inside-link.home') }}">
                                 <p class="navbar-item has-text-white hovered-link">HOME</p>
                             </a>
-                            <a href="{{ config('frontend.inside-link.blog') }}">
+                            <a href="{{ config('frontend.inside-link.post') }}">
                                 <p class=" navbar-item has-text-white hovered-link">BLOG</p>
                             </a>
                             <a href="{{ config('frontend.inside-link.about') }}">
@@ -109,8 +109,8 @@
 
 
                         <div class="column right">
-                            <label class="switch-button desktop tooltip is-tooltip-left"
-                                data-tooltip="Dark Appearance In Process 👨‍💻">
+                            <label class="switch-button desktop tooltip is-tooltip-bottom"
+                                data-tooltip="Appearance Changing In Process 👨‍💻">
                                 <input class="switch-input" type="checkbox">
                                 <span class="switch-slider switch-round"></span>
                             </label>
@@ -133,26 +133,27 @@
 
 
 
+
     {{-- footer-start --}}
     <footer class="footer center footer-height has-text-weight-bold has-background-dark">
         <div style="flex-direction: row">
             <div class="center">
                 <figure class="media-left">
-                    <a href="{{ config('frontend.sms-link.facebook') }}">
+                    <a href="{{ $basic->facebook }}">
                         <span class="icon has-text-light is-large hovered-shadow">
                             <i class="fa-lg fab fa-facebook"></i>
                         </span>
                     </a>
                 </figure>
                 <figure class="media-left">
-                    <a href="{{ config('frontend.sms-link.github') }}">
+                    <a href="{{ $basic->github }}">
                         <span class="icon has-text-light is-large hovered-shadow">
                             <i class="fa-lg fab fa-github"></i>
                         </span>
                     </a>
                 </figure>
                 <figure class="media-left">
-                    <a href="{{ config('frontend.sms-link.wechat') }}">
+                    <a href="{{ $basic->wechat }}">
 
                         <span class="icon has-text-light is-large hovered-shadow">
                             <i class="fa-lg fab fa-weixin"></i>
@@ -161,7 +162,7 @@
                 </figure>
             </div>
             <div>
-                <p class="center mobile-text"> © Copyright 2019 &nbsp;<span class="has-text-primary">Xy</span>yo Lab.
+                <p class="center mobile-text"> © Copyright 2019 &nbsp; {{ $basic->website }}
                 </p>
             </div>
         </div>

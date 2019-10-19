@@ -7,7 +7,7 @@
                         <div class="card">
                             <div class="card-image">
                                 <figure class="image is-4by3">
-                                    <a :href="artical.slug">
+                                    <a :href="`/show/${artical.slug}`">
                                         <img :src="artical.featured_image" alt="Placeholder image" />
                                     </a>
                                 </figure>
@@ -16,7 +16,7 @@
                                 <div class="media">
                                     <div class="media-content">
                                         <p class="title is-5">
-                                            <a :href="artical.slug">
+                                            <a :href="`/show/${artical.slug}`">
                                                 @{{ artical.title }}
                                             </a>
                                         </p>
@@ -24,13 +24,14 @@
                                 </div>
                                 <br />
                                 <div class="content">
-                                    <a :href="artical.slug">
+                                    <a :href="`/show/${artical.slug}`">
                                         @{{ artical.summary }}
                                     </a>
                                     <br />
                                 </div>
-                                <div class="tags">
-                                    <span class="tag is-info" v-for="tag in artical.tags">@{{ tag.name }}</span>
+                                <div class="tags are-medium">
+                                    <span class="tag is-dark" v-for="tag in artical.tags"><a
+                                            :href="`/posts/${tag.slug}`">@{{ tag.name }}</a></span>
                                 </div>
                                 <time class="right">@{{ artical.published_at }}</time>
                             </div>
@@ -40,7 +41,7 @@
             </div>
         </div>
         <div class="help is-danger" v-else>
-            No results!Search something else!
+            {{ config('frontend.message.no_post') }}
         </div>
     </div>
 </section>

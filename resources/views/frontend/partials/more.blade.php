@@ -2,7 +2,7 @@
 
 
 <div class="columns">
-    @foreach ($post['related'] as $relate)
+    @foreach ($data['related'] as $relate)
     <div class="column is-one-third center">
         <div class="card artical">
             <div class="card-image">
@@ -18,11 +18,14 @@
                         <p class="title is-5">
                             <a href="/show/{{ $relate->slug }}">{{ $relate->title }}</a>
                         </p>
-                        @foreach ($relate->tags as $tag)
-                        <div class="tags">
-                            <span class="tag is-info is-small">{{ $tag->name }}</span>
+                        <div class="tags are-small">
+                            @foreach ($relate->tags as $tag)
+
+                            <a href="/posts/{{ $tag->slug }}">
+                                <span class="tag is-dark">{{ $tag->name }}</span>&nbsp;
+                            </a>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
             </div>

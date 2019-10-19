@@ -12905,7 +12905,6 @@ body {
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.02em;
-  background-color: #f5f5f5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12926,10 +12925,9 @@ a:hover {
 
 input,
 textarea {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: peru;
 }
 
 .footer {
@@ -13062,12 +13060,12 @@ textarea {
     width: 4rem;
     height: 4rem;
     margin-bottom: 10px;
-    transition: all 2s;
+    transition: all 0.5s;
     transition-timing-function: ease-in-out;
   }
 
   .logo-pic:hover {
-    transform: rotateZ(720deg);
+    transform: rotateZ(360deg);
   }
 
   .changing-words {

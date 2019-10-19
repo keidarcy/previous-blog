@@ -15,15 +15,15 @@
                     <div class="field">
                         <div class="control has-icons-left">
                             <input class="input my-input is-success is-rounded is-large desktop" type="text"
-                                placeholder="ADD SOME MAGIC TO ME" required />
+                                placeholder="TYPE SOME MAGIC FOR ME" />
                             <input class="input my-input is-success is-rounded is-medium mobile" type="text"
-                                placeholder="ADD SOME MAGIC TO ME" required />
+                                placeholder="TYPE SOME MAGIC FOR ME" />
                             <span class="icon is-large is-left">
                                 <i class="fas fa-theater-masks"></i>
                             </span>
                             <div class="buttons center" style="padding-top:80px;">
                                 <a class="my-button-2 button add-words is-uppercase" type="submit">add phrases</a>
-                                <a href="{{ config('frontend.inside-link.blog') }}" class="my-button button">EXPLORE</a>
+                                <a href="{{ config('frontend.inside-link.post') }}" class="my-button button">EXPLORE</a>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\XControllers;
 use Illuminate\Http\Request;
 use App\XModels\Message;
 use App\Http\Controllers\Controller;
+use App\Mail\MessageCreated;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -17,7 +19,10 @@ class MessageController extends Controller
             'email' => 'required|email',
             'message' => 'required'
         ]));
-            
+
+        Mail::to($request->email)->send(new MessageCreated($request));
+        Mail::to('xyyolab@gmail.com')->send(new MessageCreated($request));
+        
         return redirect()->route('about')->with('status', config('frontend.message.sent'));
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\XControllers;
 
-use Canvas\Tag;
-use Canvas\Post;
+use App\XModels\Tag;
+use App\XModels\Post;
 use Canvas\Topic;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -20,30 +21,15 @@ class PostController extends Controller
      */
     public function list()
     {
-        $posts = Post::select('id', 'title', 'summary', 'slug', 'body', 'published_at', 'featured_image', 'created_at')
+        $posts = Post::where('complete', 1)
             ->orderByDesc('created_at')
             ->get();
         $data = [];
         foreach ($posts as $post) {
-            $post['slug'] = '/show/'. $post->slug;
             $post['tags'] = $post->tags;
             $data[] = $post;
         }
         return ($data);
-    }
-
-    /**
-     * Show the posts index page.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        $posts = Post::select('id', 'title', 'body', 'published_at', 'featured_image', 'created_at')
-            ->orderByDesc('created_at')
-            ->get();
-
-        return view('frontend.pages.blog');
     }
 
     /**
@@ -52,17 +38,30 @@ class PostController extends Controller
      * @param string $slug
      * @return array
      */
-    public function show(string $slug)
+    public function show(Post $post)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
-        $related = Post::all()->except($post->id)->random(3);
-        $post = [
+        $data = [
             'post'   => $post,
-            'meta'   => $post->meta,
             'tags'   => $post->tags,
-            'topic'  => $post->topic[0]['name'],
-            'related'=> $related
+            'related'=> Post::all()->except($post->id)->random(3)
         ];
-        return  view('frontend.pages.show', compact('post'));
+        return  view('frontend.pages.show', compact('data'));
+    }
+
+    public function findPostsByTagOrTopic($slug)
+    {
+        $word = Tag::where('slug', $slug)->first();
+        if (is_null($word)) {
+            $word = Topic::where('slug', $slug)->first();
+        }
+        if (isset($word)) {
+            foreach ($word->posts as $post) {
+                $post['tags'] = $post->tags;
+                $data[] = $post;
+            }
+            return ($data);
+        } else {
+            return null;
+        }
     }
 }

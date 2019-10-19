@@ -1,5 +1,5 @@
-<div class="thanks">
-    <section class="section" style="padding-top:10rem;" data-aos="fade-left">
+<div id="thanks" class="thanks">
+    <section class="section" style="padding-top:8rem;" data-aos="fade-left">
         <div class="container">
             <div class="center">
                 <svg id="sunglasses" enable-background="new 0 0 64 64" viewBox="0 0 64 64">

@@ -15,7 +15,7 @@ AOS.init({
     duration: 1000
 });
 
-const app = new Vue({
+new Vue({
     el: "#app",
     data: {
         test: "",
@@ -30,24 +30,35 @@ const app = new Vue({
     }
 });
 
-new Vue({
-    el: '#blog',
-    data: {
-        articals: [],
-        textSearch: '',
-    },
-    computed: {
-        articalsFilter: function() {
-            var textSearch = this.textSearch;
-            return this.articals.filter(function(el) {
-                return el.title.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
-            });
-        }
-    },
-    created: function() {
-        var that = this;
-        axios.get('./api/posts/list')
-            .then((response) => that.articals = response.data)
-            .catch((error) => console.log(error));
-    },
-})
+if (location.pathname.includes('/posts')) {
+    new Vue({
+        el: '#posts',
+        data: {
+            articals: [],
+            textSearch: '',
+            about: location.pathname.slice(7)
+        },
+        computed: {
+            articalsFilter: function() {
+                var textSearch = this.textSearch;
+                return this.articals.filter(function(el) {
+                    return el.title.toLowerCase().includes(textSearch.toLowerCase());
+                });
+            }
+        },
+        mounted() {
+            var that = this;
+            axios.get(`/api${location.pathname}`)
+                .then((response) => that.articals = response.data)
+                .catch((error) => console.log(error));
+        },
+    })
+}
+
+let close_btn = document.getElementById('notification-close');
+close_btn.addEventListener("click", function(e) {
+    document.getElementById('mail-notification').style.display = 'none';
+    document.getElementById('thanks').scrollIntoView({
+        behavior: 'smooth'
+    });
+});

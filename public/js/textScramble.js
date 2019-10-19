@@ -225,7 +225,6 @@ if (location.href.includes("home") || location.pathname == "/") {
   }
 
   if (screen.width < 768) {
-    console.log(231);
     var userInputMoblie = document.getElementsByClassName("my-input")[1];
     var addButton = document.getElementsByClassName("add-words")[0];
     addButton.addEventListener("touchend", function (e) {

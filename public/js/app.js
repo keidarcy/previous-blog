@@ -15003,7 +15003,7 @@ aos__WEBPACK_IMPORTED_MODULE_2___default.a.init({
   offset: 400,
   duration: 1000
 });
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: "#app",
   data: {
     test: "",
@@ -15017,28 +15017,40 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     }
   }
 });
-new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#blog',
-  data: {
-    articals: [],
-    textSearch: ''
-  },
-  computed: {
-    articalsFilter: function articalsFilter() {
-      var textSearch = this.textSearch;
-      return this.articals.filter(function (el) {
-        return el.title.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
+
+if (location.pathname.includes('/posts')) {
+  new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+    el: '#posts',
+    data: {
+      articals: [],
+      textSearch: '',
+      about: location.pathname.slice(7)
+    },
+    computed: {
+      articalsFilter: function articalsFilter() {
+        var textSearch = this.textSearch;
+        return this.articals.filter(function (el) {
+          return el.title.toLowerCase().includes(textSearch.toLowerCase());
+        });
+      }
+    },
+    mounted: function mounted() {
+      var that = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api".concat(location.pathname)).then(function (response) {
+        return that.articals = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
       });
     }
-  },
-  created: function created() {
-    var that = this;
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('./api/posts/list').then(function (response) {
-      return that.articals = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-  }
+  });
+}
+
+var close_btn = document.getElementById('notification-close');
+close_btn.addEventListener("click", function (e) {
+  document.getElementById('mail-notification').style.display = 'none';
+  document.getElementById('thanks').scrollIntoView({
+    behavior: 'smooth'
+  });
 });
 
 /***/ }),

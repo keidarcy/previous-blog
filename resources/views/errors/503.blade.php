@@ -14,13 +14,12 @@
                     <img src="{{asset('/images/alice-and-cat.png')}}" alt="">
                 </figure>
             </div>
-            <p class="title is-3 center">404</p>
-            <p class="title is-4 center">you seem to be lost here</p>
-            <p class="subtitle is-6 center ">the correct direction is left side
-            </p>
+            <p class="title is-3 center">ERROR</p>
+            <p class="title is-4 center">Sorry, something wrong happened</p>
+            <p class="subtitle is-6 center ">I will fix it as soon as possible</p>
             <div class="buttons center" style="padding-top:10px;">
-                <a href="{{ config('frontend.inside-link.home') }}" class="my-button button">believe cat</a>
-                <a href="https://artsandculture.google.com/explore" class="my-button-2 button">run away</a>
+                <a href="{{ config('frontend.inside-link.home') }}" class="my-button button">go back to HP</a>
+                <a href="https://artsandculture.google.com/explore" class="my-button-2 button">leave</a>
             </div>
 
         </div>
