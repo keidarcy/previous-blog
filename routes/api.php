@@ -19,5 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/posts', 'XControllers\PostController@list');
 Route::get('/posts/{slug}', 'XControllers\PostController@findPostsByTagOrTopic');
-Route::get('/phrases/list', 'XControllers\PhraseController@list');
 Route::get('/show/{post}', 'XControllers\PostController@show');
+Route::get('/phrases/list', 'XControllers\PhraseController@list');
+
+Route::get('/basic', function () {
+    return App\XModels\Basic::firstOrFail();
+});

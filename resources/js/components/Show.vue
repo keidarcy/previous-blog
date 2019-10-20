@@ -35,11 +35,15 @@
                                 <div class="mobile">
                                     <div class="center" style="padding-top:20px;">
                                         <figure class="image is-64x64">
-                                            <img class="is-rounded" src alt="ops" />
+                                            <img
+                                                class="is-rounded"
+                                                :src="basic.little_picture"
+                                                alt="ops"
+                                            />
                                         </figure>
                                     </div>
                                     <div class="center" style="padding-top:20px;">
-                                        <span class="subtitle is-4"></span>
+                                        <span class="subtitle is-4">{{ basic.nick_name }}</span>
                                     </div>
                                     <div class="center" style="padding-top:20px;">
                                         <div>Published at : {{ post.post.published_at }}</div>
@@ -118,7 +122,8 @@ export default {
         return {
             post: "",
             loading: false,
-            good: true
+            good: true,
+            basic: ""
         };
     },
     mounted() {
@@ -130,6 +135,11 @@ export default {
                 that.post = response.data;
                 that.loading = false;
             })
+            .catch(error => console.log(error));
+
+        axios
+            .get("/api/basic")
+            .then(response => (that.basic = response.data))
             .catch(error => console.log(error));
     }
 };

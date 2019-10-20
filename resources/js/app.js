@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 window.axios = axios;
 window.Vue = require("vue");
 
-//Vue.config.productionTip = false;
+Vue.config.productionTip = false;
 
 // for fade in loadar
 window.AOS = AOS;
@@ -24,10 +24,11 @@ new Vue({
         Posts: Posts,
         Show: Show
     },
-    data: {
-        test: "",
-        burger: "",
-        overlay: ""
+    data: function() {
+        return {
+            burger: "",
+            overlay: ""
+        };
     },
     methods: {
         clickBurger() {
