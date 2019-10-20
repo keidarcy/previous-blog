@@ -5,9 +5,7 @@ namespace App\Http\Controllers\XControllers;
 use App\XModels\Tag;
 use App\XModels\Post;
 use Canvas\Topic;
-use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -40,12 +38,19 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $related_posts = Post::all()->except($post->id)->random(3);
+        $relates = [];
+        foreach ($related_posts as $index => $related_post) {
+            $relates[$index]['post'] = $related_post;
+            $relates[$index]['post']['tags'] = $related_post->tags;
+        }
         $data = [
             'post'   => $post,
             'tags'   => $post->tags,
-            'related'=> Post::all()->except($post->id)->random(3)
+            'relates'=> $relates,
+
         ];
-        return  view('frontend.pages.show', compact('data'));
+        return  $data;
     }
 
     public function findPostsByTagOrTopic($slug)

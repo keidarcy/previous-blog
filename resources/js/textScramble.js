@@ -103,3 +103,13 @@ if (location.href.includes("home") || location.pathname == "/") {
         });
     }
 }
+
+if (document.getElementById("notification-close")) {
+    let close_btn = document.getElementById("notification-close");
+    close_btn.addEventListener("click", function(e) {
+        document.getElementById("mail-notification").style.display = "none";
+        document.getElementById("thanks").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+}

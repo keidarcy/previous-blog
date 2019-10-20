@@ -5,8 +5,8 @@ Auth::routes();
 Route::View('/', 'frontend.pages.home')->name('home');
 Route::View('/about', 'frontend.pages.about')->name('about');
 Route::View('/posts/{slug?}', 'frontend.pages.post');
-
-Route::get('/show/{post}', 'XControllers\PostController@show');
+Route::View('/show/{post}', 'frontend.pages.show');
+// Route::get('/show/{post}', 'XControllers\PostController@show');
 Route::post('/message/create', 'XControllers\MessageController@create');
 
 Route::prefix('blog')->group(function () {

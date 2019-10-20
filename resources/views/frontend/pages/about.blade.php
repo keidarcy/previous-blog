@@ -8,8 +8,9 @@
         {{ session('status') }}
     </div>
     @endif
+
     @include('frontend.partials.dance')
-    <section class="section" style="padding-top:10rem;" data-aos="fade-up">
+                <section class="section" style="padding-top:10rem;" data-aos="fade-up">
         <div class="container center">
             <h1 class="title is-1">{{ $basic->greet }}</h1>
         </div>
@@ -45,9 +46,8 @@
                 </div>
             </div>
         </div>
-    </section>
+        </section>
 
     @include('frontend.partials.thanks')
-
 </div>
 @endsection

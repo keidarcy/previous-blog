@@ -5,7 +5,7 @@
     <div class="media center">
         <div class="media-left desktop">
             <figure class="image">
-                <img src="{{asset('/images/alice-and-cat.png')}}" alt="">
+                <img src="{{ asset('/images/alice-and-cat.png')}}" alt="">
             </figure>
         </div>
         <div class="media-content">

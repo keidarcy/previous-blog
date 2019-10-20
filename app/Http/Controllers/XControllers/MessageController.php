@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\XModels\Message;
 use App\Http\Controllers\Controller;
 use App\Mail\MessageCreated;
+use App\Mail\MessageToMe;
 use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
@@ -21,7 +22,7 @@ class MessageController extends Controller
         ]));
 
         Mail::to($request->email)->send(new MessageCreated($request));
-        Mail::to('xyyolab@gmail.com')->send(new MessageCreated($request));
+        Mail::to('keidarcy.1015@gmail.com')->send(new MessageToMe($request));
         
         return redirect()->route('about')->with('status', config('frontend.message.sent'));
     }

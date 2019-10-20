@@ -27,7 +27,7 @@
     </div>
     <div class="field">
         <div class="control">
-            <textarea class="textarea {{ $errors->has('message') ? 'is-danger' : 'is-success'}}" is-large"
+            <textarea class="textarea {{ $errors->has('message') ? 'is-danger' : 'is-success'}} is-large"
                 placeholder="🤗 Your Message" rows="5" name="message" required>{{ old('message') }}</textarea>
             @error('message')
             <p class="help is-danger">{{ $errors->first('message') }}</p>

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageCreated extends Mailable
+class MessageToMe extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,11 +16,10 @@ class MessageCreated extends Mailable
      *
      * @return void
      */
-    public function __construct($user_message)
+    public function __construct($user)
     {
-        $this->user_message = $user_message;
+        $this->user = $user;
     }
-
 
     /**
      * Build the message.
@@ -29,10 +28,6 @@ class MessageCreated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.message-created')
-        ->with([
-            'user_name'=>$this->user_message->name,
-            'user_message'=>$this->user_message->message
-            ]);
+        return $this->markdown('mail.message-to-me')->with('user', $this->user);
     }
 }

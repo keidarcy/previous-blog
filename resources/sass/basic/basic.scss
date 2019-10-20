@@ -153,3 +153,25 @@
 .artical-body {
     font-size: 25px;
 }
+
+.dancing-area {
+    padding-top: 30px;
+    width: 200px;
+    height: 200px;
+    border: 15px;
+}
+
+.dancing-text {
+    font-size: 10px;
+    line-height: 10px;
+    background: url(./images/dancer.gif);
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: top;
+    color: transparent;
+    //-webkit-background-clip: text;
+    /* -webkit-text-fill-color: rgba(255, 255, 255,0) ; */
+    font-weight: 900;
+    margin: 0;
+    mix-blend-mode: darken;
+}

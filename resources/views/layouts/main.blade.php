@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Xyyo Lab👨‍🔬🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="/css/debug.css"> --}}
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -16,119 +17,123 @@
 
 <body>
     <div id="app">
-        {{-- overlay --}}
-        <div class="overlay moblie" :style="overlay">
-            <div class="overlay-content">
-                <a href="{{ config('frontend.inside-link.home') }}" class=" hovered-link has-text-weight-bold">HOME</a>
-                <a href="{{ config('frontend.inside-link.post') }}" class=" hovered-link has-text-weight-bold">BLOG</a>
-                <a href="{{ config('frontend.inside-link.about') }}"
-                    class=" hovered-link has-text-weight-bold">ABOUT</a>
-                <div style="padding-top:2px;">
-                    <label class="switch-button mobile tooltip is-tooltip-bottom"
-                        data-tooltip="Appearance Changing In Process 👨‍💻">
-                        <input class="switch-input" type="checkbox">
-                        <span class="switch-slider switch-round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="center bottom overlay-icon">
-
-                <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ $basic->facebook }}">
-                            <i class="fa-lg fab fa-facebook-square"></i>
-                        </a>
-                    </span>
-                </figure>
-
-                <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ $basic->github }}">
-                            <i class="fa-lg fab fa-github-square"></i>
-                        </a>
-                    </span>
-                </figure>
-
-                <figure class="media-left">
-                    <span class="icon has-text-light is-large hovered-shadow">
-                        <a href="{{ $basic->wechat }}">
-                            <i class="fa-lg fab fa-weixin"></i>
-                        </a>
-                    </span>
-                </figure>
-
-            </div>
-        </div>
-        {{-- overlay --}}
-
-
-
-
-        {{-- header --}}
-        <div class="header-section">
-            <section class="hero">
-                <div class="hero-head ">
-                    <div class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
-
-                        {{-- logo-start --}}
-                        <div class="column left" style="z-index:11;">
-                            <a href="{{ config('frontend.inside-link.home') }}">
-                                <img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
-                                    class="logo-pic" /></a>
-                            <div style="flex-direction: row">
-                                <a href="{{ config('frontend.inside-link.home') }}">
-                                    <div class="logo-word">
-                                        <p class="logo-word-top-mobile left has-text-white mobile"><strong
-                                                class="has-text-primary is-4">xy</strong>yo</p>
-                                        <p class="logo-word-top-desktop left has-text-white desktop"><strong
-                                                class="has-text-primary is-4">xy</strong>yo</p>
-                                        <p class="logo-word-bottom-mobile left has-text-white mobile">Laboratory.</p>
-                                        <p class="logo-word-bottom-desktop left has-text-white desktop">Laboratory.
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        {{-- logo-end --}}
-
-
-                        {{-- nav-start --}}
-                        <div class="column center desktop">
-                            <a href="{{ config('frontend.inside-link.home') }}">
-                                <p class="navbar-item has-text-white hovered-link">HOME</p>
-                            </a>
-                            <a href="{{ config('frontend.inside-link.post') }}">
-                                <p class=" navbar-item has-text-white hovered-link">BLOG</p>
-                            </a>
-                            <a href="{{ config('frontend.inside-link.about') }}">
-                                <p class="navbar-item has-text-white hovered-link">ABOUT</p>
-                            </a>
-                        </div>
-                        {{-- nav-end --}}
-
-
-
-                        <div class="column right">
-                            <label class="switch-button desktop tooltip is-tooltip-bottom"
-                                data-tooltip="Appearance Changing In Process 👨‍💻">
-                                <input class="switch-input" type="checkbox">
-                                <span class="switch-slider switch-round"></span>
-                            </label>
-                            <button @click='clickBurger' :class="burger" class="hamburger hamburger--emphatic mobile"
-                                type="button">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
+        <div id="header">
+            {{-- overlay --}}
+            <div class="overlay moblie" :style="overlay">
+                <div class="overlay-content">
+                    <a href="{{ config('frontend.inside-link.home') }}"
+                        class=" hovered-link has-text-weight-bold">HOME</a>
+                    <a href="{{ config('frontend.inside-link.post') }}"
+                        class=" hovered-link has-text-weight-bold">BLOG</a>
+                    <a href="{{ config('frontend.inside-link.about') }}"
+                        class=" hovered-link has-text-weight-bold">ABOUT</a>
+                    <div style="padding-top:2px;">
+                        <label class="switch-button mobile tooltip is-tooltip-bottom"
+                            data-tooltip="Appearance Changing In Process 👨‍💻">
+                            <input class="switch-input" type="checkbox">
+                            <span class="switch-slider switch-round"></span>
+                        </label>
                     </div>
                 </div>
-            </section>
-            {{-- header --}}
-        </div>
-    </div>
-    @yield('content')
+                <div class="center bottom overlay-icon">
+                    <figure class="media-left">
+                        <span class="icon has-text-light is-large hovered-shadow">
+                            <a href="{{ $basic->facebook }}">
+                                <i class="fa-lg fab fa-facebook-square"></i>
+                            </a>
+                        </span>
+                    </figure>
 
+                    <figure class="media-left">
+                        <span class="icon has-text-light is-large hovered-shadow">
+                            <a href="{{ $basic->github }}">
+                                <i class="fa-lg fab fa-github-square"></i>
+                            </a>
+                        </span>
+                    </figure>
+
+                    <figure class="media-left">
+                        <span class="icon has-text-light is-large hovered-shadow">
+                            <a href="{{ $basic->wechat }}">
+                                <i class="fa-lg fab fa-weixin"></i>
+                            </a>
+                        </span>
+                    </figure>
+
+                </div>
+            </div>
+            {{-- overlay --}}
+
+
+
+
+            {{-- header --}}
+            <div class="header-section">
+                <section class="hero">
+                    <div class="hero-head ">
+                        <div class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
+
+                            {{-- logo-start --}}
+                            <div class="column left" style="z-index:11;">
+                                <a href="{{ config('frontend.inside-link.home') }}">
+                                    <img src=" {{asset('/images/logo-no-background.png')}} " alt="logo"
+                                        class="logo-pic" /></a>
+                                <div style="flex-direction: row">
+                                    <a href="{{ config('frontend.inside-link.home') }}">
+                                        <div class="logo-word">
+                                            <p class="logo-word-top-mobile left has-text-white mobile"><strong
+                                                    class="has-text-primary is-4">xy</strong>yo</p>
+                                            <p class="logo-word-top-desktop left has-text-white desktop"><strong
+                                                    class="has-text-primary is-4">xy</strong>yo</p>
+                                            <p class="logo-word-bottom-mobile left has-text-white mobile">Laboratory.
+                                            </p>
+                                            <p class="logo-word-bottom-desktop left has-text-white desktop">Laboratory.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            {{-- logo-end --}}
+
+
+                            {{-- nav-start --}}
+                            <div class="column center desktop">
+                                <a href="{{ config('frontend.inside-link.home') }}">
+                                    <p class="navbar-item has-text-white hovered-link">HOME</p>
+                                </a>
+                                <a href="{{ config('frontend.inside-link.post') }}">
+                                    <p class=" navbar-item has-text-white hovered-link">BLOG</p>
+                                </a>
+                                <a href="{{ config('frontend.inside-link.about') }}">
+                                    <p class="navbar-item has-text-white hovered-link">ABOUT</p>
+                                </a>
+                            </div>
+                            {{-- nav-end --}}
+
+
+
+                            <div class="column right">
+                                <label class="switch-button desktop tooltip is-tooltip-bottom"
+                                    data-tooltip="Appearance Changing In Process 👨‍💻">
+                                    <input class="switch-input" type="checkbox">
+                                    <span class="switch-slider switch-round"></span>
+                                </label>
+                                <button @click='clickBurger' :class="burger"
+                                    class="hamburger hamburger--emphatic mobile" type="button">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {{-- header --}}
+            </div>
+        </div>
+
+        @yield('content')
+    </div>
 
 
 
@@ -162,7 +167,7 @@
                 </figure>
             </div>
             <div>
-                <p class="center mobile-text"> © Copyright 2019 &nbsp; {{ $basic->website }}
+                <p class="center is-size-6 is-size-7-mobile"> © Copyright 2019 &nbsp; {{ $basic->website }}
                 </p>
             </div>
         </div>
