@@ -34,7 +34,8 @@
                         </label>
                     </div>
                 </div>
-                <div class="center bottom overlay-icon">
+
+                <div class="center overlay-icon">
                     <figure class="media-left">
                         <span class="icon has-text-light is-large hovered-shadow">
                             <a href="{{ $basic->facebook }}">
@@ -58,7 +59,6 @@
                             </a>
                         </span>
                     </figure>
-
                 </div>
             </div>
             {{-- overlay --}}
