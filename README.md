@@ -1,7 +1,7 @@
 # My personal blog repository.
-boosted by Laravel and Vue
+boosted by [Laravel](https://laravel.com) and [Vue](https://vuejs.org)
 
-## [Demo]link:https://www.xyyolab.com
+## [Demo](https://www.xyyolab.com)
 
 ## Road map
 - [ ] Language selector.
