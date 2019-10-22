@@ -5,7 +5,7 @@
             data-aos="fade-right"
             :style="{ backgroundImage: `url(${post.post.featured_image})` }"
         >
-            <section class="hero is-large big-pic">
+            <section class="hero is-medium big-pic">
                 <div class="hero-body">
                     <div class="container">
                         <h1 class="title has-text-white is-1 is-size-2-mobile">{{ post.post.title }}</h1>
@@ -15,12 +15,14 @@
         </div>
         <section class="section">
             <div class="container">
+                <h1
+                    class="center title has-text-black is-1 is-size-3-mobile has-text-black"
+                    data-aos="fade-up"
+                    data-aos-once="true"
+                >{{ post.post.title }}</h1>
                 <div class="columns">
                     <div class="column is-6 is-offset-one-quarter">
                         <div class="artical-hearder" data-aos="fade-up" data-aos-once="true">
-                            <h1
-                                class="center has-text-black is-1 is-size-1 is-size-3-mobile has-text-black"
-                            >{{ post.post.title }}</h1>
                             <div class="center desktop">
                                 <figure class="image is-64x64" style="margin-right:40px;">
                                     <img class="is-rounded" :src="basic.little_picture" alt="ops" />

@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 // for fade in loadar
 window.AOS = AOS;
 AOS.init({
-    offset: 400,
+    offset: 350,
     duration: 1000
 });
 

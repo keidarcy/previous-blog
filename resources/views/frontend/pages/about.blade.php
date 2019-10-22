@@ -29,12 +29,15 @@
                             <div class="content">
                                 Hi! My name is
                                 <a href="{{ config('forntend.sms.facebook') }}">
-                                    {{ $basic->full_name }} ( {{ $basic->chinese_name }} )
-                                </a>, {{ $basic->introduction }}
+                                    <strong>{{ $basic->full_name }} ( {{ $basic->chinese_name }} )</strong>
+                                </a>.
+                                <br>
+                                <br>
+                                {!! $basic->introduction !!}
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
