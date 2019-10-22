@@ -14,7 +14,7 @@
                 <div class="column is-half is-offset-one-quarter">
                     <div class="field">
                         <div class="control has-icons-left">
-                            <input class="input my-input is-success is-rounded is-large desktop" type="text"
+                            <input class="input my-input is-success is-rounded is-medium desktop" type="text"
                                 placeholder="TYPE SOME MAGIC FOR ME" />
                             <input class="input my-input is-success is-rounded is-medium mobile" type="text"
                                 placeholder="TYPE SOME MAGIC FOR ME" />

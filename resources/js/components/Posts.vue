@@ -6,7 +6,7 @@
                     <input
                         type="text"
                         class="input is-large desktop"
-                        placeholder="Search for title ;) "
+                        placeholder="Search for a title ;) "
                         v-model="textSearch"
                         :class="[articalsFilter.length==0 ? 'is-danger' : 'is-success']"
                     />
@@ -16,7 +16,7 @@
                     <input
                         type="text"
                         class="input is-medium mobile"
-                        placeholder="Search for title ;) "
+                        placeholder="Search for a title ;) "
                         v-model="textSearch"
                         :class="[articalsFilter.length==0 ? 'is-danger' : 'is-success']"
                     />

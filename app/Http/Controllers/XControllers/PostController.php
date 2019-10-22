@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $related_posts = Post::all()->except($post->id)->random(3);
+        $related_posts = Post::all()->where('complete', 1)->except($post->id)->random(3);
         $relates = [];
         foreach ($related_posts as $index => $related_post) {
             $relates[$index]['post'] = $related_post;
@@ -61,8 +61,10 @@ class PostController extends Controller
         }
         if (isset($word)) {
             foreach ($word->posts as $post) {
-                $post['tags'] = $post->tags;
-                $data[] = $post;
+                if ($post->complete) {
+                    $post['tags'] = $post->tags;
+                    $data[] = $post;
+                }
             }
             return ($data);
         } else {

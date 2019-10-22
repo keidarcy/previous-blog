@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('/images/logo-no-background.png') }}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Xyyo Lab👨‍🔬🔥</title>
+    <title>xyyolab👨‍🔬🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">

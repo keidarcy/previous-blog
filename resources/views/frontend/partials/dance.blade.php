@@ -1,5 +1,5 @@
 <div class="container center">
-    <div class="dancing-area">
+    <div class="dancing-area" data-aos="fade-up">
         <p class="dancing-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus saepe soluta alias odio
             tenetur officiis, qui temporibus. Veritatis repellat, nostrum nisi incidunt, velit quisquam
@@ -11,6 +11,5 @@
             tenetur officiis, qui temporibus. Veritatis repellat, nostrum nisi incidunt, velit quisquam
             tenetur officiis, qui temporibus. Veritatis repellat, nostrum nisi incidunt, velit quisquam
         </p>
-
     </div>
 </div>
