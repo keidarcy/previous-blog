@@ -38,6 +38,11 @@ jobs:
             - v1-dependencies-{{ checksum "composer.lock" }}
             - v1-dependencies-
       - run: cp .env.example .env
+      - run: composer install
+
+      # prepare the database
+      - run: php artisan migrate --env=testing --force
+
       - run: composer install -n --prefer-dist
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
@@ -58,7 +63,7 @@ jobs:
             - ~/.yarn
 
       # prepare the database
-      - run: php artisan migrate --env=testing --force
+      # - run: php artisan migrate --env=testing --force
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
