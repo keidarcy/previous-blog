@@ -29,7 +29,7 @@
                     <div style="padding-top:2px;">
                         <label class="switch-button mobile tooltip is-tooltip-bottom"
                             data-tooltip="Appearance Changing In Process 👨‍💻">
-                            <input class="switch-input" type="checkbox">
+                            <input class="switch-input" type="checkbox" @auth checked="checked" @endauth>
                             <span class="switch-slider switch-round"></span>
                         </label>
                     </div>
@@ -112,9 +112,9 @@
 
 
                             <div class="column right">
-                                <label class="switch-button desktop tooltip is-tooltip-bottom"
+                                <label class="switch-button desktop tooltip is-tooltip-left"
                                     data-tooltip="Appearance Changing In Process 👨‍💻">
-                                    <input class="switch-input" type="checkbox">
+                                    <input class="switch-input" type="checkbox" @auth checked="checked" @endauth>
                                     <span class="switch-slider switch-round"></span>
                                 </label>
                                 <button @click='clickBurger' :class="burger"
