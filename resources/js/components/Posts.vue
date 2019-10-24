@@ -8,7 +8,7 @@
                         class="input is-large desktop"
                         placeholder="Search for a title ;) "
                         v-model="textSearch"
-                        :class="[articalsFilter.length==0 ? 'is-danger' : 'is-success']"
+                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-success']"
                     />
                     <span class="icon is-large is-left desktop">
                         <i class="fa-2x fab fa-searchengin"></i>
@@ -18,7 +18,7 @@
                         class="input is-medium mobile"
                         placeholder="Search for a title ;) "
                         v-model="textSearch"
-                        :class="[articalsFilter.length==0 ? 'is-danger' : 'is-success']"
+                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-success']"
                     />
                     <span class="icon is-left mobile">
                         <i class="fab fa-searchengin"></i>
@@ -32,7 +32,7 @@
 
         <section class="section">
             <div class="container">
-                <div v-if="isLoaded && articalsFilter && articalsFilter.length">
+                <div v-if="isLoaded && articalsFilter.length">
                     <div class="columns is-multiline">
                         <div
                             class="column is-one-third center"
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="help is-danger" v-else>Sorry, no result!</div>
+                <div class="help is-danger" v-else-if="isLoaded">Sorry, no result!</div>
             </div>
         </section>
     </div>

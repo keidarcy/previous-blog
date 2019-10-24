@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 window.axios = axios;
 window.Vue = require("vue");
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 // for fade in loadar
 window.AOS = AOS;
