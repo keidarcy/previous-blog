@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'asset' => [
+        'logo' => '/images/logo-without-background.png',
+        'alice' => '/images/alice-cat.png'
+    ],
     'inside-link' => [
         'home' => '/',
         'post' => '/posts',

@@ -32,7 +32,7 @@
 
         <section class="section">
             <div class="container">
-                <div v-if="articalsFilter && articalsFilter.length">
+                <div v-if="isLoaded && articalsFilter && articalsFilter.length">
                     <div class="columns is-multiline">
                         <div
                             class="column is-one-third center"
@@ -94,6 +94,7 @@ export default {
         return {
             articals: [],
             textSearch: "",
+            isLoaded: false,
             about: location.pathname.slice(7)
         };
     },
@@ -112,6 +113,7 @@ export default {
         axios
             .get(`/api${location.pathname}`)
             .then(response => (that.articals = response.data))
+            .then(response => (that.isLoaded = true))
             .catch(error => console.log(error));
     }
 };
