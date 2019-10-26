@@ -53,7 +53,7 @@
                     </figure>
 
                     <figure class="media-left">
-                        <span class="icon has-text-light is-large hovered-shadow">
+                        <span class="icon has-text-light is-large hovered-shadow tooltip is-tooltip-up" data-tooltip="{{ $basic->wechat }}">
                             <a href="{{ $basic->wechat }}">
                                 <i class="fa-lg fab fa-weixin"></i>
                             </a>
@@ -156,7 +156,7 @@
                         </span>
                     </a>
                 </figure>
-                <figure class="media-left">
+                <figure class="media-left tooltip is-tooltip-up" data-tooltip="{{ $basic->wechat }}">
                     <a href="{{ $basic->wechat }}">
 
                         <span class="icon has-text-light is-large hovered-shadow">

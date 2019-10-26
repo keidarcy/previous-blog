@@ -2,7 +2,7 @@
     @csrf
     <div class="field">
         <div class="control has-icons-left">
-            <input type="text" class="input {{ $errors->has('name') ? 'is-danger' : 'is-success'}}" placeholder="Name"
+            <input type="text" class="input {{ $errors->has('name') ? 'is-danger' : 'is-primary'}}" placeholder="Name"
                 name="name" value="{{ old('name') }}" required>
             @error('name')
             <p class="help is-danger">{{ $errors->first('name') }}</p>
@@ -15,7 +15,7 @@
     </div>
     <div class="field">
         <div class="control has-icons-left">
-            <input type="text" class="input {{ $errors->has('email') ? 'is-danger' : 'is-success'}}" placeholder="Email"
+            <input type="text" class="input {{ $errors->has('email') ? 'is-danger' : 'is-primary'}}" placeholder="Email"
                 name="email" value="{{ old('email') }}" required>
             @error('email')
             <p class="help is-danger">{{ $errors->first('email') }}</p>
@@ -27,7 +27,7 @@
     </div>
     <div class="field">
         <div class="control">
-            <textarea class="textarea {{ $errors->has('message') ? 'is-danger' : 'is-success'}} is-large"
+            <textarea class="textarea {{ $errors->has('message') ? 'is-danger' : 'is-primary'}} is-large"
                 placeholder="🤗 Your Message" rows="5" name="message" required>{{ old('message') }}</textarea>
             @error('message')
             <p class="help is-danger">{{ $errors->first('message') }}</p>

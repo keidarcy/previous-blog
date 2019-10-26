@@ -15,5 +15,5 @@ return [
         'sent' => 'sent success!',
         'more' => 'More Posts About',
         'no_post' => 'Oops! No results!'
-    ]
+    ],
 ];

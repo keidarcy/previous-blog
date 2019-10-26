@@ -3,7 +3,7 @@
 {{-- <link rel="stylesheet" href="{{ asset('./css/debug.css') }}"> --}}
 <div id="about">
     @if (session('status'))
-    <div id="mail-notification" class="notification is-success is-small">
+    <div id="mail-notification" class="notification is-primary is-small">
         <button id="notification-close" class="delete"></button>
         {{ session('status') }}
     </div>

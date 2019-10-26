@@ -2,26 +2,34 @@
     <div>
         <section class="section">
             <div class="container">
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left has-icons-right desktop">
                     <input
                         type="text"
-                        class="input is-large desktop"
-                        placeholder="Search for a title ;) "
+                        class="input is-large"
+                        placeholder="Search for title ;) "
                         v-model="textSearch"
-                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-success']"
+                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
                     />
-                    <span class="icon is-large is-left desktop">
-                        <i class="fa-2x fab fa-searchengin"></i>
-                    </span>
-                    <input
-                        type="text"
-                        class="input is-medium mobile"
-                        placeholder="Search for a title ;) "
-                        v-model="textSearch"
-                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-success']"
-                    />
-                    <span class="icon is-left mobile">
+                    <span class="icon is-large is-right">
                         <i class="fab fa-searchengin"></i>
+                    </span>
+                    <span class="icon is-large is-left">
+                        <i class="fas fa-hat-wizard"></i>
+                    </span>
+                </div>
+                <div class="control has-icons-left has-icons-right mobile">
+                    <input
+                        type="text"
+                        class="input is-mediumn"
+                        placeholder="Search for title ;) "
+                        v-model="textSearch"
+                        :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
+                    />
+                    <span class="icon is-mediumn is-right">
+                        <i class="fab fa-searchengin"></i>
+                    </span>
+                    <span class="icon is-mediumn is-left">
+                        <i class="fas fa-hat-wizard"></i>
                     </span>
                 </div>
             </div>

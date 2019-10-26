@@ -19,51 +19,65 @@
                     class="center title has-text-black is-1 is-size-3-mobile has-text-black"
                     data-aos="fade-up"
                     data-aos-once="true"
+                    data-aos-offset="-100"
                 >{{ post.post.title }}</h1>
                 <div class="columns">
-                    <div class="column is-6 is-offset-one-quarter">
-                        <div class="artical-hearder" data-aos="fade-up" data-aos-once="true">
-                            <div class="center desktop">
-                                <figure class="image is-64x64" style="margin-right:40px;">
-                                    <img class="is-rounded" :src="basic.little_picture" alt="ops" />
-                                </figure>
-                                <span
-                                    class="subtitle is-3"
-                                    style="padding-top:20px;"
-                                >{{ basic.nick_name }}</span>
-                                <div class="is-divider-vertical"></div>
-                                <span>Published at : {{ post.post.updated_at }}</span>
-                            </div>
-                            <div class="mobile">
-                                <div class="center" style="padding-top:20px;">
-                                    <figure class="image is-64x64">
-                                        <img
-                                            class="is-rounded"
-                                            :src="basic.little_picture"
-                                            alt="ops"
-                                        />
-                                    </figure>
+                    <div
+                        class="artical-backround column is-three-fifths is-offset-one-fifth"
+                        data-aos="fade-up"
+                        data-aos-once="true"
+                        data-aos-offset="-100"
+                    >
+                        <div class="artical-hearder">
+                            <section class="section">
+                                <div class="container">
+                                    <div class="center desktop">
+                                        <figure class="image is-64x64" style="margin-right:40px;">
+                                            <img
+                                                class="is-rounded"
+                                                :src="basic.little_picture"
+                                                alt="ops"
+                                            />
+                                        </figure>
+                                        <span
+                                            class="subtitle is-3"
+                                            style="padding-top:20px;"
+                                        >{{ basic.nick_name }}</span>
+                                        <div class="is-divider-vertical"></div>
+                                        <span>Published at : {{ post.post.updated_at }}</span>
+                                    </div>
+                                    <div class="mobile">
+                                        <div class="center" style="padding-top:20px;">
+                                            <figure class="image is-64x64">
+                                                <img
+                                                    class="is-rounded"
+                                                    :src="basic.little_picture"
+                                                    alt="ops"
+                                                />
+                                            </figure>
+                                        </div>
+                                        <div class="center" style="padding-top:20px;">
+                                            <span class="subtitle is-4">{{ basic.nick_name }}</span>
+                                        </div>
+                                        <div class="center" style="padding-top:20px;">
+                                            <div>Published at : {{ post.post.published_at }}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="center" style="padding-top:20px;">
-                                    <span class="subtitle is-4">{{ basic.nick_name }}</span>
+                                <div class="is-divider"></div>
+                                <div data-aos="fade-up" data-aos-once="true" data-aos-offset="100">
+                                    <div class="artical-body" v-html="post.post.body"></div>
+                                    <div class="tags are-large">
+                                        <a
+                                            :href="`/posts/${tag.slug}`"
+                                            v-for="tag in post.tags"
+                                            :key="tag.id"
+                                        >
+                                            <span class="tag is-dark">{{ tag.name }}</span>&nbsp;&nbsp;
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="center" style="padding-top:20px;">
-                                    <div>Published at : {{ post.post.published_at }}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="is-divider"></div>
-                        <div data-aos="fade-up" data-aos-once="true">
-                            <div class="artical-body" v-html="post.post.body"></div>
-                            <div class="tags are-large">
-                                <a
-                                    :href="`/posts/${tag.slug}`"
-                                    v-for="tag in post.tags"
-                                    :key="tag.id"
-                                >
-                                    <span class="tag is-dark">{{ tag.name }}</span>&nbsp;&nbsp;
-                                </a>
-                            </div>
+                            </section>
                         </div>
                     </div>
                 </div>
@@ -150,5 +164,10 @@ export default {
     background-attachment: fixed;
     background-size: cover;
     filter: blur(0.8px);
+}
+.artical-backround {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
+    margin-top: 3rem;
 }
 </style>
