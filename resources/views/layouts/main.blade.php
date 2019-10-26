@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ asset(config('frontend.asset.logo')) }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset(config('frontend.asset.favicon')) }}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>xyyolab👨‍🔬🔥</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">

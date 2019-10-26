@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'asset' => [
+        'asset' => [
+        'favicon' => '/images/favicon.png',
         'logo' => '/images/logo-without-background.png',
         'alice' => '/images/alice-cat.png'
     ],
