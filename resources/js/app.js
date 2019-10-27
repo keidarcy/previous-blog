@@ -21,6 +21,7 @@ import Posts from "./components/Posts.vue";
 import Show from "./components/Show.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
+import Calendar from "./components/Calendar.vue";
 
 new Vue({
     vuetify: new Vuetify(),
@@ -30,6 +31,7 @@ new Vue({
         Posts: Posts,
         Show: Show,
         Home: Home,
+        Calendar: Calendar,
         About: About
     },
     data: function() {

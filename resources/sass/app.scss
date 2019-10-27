@@ -8,7 +8,7 @@
 @import "./pugins/bulma-divider.min.css";
 @import "./pugins/switch-button.css";
 @import "./pugins/overlay.scss";
-@import '~vuetify/dist/vuetify.min.css';
+@import "~vuetify/dist/vuetify.min.css";
 //gerneal setting
 body {
     color: #4b5d73;
@@ -20,11 +20,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #F6F6F6 !important;
+    background-color: #f6f6f6 !important;
+    margin-top: auto;
 }
 
-body>footer {
+// .v-application--wrap {
+//     min-height: 0 !important;
+// }
+footer {
     margin-top: auto;
+    bottom: 0 !important;
 }
 
 a {
@@ -34,6 +39,10 @@ a {
 
 a:hover {
     opacity: 0.7 !important;
+}
+
+#-content {
+    min-height: 100vh !important;
 }
 
 input,

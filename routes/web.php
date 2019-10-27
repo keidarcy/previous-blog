@@ -4,7 +4,8 @@ Route::View('/', 'frontend.pages.home')->name('home');
 Route::View('/about', 'frontend.pages.about')->name('about');
 Route::View('/posts/{slug?}', 'frontend.pages.post');
 Route::View('/show/{post}', 'frontend.pages.show');
-Route::View('/welcome', 'frontend.pages.welcome', ['now' => Carbon\Carbon::now()]);
+Route::View('/welcome', 'frontend.pages.welcome', ['now' => Carbon\Carbon::now()])->middleware('auth');
+Route::View('/calendar', 'frontend.pages.calendar');
 // Route::get('/show/{post}', 'XControllers\PostController@show');
 Route::post('/message/create', 'XControllers\MessageController@create');
 

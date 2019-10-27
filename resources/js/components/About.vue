@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Dancer></Dancer>
         <section class="section" style="padding-top:10rem;" data-aos="fade-up">
             <div class="container center">
                 <h1 class="title is-1">{{ basic.greet }}</h1>
@@ -36,13 +35,11 @@
     </div>
 </template>
 <script>
-import Dancer from "./Blocks/Dancer";
 import Thanks from "./Blocks/Thanks";
 export default {
     name: "About",
     components: {
-        Thanks: Thanks,
-        Dancer: Dancer
+        Thanks: Thanks
     },
     props: {
         basic: {
