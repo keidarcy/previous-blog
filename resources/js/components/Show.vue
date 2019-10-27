@@ -133,10 +133,15 @@
 </template>
 <script>
 export default {
+    props: {
+        basic: {
+            required: true,
+            type: Object
+        }
+    },
     data() {
         return {
-            post: "",
-            basic: ""
+            post: ""
         };
     },
     mounted() {
@@ -148,11 +153,6 @@ export default {
                 that.post = response.data;
                 that.loading = false;
             })
-            .catch(error => console.log(error));
-
-        axios
-            .get("/api/basic")
-            .then(response => (that.basic = response.data))
             .catch(error => console.log(error));
     }
 };

@@ -75,13 +75,13 @@
                                             <br />
                                         </div>
                                         <div class="tags are-medium">
-                                            <span
-                                                class="tag is-dark"
+                                            <a
+                                                :href="`/posts/${tag.slug}`"
                                                 v-for="tag in artical.tags"
                                                 :key="tag.id"
                                             >
-                                                <a :href="`/posts/${tag.slug}`">{{ tag.name }}</a>
-                                            </span>
+                                                <span class="tag is-dark">{{ tag.name }}</span>&nbsp;
+                                            </a>
                                         </div>
                                         <time class="right">{{ artical.published_at }}</time>
                                     </div>

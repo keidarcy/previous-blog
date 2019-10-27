@@ -114,7 +114,7 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 700;
-    color: #000;
+    color: #000 !important;
     background-color: #fff;
     border: none;
     border-radius: 45px;
@@ -127,14 +127,14 @@
 .my-button:hover {
     background-color: #2ee59d;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-7px);
 }
 
 .my-button-2:hover {
     background-color: #ff3860;
     box-shadow: 0px 15px 20px rgba(222, 44, 71, 0.4);
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-7px);
 }
 
@@ -176,4 +176,8 @@
     font-weight: 900;
     margin: 0;
     mix-blend-mode: darken;
+}
+
+.v-application--wrap {
+    min-height: 0 !important;
 }

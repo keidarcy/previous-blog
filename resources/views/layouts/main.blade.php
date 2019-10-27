@@ -38,7 +38,7 @@
                 <div class="center overlay-icon">
                     <figure class="media-left">
                         <span class="icon has-text-light is-large hovered-shadow">
-                            <a href="{{ $basic->facebook }}">
+                            <a :href="basic.facebook">
                                 <i class="fa-lg fab fa-facebook-square"></i>
                             </a>
                         </span>
@@ -46,15 +46,16 @@
 
                     <figure class="media-left">
                         <span class="icon has-text-light is-large hovered-shadow">
-                            <a href="{{ $basic->github }}">
+                            <a :href="basic.github">
                                 <i class="fa-lg fab fa-github-square"></i>
                             </a>
                         </span>
                     </figure>
 
                     <figure class="media-left">
-                        <span class="icon has-text-light is-large hovered-shadow tooltip is-tooltip-up" data-tooltip="{{ $basic->wechat }}">
-                            <a href="{{ $basic->wechat }}">
+                        <span class="icon has-text-light is-large hovered-shadow tooltip is-tooltip-up"
+                            :data-tooltip="basic.wechat">
+                            <a href="#">
                                 <i class="fa-lg fab fa-weixin"></i>
                             </a>
                         </span>
@@ -132,45 +133,45 @@
         </div>
 
         @yield('content')
+
+
+
+
+
+
+        {{-- footer-start --}}
+        <footer class="footer center footer-height has-text-weight-bold has-background-dark">
+            <div style="flex-direction: row">
+                <div class="center">
+                    <figure class="media-left">
+                        <a :href="basic.facebook">
+                            <span class="icon has-text-light is-large hovered-shadow">
+                                <i class="fa-lg fab fa-facebook"></i>
+                            </span>
+                        </a>
+                    </figure>
+                    <figure class="media-left">
+                        <a :href="basic.github">
+                            <span class="icon has-text-light is-large hovered-shadow">
+                                <i class="fa-lg fab fa-github"></i>
+                            </span>
+                        </a>
+                    </figure>
+                    <figure class="media-left tooltip is-tooltip-up" :data-tooltip="basic.wechat">
+                        <a href="#">
+                            <span class="icon has-text-light is-large hovered-shadow">
+                                <i class="fa-lg fab fa-weixin"></i>
+                            </span>
+                        </a>
+                    </figure>
+                </div>
+                <div>
+                    <p class="center is-size-6 is-size-7-mobile"> © Copyright 2019 &nbsp; @{{ basic.website }}
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
-
-
-
-
-
-    {{-- footer-start --}}
-    <footer class="footer center footer-height has-text-weight-bold has-background-dark">
-        <div style="flex-direction: row">
-            <div class="center">
-                <figure class="media-left">
-                    <a href="{{ $basic->facebook }}">
-                        <span class="icon has-text-light is-large hovered-shadow">
-                            <i class="fa-lg fab fa-facebook"></i>
-                        </span>
-                    </a>
-                </figure>
-                <figure class="media-left">
-                    <a href="{{ $basic->github }}">
-                        <span class="icon has-text-light is-large hovered-shadow">
-                            <i class="fa-lg fab fa-github"></i>
-                        </span>
-                    </a>
-                </figure>
-                <figure class="media-left tooltip is-tooltip-up" data-tooltip="{{ $basic->wechat }}">
-                    <a href="{{ $basic->wechat }}">
-
-                        <span class="icon has-text-light is-large hovered-shadow">
-                            <i class="fa-lg fab fa-weixin"></i>
-                        </span>
-                    </a>
-                </figure>
-            </div>
-            <div>
-                <p class="center is-size-6 is-size-7-mobile"> © Copyright 2019 &nbsp; {{ $basic->website }}
-                </p>
-            </div>
-        </div>
-    </footer>
     {{-- footer-end --}}
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>

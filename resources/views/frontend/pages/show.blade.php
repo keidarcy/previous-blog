@@ -2,7 +2,7 @@
 @section('content')
 
 <div id="show">
-    <Show></Show>
+    <Show :basic='basic'></Show>
 </div>
 
 
