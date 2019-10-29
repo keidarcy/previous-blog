@@ -16,7 +16,7 @@
 
 <body>
     <div id="app">
-        <div id="-content">
+        <div id="main-content">
             <div id="header">
                 {{-- overlay --}}
                 <div class="overlay moblie" :style="overlay">
@@ -73,7 +73,7 @@
                     <section class="hero">
                         <div class="hero-head ">
                             <div
-                                class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-dark">
+                                class="narbar columns is-mobile is-marginless has-text-weight-bold has-background-black">
 
                                 {{-- logo-start --}}
                                 <div class="column left" style="z-index:11;">
@@ -145,7 +145,7 @@
 
 
         {{-- footer-start --}}
-        <footer class="footer center footer-height has-text-weight-bold has-background-dark">
+        <footer class="footer center has-text-weight-bold has-background-black">
             <div style="flex-direction: row">
                 <div class="center">
                     <figure class="media-left">

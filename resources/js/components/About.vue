@@ -15,7 +15,7 @@
                                     <img :src="basic.big_picture" alt="Placeholder image" />
                                 </figure>
                             </div>
-                            <div class="card-content" data-aos="fade-left">
+                            <div class="card-content" data-aos="fade-right">
                                 <div class="content">
                                     Hi! My name is no
                                     <a :href="basic.facebook">

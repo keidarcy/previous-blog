@@ -16,7 +16,7 @@
                 <div class="container">
                     <div
                         class="mobile-changing-words changing-words has-text-weight-bold center tooltip is-tooltip-bottom is-family-code"
-                        data-tooltip="TRY TO TYPE SOME WORDS!"
+                        data-tooltip="Try Some Words!"
                         style="padding-top:100px;"
                     ></div>
                 </div>
@@ -30,12 +30,12 @@
                                     <input
                                         class="input my-input is-primary is-rounded is-medium desktop"
                                         type="text"
-                                        placeholder="TYPE SOME MAGIC TO ME"
+                                        placeholder="Type Some Magic 🎩"
                                     />
                                     <input
                                         class="input my-input is-primary is-rounded is-medium mobile"
                                         type="text"
-                                        placeholder="TYPE SOME MAGIC TO ME"
+                                        placeholder="Type Some Magic 🎩"
                                     />
                                     <span class="icon is-large is-left">
                                         <i class="fas fa-theater-masks"></i>
@@ -64,7 +64,7 @@ export default {
             sentences: [
                 "Hey, what bring you to here ?",
                 "Hey, how's your day today?",
-                "What part do you make progress today ?",
+                "What part did you make progress today ?",
                 "Did you work out today ?",
                 "What's the weather there ?",
                 "Hi, my name is xyh. What's your name ?"

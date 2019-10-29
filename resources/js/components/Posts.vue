@@ -5,7 +5,7 @@
                 <div class="control has-icons-left has-icons-right desktop">
                     <input
                         type="text"
-                        class="input is-large"
+                        class="input my-input is-large"
                         placeholder="Search for title ;) "
                         v-model="textSearch"
                         :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
@@ -20,7 +20,7 @@
                 <div class="control has-icons-left has-icons-right mobile">
                     <input
                         type="text"
-                        class="input is-mediumn"
+                        class="input my-input is-mediumn"
                         placeholder="Search for title ;) "
                         v-model="textSearch"
                         :class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"

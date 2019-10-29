@@ -1,4 +1,4 @@
-<section class="section" style="padding-top:8rem;" data-aos="fade-right">
+<section class="section" style="padding-top:8rem;" data-aos="fade-left">
     <div class="container">
         <div class="columns">
             <div class="column is-6 is-offset-3">

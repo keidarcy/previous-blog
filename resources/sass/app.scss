@@ -1,6 +1,5 @@
-// Variables
-@import "variables";
-// bluma
+// libraries
+@import "~vuetify/dist/vuetify.min.css";
 @import "node_modules/bulma/bulma";
 // pugins
 @import "./pugins/hamburger.css";
@@ -8,93 +7,91 @@
 @import "./pugins/bulma-divider.min.css";
 @import "./pugins/switch-button.css";
 @import "./pugins/overlay.scss";
-@import "~vuetify/dist/vuetify.min.css";
+// Variables
+@import "variables";
 //gerneal setting
 body {
     color: #4b5d73;
     font-size: 16px;
-    font-family: Nunito, Arial, Helvetica Neue, Helvetica, serif;
-    font-weight: 400;
+    font-family: $font-family;
+    font-weight: $font-weight;
     line-height: 1.6;
     letter-spacing: 0.02em;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f6f6f6 !important;
+    background-color: $body-bg !important;
     margin-top: auto;
 }
 
-// .v-application--wrap {
-//     min-height: 0 !important;
-// }
+#main-content {
+    min-height: 100vh !important;
+}
+
 footer {
     margin-top: auto;
     bottom: 0 !important;
+    padding: 1.5rem !important;
+    z-index: 2;
 }
 
 a {
     opacity: 1 !important;
     text-decoration: none !important;
-}
-
-a:hover {
-    opacity: 0.7 !important;
-}
-
-#-content {
-    min-height: 100vh !important;
+    &:hover {
+        opacity: 0.7 !important;
+    }
 }
 
 input,
 textarea,
 .v-application {
-    font-family: Nunito, Arial, Helvetica, sans-serif !important;
-    font-weight: 400;
+    font-family: $font-family !important;
+    font-weight: $font-weight !important;
 }
 
-.footer {
-    padding: 2rem;
-    z-index: 2;
+.my-input::-webkit-input-placeholder,
+.my-input::-ms-input-placeholder,
+.my-input::-moz-placeholder,
+.my-input::-moz-placeholder {
+    font-family: $font-family !important;
+    // font-weight: 1000px !important;
 }
 
-.center {
-    align-items: center;
+@mixin flexCenter {
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .center,
-.right,
-.left,
-.top,
-.bottom,
 .center-column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
 }
 
 .top {
+    @include flexCenter();
     align-items: flex-start;
 }
 
 .right {
+    @include flexCenter();
     justify-content: flex-end;
 }
 
 .left {
+    @include flexCenter();
     justify-content: flex-start;
 }
 
 .bottom {
+    @include flexCenter();
     align-items: flex-end;
 }
 
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-    background-color: #63d861;
+    background-color: $dark-green;
 }
 
-@import "./basic/basic.scss";
+@import "./nested/basic.scss";
