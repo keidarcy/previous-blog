@@ -55,7 +55,7 @@ class TextScramble {
 if (location.href.includes("home") || location.pathname == "/") {
     const phrases = [
         "Hi, there 😈",
-        "My name is xyyo 🐸",
+        "My name is xyh 🐸",
         "Here is my lab 🧪",
         "Welcome 🧙‍♀️🧨"
     ];
