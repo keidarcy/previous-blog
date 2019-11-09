@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div id="welecome">
+<div>
     <section class="section">
         <div class="container" style="padding-top:70px;">
             <div class="notification is-primary">

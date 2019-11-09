@@ -7,10 +7,12 @@ import "@mdi/font/css/materialdesignicons.css";
 import VueTextareaAutosize from 'vue-textarea-autosize';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import VueRouter from 'vue-router'
 
 window.axios = axios;
 window.Vue = require("vue");
 Vue.use(Vuetify);
+Vue.use(VueRouter);
 Vue.use(VueTextareaAutosize);
 Vue.config.productionTip = true;
 
@@ -37,10 +39,28 @@ import Posts from "./components/Posts.vue";
 import Show from "./components/Show.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
+
+import Lab from "./components/Lab.vue";
 import Calendar from "./components/Calendar.vue";
 import Login from "./components/Login.vue";
 
-new Vue({
+const router = new VueRouter({
+    mode: 'history',
+    routes: [{
+            path: '/lab/calendar',
+            name: 'calendar',
+            component: Calendar
+        },
+        {
+            path: '/lab/login',
+            name: 'login',
+            component: Login
+        }
+    ],
+});
+
+
+const app = new Vue({
     vuetify: new Vuetify(),
 
     el: "#app",
@@ -49,8 +69,9 @@ new Vue({
         Show: Show,
         Home: Home,
         Login: Login,
-        Calendar: Calendar,
-        About: About
+        //Calendar: Calendar,
+        About: About,
+        Lab: Lab
     },
     data: function() {
         return {
@@ -71,5 +92,6 @@ new Vue({
             .get("/api/basic")
             .then(response => (that.basic = response.data))
             .catch(error => console.log(error));
-    }
+    },
+    router,
 });

@@ -2,7 +2,7 @@
 @section('content')
 
 <div>
-    <Calendar></Calendar>
+    <Lab></Lab>
 </div>
 
 
