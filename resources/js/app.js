@@ -38,6 +38,7 @@ import Show from "./components/Show.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import Calendar from "./components/Calendar.vue";
+import Login from "./components/Login.vue";
 
 new Vue({
     vuetify: new Vuetify(),
@@ -47,6 +48,7 @@ new Vue({
         Posts: Posts,
         Show: Show,
         Home: Home,
+        Login: Login,
         Calendar: Calendar,
         About: About
     },

@@ -16,7 +16,6 @@ Route::prefix('blog')->group(function () {
     Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
 });
 
-// Route::get('/nihao', 'XControllers\PhraseController@insert');
 Route::prefix('/thisisxyyo')->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');
