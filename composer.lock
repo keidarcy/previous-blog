@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c59919e375dbd4ca68ee3ab231fd8ea9",
+    "content-hash": "46aebeadea5a73e6170bdfc08df3aed8",
     "packages": [
         {
             "name": "cnvs/canvas",
