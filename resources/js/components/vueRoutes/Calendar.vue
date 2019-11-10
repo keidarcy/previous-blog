@@ -294,7 +294,7 @@
 </template>
 
 <script>
-import { db } from '../app.js';
+import { db } from '../../app.js';
 export default {
 	data: () => ({
 		today: new Date().toISOString().substr(0, 10),

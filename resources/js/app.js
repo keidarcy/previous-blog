@@ -24,13 +24,13 @@ AOS.init({
 });
 
 firebase.initializeApp({
-    apiKey: "AIzaSyDnvnF0mRffnyTh9w3NEvBW8OPBxkWKlXA",
-    authDomain: "vue-calendar-47ae3.firebaseapp.com",
-    databaseURL: "https://vue-calendar-47ae3.firebaseio.com",
-    projectId: "vue-calendar-47ae3",
-    storageBucket: "vue-calendar-47ae3.appspot.com",
-    messagingSenderId: "762227952147",
-    appId: "1:762227952147:web:e279c88d5aec0d3e594de6"
+    apiKey: process.env.MIX_FIRESTORE_API_KEY,
+    authDomain: "xyyolab-17d11.firebaseapp.com",
+    databaseURL: "https://xyyolab-17d11.firebaseio.com",
+    projectId: "xyyolab-17d11",
+    storageBucket: "xyyolab-17d11.appspot.com",
+    messagingSenderId: "355977712868",
+    appId: "1:355977712868:web:62e3632d5cc6bb46ee88f1"
 });
 
 export const db = firebase.firestore();
@@ -40,21 +40,27 @@ import Show from "./components/Show.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 
-import Lab from "./components/Lab.vue";
-import Calendar from "./components/Calendar.vue";
-import Login from "./components/Login.vue";
+import Lab from "./components/vueRoutes/Lab.vue";
+import Calendar from "./components/vueRoutes/Calendar.vue";
+import Login from "./components/vueRoutes/Login.vue";
+import Welcome from "./components/vueRoutes/Welcome.vue";
 
 const router = new VueRouter({
     mode: 'history',
     routes: [{
             path: '/lab/calendar',
-            name: 'calendar',
+            name: 'Calendar',
             component: Calendar
         },
         {
             path: '/lab/login',
-            name: 'login',
+            name: 'Login',
             component: Login
+        },
+        {
+            path: '/lab/Welcome',
+            name: 'Welcome',
+            component: Welcome
         }
     ],
 });
@@ -69,7 +75,6 @@ const app = new Vue({
         Show: Show,
         Home: Home,
         Login: Login,
-        //Calendar: Calendar,
         About: About,
         Lab: Lab
     },

@@ -10,8 +10,8 @@
 			</v-img>
 			<v-card-text class="text--primary">
 				<v-form
-					ref="form"
-					@submit.prevent="login"
+					ref="loginForm"
+					@submit.prevent="loginSubmit"
 					v-model="valid"
 					lazy-validation
 				>
@@ -74,16 +74,17 @@ export default {
 		};
 	},
 	methods: {
-		login() {
-			const formData = new FormData();
-			formData.append('email', this.email);
-			formData.append('password', this.password);
-			console.log(formData);
-			axios
-				.post('/thisisxyyo/login', formData)
-				.then(response => (window.location = '/welcome'))
-				.catch(error => console.log(error));
-			//with vue router : router.go('/some_url.php')
+		loginSubmit() {
+			if (this.$refs.loginForm.validate()) {
+				const formData = new FormData();
+				formData.append('email', this.email);
+				formData.append('password', this.password);
+				axios
+					.post('/thisisxyyo/login', formData)
+					.then(response => this.$router.push('Welcome'))
+					.catch(error => console.log(error));
+				//with vue router : router.go('/some_url.php')
+			}
 		},
 	},
 };
