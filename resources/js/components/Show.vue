@@ -193,6 +193,7 @@ export default {
 }
 .artical-body {
 	font-family: Helvetica, Arial, sans-serif !important;
+	color: #000 !important;
 	margin-block-start: 1em;
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
