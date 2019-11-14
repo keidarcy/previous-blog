@@ -3,6 +3,7 @@
 		<div
 			class="big-pic"
 			data-aos="fade-right"
+			data-aos-once="true"
 			:style="{ backgroundImage: `url(${post.post.featured_image})` }"
 		>
 			<section class="hero is-medium big-pic">
@@ -198,5 +199,10 @@ export default {
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
+}
+.v-application .title {
+	font-family: Nunito !important;
+	font-size: 3rem !important;
+	font-weight: 600;
 }
 </style>
