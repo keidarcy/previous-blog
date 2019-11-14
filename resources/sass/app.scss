@@ -5,7 +5,6 @@
 @import "./pugins/hamburger.css";
 @import "./pugins/bulma-tooltip.min.css";
 @import "./pugins/bulma-divider.min.css";
-@import "./pugins/switch-button.css";
 @import "./pugins/overlay.scss";
 // Variables
 @import "variables";
@@ -21,10 +20,6 @@ body {
     flex-direction: column;
     background-color: $body-bg !important;
     margin-top: auto;
-}
-
-#main-content {
-    min-height: 100vh !important;
 }
 
 footer {

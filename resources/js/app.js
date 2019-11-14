@@ -16,7 +16,6 @@ Vue.use(VueRouter);
 Vue.use(VueTextareaAutosize);
 Vue.config.productionTip = true;
 
-// for fade in loadar
 window.AOS = AOS;
 AOS.init({
     offset: 350,
@@ -35,15 +34,18 @@ firebase.initializeApp({
 
 export const db = firebase.firestore();
 
+import HeaderBar from "./components/Layouts/HeaderBar.vue";
+import FooterBar from "./components/Layouts/FooterBar.vue";
+
 import Posts from "./components/Posts.vue";
 import Show from "./components/Show.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 
-import Lab from "./components/vueRoutes/Lab.vue";
-import Calendar from "./components/vueRoutes/Calendar.vue";
-import Login from "./components/vueRoutes/Login.vue";
-import Welcome from "./components/vueRoutes/Welcome.vue";
+import Lab from "./components/VueRoutes/Lab.vue";
+import Calendar from "./components/VueRoutes/Calendar.vue";
+import Login from "./components/VueRoutes/Login.vue";
+import Welcome from "./components/VueRoutes/Welcome.vue";
 
 const router = new VueRouter({
     mode: 'history',
@@ -68,9 +70,10 @@ const router = new VueRouter({
 
 const app = new Vue({
     vuetify: new Vuetify(),
-
     el: "#app",
     components: {
+        'header-bar': HeaderBar,
+        'footer-bar': FooterBar,
         Posts: Posts,
         Show: Show,
         Home: Home,
@@ -80,16 +83,8 @@ const app = new Vue({
     },
     data: function() {
         return {
-            burger: "",
-            overlay: "",
             basic: {}
         };
-    },
-    methods: {
-        clickBurger() {
-            this.burger = !this.burger ? "is-active" : "";
-            this.overlay = !this.overlay ? "width:100%" : "";
-        }
     },
     mounted() {
         let that = this;

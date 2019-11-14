@@ -1,9 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div>
-    <Lab></Lab>
-</div>
+<Lab></Lab>
 
 
 
