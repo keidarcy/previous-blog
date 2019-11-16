@@ -1,5 +1,18 @@
 <template>
 	<div>
+		<transition name="slide-fade">
+			<v-alert
+				dense
+				text
+				outlined
+				type="success"
+				transition="slide-x-transition"
+				v-if="alertVisbile"
+			>
+
+				I'm a dense alert with the <strong>text</strong> prop and a <strong>type</strong> of success
+			</v-alert>
+		</transition>
 		<section
 			class="section"
 			style="padding-top:10rem;"
@@ -63,5 +76,24 @@ export default {
 			type: Object,
 		},
 	},
+	data() {
+		return {
+			alertVisbile: true,
+		};
+	},
+	created() {
+		setTimeout(() => (this.alertVisbile = false), 1000);
+	},
 };
 </script>
+
+<style lang="scss" scoped>
+.slide-fade-leave-active {
+	transition: all 5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-leave-to {
+	transform: translateX(10px);
+	opacity: 0;
+}
+</style>

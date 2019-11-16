@@ -17,11 +17,11 @@
 <body>
     <div id="app">
         <v-app>
-            <header-bar :basic='basic'></header-bar>
+            <header-bar></header-bar>
 
             @yield('content')
         </v-app>
-        <footer-bar :basic='basic'></footer-bar>
+        <footer-bar></footer-bar>
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>

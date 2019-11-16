@@ -1,38 +1,36 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
+import Vuetify from 'vuetify';
+import VueRouter from 'vue-router';
+import VueTextareaAutosize from 'vue-textarea-autosize';
+import firebase from 'firebase/app';
 import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Vuetify from 'vuetify';
 import '@mdi/font/css/materialdesignicons.css';
-import VueTextareaAutosize from 'vue-textarea-autosize';
-import firebase from 'firebase/app';
 import 'firebase/firestore';
-import VueRouter from 'vue-router';
 
+Vue.config.productionTip = true;
 window.axios = axios;
 window.Vue = require('vue');
+Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(VueRouter);
 Vue.use(VueTextareaAutosize);
-Vue.config.productionTip = true;
 
+//init AOS
 window.AOS = AOS;
-AOS.init({
-    offset: 350,
-    duration: 1000,
-});
-
-firebase.initializeApp({
-    apiKey: process.env.MIX_FIRESTORE_API_KEY,
-    authDomain: 'xyyolab-17d11.firebaseapp.com',
-    databaseURL: 'https://xyyolab-17d11.firebaseio.com',
-    projectId: 'xyyolab-17d11',
-    storageBucket: 'xyyolab-17d11.appspot.com',
-    messagingSenderId: '355977712868',
-    appId: '1:355977712868:web:62e3632d5cc6bb46ee88f1',
-});
-
+AOS.init({ offset: 350, duration: 1000 });
+//init firebase
+import firebaseInit from './modules/firebaseInit';
+firebase.initializeApp(firebaseInit);
 export const db = firebase.firestore();
+//init labVueRouter
+import labRouter from './modules/labRouter.js';
+const router = new VueRouter(labRouter);
+//init vuexStore
+import basicStore from './modules/basicStore';
+const store = new Vuex.Store(basicStore);
 
 import HeaderBar from './components/Layouts/HeaderBar.vue';
 import FooterBar from './components/Layouts/FooterBar.vue';
@@ -44,30 +42,6 @@ import About from './components/About.vue';
 
 import Lab from './components/VueRoutes/Lab.vue';
 
-import Calendar from './components/VueRoutes/Calendar.vue';
-import Login from './components/VueRoutes/Login.vue';
-import Welcome from './components/VueRoutes/Welcome.vue';
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: [{
-            path: '/lab/calendar',
-            name: 'Calendar',
-            component: Calendar,
-        },
-        {
-            path: '/lab/login',
-            name: 'Login',
-            component: Login,
-        },
-        {
-            path: '/lab/Welcome',
-            name: 'Welcome',
-            component: Welcome,
-        },
-    ],
-});
-
 const app = new Vue({
     vuetify: new Vuetify(),
     el: '#app',
@@ -77,11 +51,10 @@ const app = new Vue({
         Posts: Posts,
         Show: Show,
         Home: Home,
-        Login: Login,
         About: About,
         Lab: Lab,
     },
-    data: function() {
+    data() {
         return {
             basic: {},
         };
@@ -94,4 +67,5 @@ const app = new Vue({
             .catch(error => console.log(error));
     },
     router,
+    store,
 });

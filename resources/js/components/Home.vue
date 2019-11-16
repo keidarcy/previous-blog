@@ -81,5 +81,11 @@ export default {
 			return this.sentences[Math.floor(Math.random() * this.sentences.length)];
 		},
 	},
+	methods: {
+		clickBurger() {
+			this.burger = !this.burger ? 'is-active' : '';
+			this.overlay = !this.overlay ? 'width:100%' : '';
+		},
+	},
 };
 </script>

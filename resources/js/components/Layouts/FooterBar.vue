@@ -4,14 +4,14 @@
 			<div style="flex-direction: row">
 				<div class="center">
 					<figure class="media-left">
-						<a :href="basic.facebook">
+						<a :href="basicInfo.facebook">
 							<span class="icon has-text-light is-large hovered-shadow">
 								<i class="fa-lg fab fa-facebook"></i>
 							</span>
 						</a>
 					</figure>
 					<figure class="media-left">
-						<a :href="basic.github">
+						<a :href="basicInfo.github">
 							<span class="icon has-text-light is-large hovered-shadow">
 								<i class="fa-lg fab fa-github"></i>
 							</span>
@@ -19,7 +19,7 @@
 					</figure>
 					<figure
 						class="media-left tooltip is-tooltip-up"
-						:data-tooltip="basic.wechat"
+						:data-tooltip="basicInfo.wechat"
 					>
 						<a href="#">
 							<span class="icon has-text-light is-large hovered-shadow">
@@ -29,7 +29,7 @@
 					</figure>
 				</div>
 				<div>
-					<p class="center is-size-6 is-size-7-mobile"> Made With 🎩 By @xyyolab 2019
+					<p class="center is-size-6 is-size-7-mobile"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
 					</p>
 				</div>
 			</div>
@@ -38,13 +38,15 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
 	name: 'footer-bar',
-	props: {
-		basic: {
-			required: true,
-			type: Object,
-		},
+	methods: {
+		...mapActions(['fetchBasicInfo']),
+	},
+	computed: mapGetters(['basicInfo']),
+	created() {
+		this.fetchBasicInfo();
 	},
 };
 </script>

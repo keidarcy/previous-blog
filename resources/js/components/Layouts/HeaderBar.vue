@@ -27,7 +27,7 @@
 
 				<div class="center overlay-icon">
 					<figure class="media-left">
-						<a :href="basic.facebook">
+						<a :href="basicInfo.facebook">
 							<span class="icon has-text-light is-large hovered-shadow">
 								<i class="fa-lg fab fa-facebook-square"></i>
 							</span>
@@ -35,7 +35,7 @@
 					</figure>
 
 					<figure class="media-left">
-						<a :href="basic.github">
+						<a :href="basicInfo.github">
 							<span class="icon has-text-light is-large hovered-shadow">
 								<i class="fa-lg fab fa-github-square"></i>
 							</span>
@@ -46,7 +46,7 @@
 						<a href="#">
 							<span
 								class="icon has-text-light is-large hovered-shadow tooltip is-tooltip-up"
-								:data-tooltip="basic.wechat"
+								:data-tooltip="basicInfo.wechat"
 							>
 								<i class="fa-lg fab fa-weixin"></i>
 							</span>
@@ -125,14 +125,9 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
 	name: 'header-bar',
-	props: {
-		basic: {
-			required: true,
-			type: Object,
-		},
-	},
 	data() {
 		return {
 			burger: '',
@@ -141,10 +136,15 @@ export default {
 		};
 	},
 	methods: {
+		...mapActions(['fetchBasicInfo']),
 		clickBurger() {
 			this.burger = !this.burger ? 'is-active' : '';
 			this.overlay = !this.overlay ? 'width:100%' : '';
 		},
+	},
+	computed: mapGetters(['basicInfo']),
+	created() {
+		this.fetchBasicInfo();
 	},
 };
 </script>

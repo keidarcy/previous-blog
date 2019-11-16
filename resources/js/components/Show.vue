@@ -8,16 +8,14 @@
 		>
 			<section class="hero is-medium big-pic">
 				<div class="hero-body">
-					<div class="container">
-						<h1 class="title has-text-white is-1 is-size-2-mobile">{{ post.post.title }}</h1>
-					</div>
+					<h1 class="left bg-title has-text-white">{{ post.post.title }}</h1>
 				</div>
 			</section>
 		</div>
 		<section class="section">
 			<div class="container">
 				<h1
-					class="center title has-text-black is-1 is-size-3-mobile has-text-black"
+					class="center artical-title"
 					data-aos="fade-up"
 					data-aos-once="true"
 					data-aos-offset="-100"
@@ -110,7 +108,7 @@
 				data-aos-offset="50"
 			>
 				<div class="is-divider"></div>
-				<h1 class="title center has-text-black">More Posts</h1>
+				<h1 class="center artical-title">More Posts</h1>
 				<div class="columns">
 					<div
 						class="column is-one-third center"
@@ -131,8 +129,11 @@
 							<div class="card-content">
 								<div class="media">
 									<div class="media-content">
-										<p class="title is-5">
-											<a :href="`/show/${relate.post.slug}`">{{ relate.post.title }}</a>
+										<p>
+											<a
+												:href="`/show/${relate.post.slug}`"
+												class="has-text-dark"
+											>{{ relate.post.title }}</a>
 										</p>
 										<div class="tags are-small">
 											<a
@@ -192,17 +193,36 @@ export default {
 	box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
 	margin-top: 3rem;
 }
-.artical-body {
-	font-family: Helvetica, Arial, sans-serif !important;
-	color: #000 !important;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
+
+@media (min-width: 768px) {
+	.artical-title {
+		font-family: Nunito !important;
+		font-size: 3rem !important;
+		font-weight: 600;
+	}
+	.artical-body {
+		font-family: sans-serif !important;
+		color: #000 !important;
+	}
+	.bg-title {
+		font-family: Nunito !important;
+		font-size: 2.5rem !important;
+	}
 }
-.v-application .title {
-	font-family: Nunito !important;
-	font-size: 3rem !important;
-	font-weight: 600;
+@media (max-width: 768px) {
+	.artical-title {
+		font-family: Nunito !important;
+		font-size: 1.5rem !important;
+		font-weight: 600;
+	}
+	.artical-body {
+		font-family: sans-serif !important;
+		font-size: 18px;
+		color: #000 !important;
+	}
+	.bg-title {
+		font-family: Nunito !important;
+		font-size: 1rem !important;
+	}
 }
 </style>
