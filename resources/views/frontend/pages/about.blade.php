@@ -1,9 +1,6 @@
 @extends('layouts.main')
 @section('content')
 
+<About :basic='basic'></About>
 
-<div id="about">
-    <About :basic='basic'></About>
-    @include('frontend.partials.form')
-</div>
 @endsection
