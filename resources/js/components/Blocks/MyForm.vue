@@ -55,4 +55,7 @@ export default {};
 		background-color: #2ee59d;
 	}
 }
+#my-form input {
+	font-weight: 600 !important;
+}
 </style>

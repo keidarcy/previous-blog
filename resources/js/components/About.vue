@@ -23,14 +23,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slide-fade-leave-active {
-	transition: all 5s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-leave-to {
-	transform: translateX(10px);
-	opacity: 0;
-}
 .about-scene {
 	min-height: 100vh;
 }

@@ -9,6 +9,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '@mdi/font/css/materialdesignicons.css';
 import 'firebase/firestore';
+import VueScrollmagic from 'vue-scrollmagic';
 
 Vue.config.productionTip = true;
 window.axios = axios;
@@ -16,6 +17,7 @@ window.Vue = require('vue');
 Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(VueRouter);
+Vue.use(VueScrollmagic);
 Vue.use(VueTextareaAutosize);
 
 //init AOS
