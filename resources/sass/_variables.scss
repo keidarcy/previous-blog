@@ -1,8 +1,13 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #f6f6f6;
 // Typography
-$font-family-sans-serif: "Nunito",
+$font-family: Nunito,
+Arial,
+Helvetica,
 sans-serif;
+$font-weight: 400;
+//device
+$layout-breakpoint: 768px;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 // Colors

@@ -1,39 +1,73 @@
-import Vue from "vue";
-import axios from "axios";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import Vuetify from 'vuetify';
+import VueRouter from 'vue-router';
+import VueTextareaAutosize from 'vue-textarea-autosize';
+import firebase from 'firebase/app';
+import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import '@mdi/font/css/materialdesignicons.css';
+import 'firebase/firestore';
+import VueScrollmagic from 'vue-scrollmagic';
 
+Vue.config.productionTip = true;
 window.axios = axios;
-window.Vue = require("vue");
+window.Vue = require('vue');
+Vue.use(Vuex);
+Vue.use(Vuetify);
+Vue.use(VueRouter);
+Vue.use(VueScrollmagic, { vertical: true });
+Vue.use(VueTextareaAutosize);
 
-Vue.config.productionTip = false;
-
-// for fade in loadar
+//init AOS
 window.AOS = AOS;
-AOS.init({
-    offset: 350,
-    duration: 1000
-});
+AOS.init({ offset: 350, duration: 1000 });
+//init firebase
+import firebaseInit from './modules/firebaseInit';
+firebase.initializeApp(firebaseInit);
+export const db = firebase.firestore();
+//init labVueRouter
+import labRouter from './modules/labRouter.js';
+const router = new VueRouter(labRouter);
+//init vuexStore
+import basicStore from './modules/basicStore';
+const store = new Vuex.Store(basicStore);
 
-import Posts from "./components/Posts.vue";
-import Show from "./components/Show.vue";
+import HeaderBar from './components/Layouts/HeaderBar.vue';
+import FooterBar from './components/Layouts/FooterBar.vue';
 
-new Vue({
-    el: "#app",
+import Posts from './components/Posts.vue';
+import Show from './components/Show.vue';
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+
+import Lab from './components/VueRoutes/Lab.vue';
+
+const app = new Vue({
+    vuetify: new Vuetify(),
+    el: '#app',
     components: {
+        'header-bar': HeaderBar,
+        'footer-bar': FooterBar,
         Posts: Posts,
-        Show: Show
+        Show: Show,
+        Home: Home,
+        About: About,
+        Lab: Lab,
     },
-    data: function() {
+    data() {
         return {
-            burger: "",
-            overlay: ""
+            basic: {},
         };
     },
-    methods: {
-        clickBurger() {
-            this.burger = !this.burger ? "is-active" : "";
-            this.overlay = !this.overlay ? "width:100%" : "";
-        }
-    }
+    mounted() {
+        let that = this;
+        axios
+            .get('/api/basic')
+            .then(response => (that.basic = response.data))
+            .catch(error => console.log(error));
+    },
+    router,
+    store,
 });

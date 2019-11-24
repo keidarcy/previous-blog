@@ -5,13 +5,13 @@
     <div class="media center">
         <div class="media-left desktop">
             <figure class="image">
-                <img src="{{asset('/images/alice-and-cat.png')}}" alt="">
+                <img src="{{asset(config('frontend.asset.alice'))}}" alt="">
             </figure>
         </div>
         <div class="media-content">
             <div class="mobile">
                 <figure class="image">
-                    <img src="{{asset('/images/alice-and-cat.png')}}" alt="">
+                    <img src="{{asset(config('frontend.asset.alice'))}}" alt="">
                 </figure>
             </div>
             <p class="title is-3 center">404</p>
