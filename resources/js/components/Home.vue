@@ -13,6 +13,7 @@
 			border="left"
 			elevation="2"
 			colored-border
+			dense
 			icon="mdi-auto-fix"
 		>{{ randomSentence }}</v-alert>
 

@@ -1,6 +1,6 @@
 <template>
-	<div class="pt-12">
-		<v-container fluid>
+	<div class="pt-md-12">
+		<v-container>
 			<ul id="switches">
 				<li
 					:class="speakingStatus"
@@ -40,35 +40,37 @@
 				> Neutral 😐</li>
 
 			</ul>
-			<div
-				id="bot"
-				:class="status"
-				class="pt-12"
-			>
-				<div id="head">
-					<div id="left-ear">
-						<div id="left-ear-inner"></div>
-					</div>
-					<div id="face">
-						<div id="eyes">
-							<div id="left-eye"></div>
-							<div id="right-eye"></div>
+			<v-container>
+				<div
+					id="bot"
+					:class="status"
+					class="pt-md-12 pr-12 pr-md-0"
+				>
+					<div id="head">
+						<div id="left-ear">
+							<div id="left-ear-inner"></div>
 						</div>
-						<v-tooltip right>
-							<template v-slot:activator="{ on }">
-								<div
-									id="mouth"
-									v-on="on"
-								></div>
-							</template>
-							<span>Am I cute 😍💅</span>
-						</v-tooltip>
-					</div>
-					<div id="right-ear">
-						<div id="right-ear-inner"></div>
+						<div id="face">
+							<div id="eyes">
+								<div id="left-eye"></div>
+								<div id="right-eye"></div>
+							</div>
+							<v-tooltip right>
+								<template v-slot:activator="{ on }">
+									<div
+										id="mouth"
+										v-on="on"
+									></div>
+								</template>
+								<span>Am I cute 😍💅</span>
+							</v-tooltip>
+						</div>
+						<div id="right-ear">
+							<div id="right-ear-inner"></div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</v-container>
 		</v-container>
 	</div>
 </template>

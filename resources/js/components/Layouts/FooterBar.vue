@@ -45,8 +45,8 @@
 					</v-btn>
 					<v-img
 						src="/images/my-qrcode.png"
-						height="500"
-						width="500"
+						height="400"
+						width="400"
 					></v-img>
 				</v-overlay>
 			</div>

@@ -1,11 +1,14 @@
 <template>
-	<div class="pt-12">
+	<div class="pt-md-12">
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">
 			</div>
 		</v-container>
 
-		<v-container :class="inputStatus">
+		<v-container
+			:class="inputStatus"
+			class="pb-12 pb-md-0"
+		>
 			<v-row>
 				<v-col
 					md="4"
@@ -38,7 +41,10 @@
 				</v-tooltip>
 			</v-row>
 		</v-container>
-		<v-container :class="expansionStatus">
+		<v-container
+			:class="expansionStatus"
+			class="pb-12 pb-md-0"
+		>
 			<v-row>
 				<v-col
 					md="6"
@@ -54,14 +60,14 @@
 							<v-expansion-panel-content>
 								Your limitation—it's only your imagination.
 								<v-img
-									src="/images/me-in-moutain.jpeg"
-									height="250"
+									src="/images/waitan.jpg"
+									height="150"
 								></v-img>
 							</v-expansion-panel-content>
 						</v-expansion-panel>
 						<v-expansion-panel>
 							<v-expansion-panel-header>
-								<strong>Lack of Inspration ?</strong>
+								Lack of Inspration ?
 								<template v-slot:actions>
 									<v-icon color="green">$expand</v-icon>
 								</template></v-expansion-panel-header>
@@ -69,8 +75,8 @@
 								我们的征途，是星辰大海 <br>
 								My Conquest Is the Sea of Stars
 								<v-img
-									src="/images/waitan.jpg"
-									height="250"
+									src="/images/me-in-moutain.jpeg"
+									height="150"
 								></v-img>
 							</v-expansion-panel-content>
 						</v-expansion-panel>
@@ -99,7 +105,6 @@
 						<a href="/lab/login">
 							<v-btn
 								class="mt-6"
-								flat
 								color="teal lighten-5"
 								@click="sheet = !sheet"
 							>Adventure Tour</v-btn>
