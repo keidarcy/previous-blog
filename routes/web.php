@@ -7,7 +7,6 @@ Route::View('/show/{post}', 'frontend.pages.show');
 Route::View('/welcome', 'frontend.pages.welcome', ['now' => Carbon\Carbon::now()])->middleware('auth');
 // Route::View('/calendar', 'frontend.pages.calendar');
 // Route::get('/show/{post}', 'XControllers\PostController@show');
-Route::post('/message/create', 'XControllers\MessageController@create');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', 'BlogController@getPosts')->name('blog.index');

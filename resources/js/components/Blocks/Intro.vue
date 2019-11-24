@@ -55,3 +55,8 @@ export default {
 	},
 };
 </script>
+<style lang="scss">
+#intro {
+	background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+}
+</style>

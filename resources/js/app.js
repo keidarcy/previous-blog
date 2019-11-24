@@ -17,7 +17,7 @@ window.Vue = require('vue');
 Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(VueRouter);
-Vue.use(VueScrollmagic);
+Vue.use(VueScrollmagic, { vertical: true });
 Vue.use(VueTextareaAutosize);
 
 //init AOS

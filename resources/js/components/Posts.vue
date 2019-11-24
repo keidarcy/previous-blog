@@ -1,9 +1,6 @@
 <template>
-	<div>
-		<div
-			id="posts"
-			data-aos="fade-up"
-		>
+	<div id="posts">
+		<div data-aos="fade-up">
 			<section class="section">
 				<div class="container">
 					<div class="control has-icons-left has-icons-right desktop">
@@ -96,9 +93,10 @@
 						</div>
 					</div>
 					<div
-						class="help is-danger"
+						class="help is-danger "
 						v-else-if="isLoaded"
-					>Sorry, no result!</div>
+					>Sorry, no result!
+					</div>
 				</div>
 			</section>
 		</div>
@@ -138,5 +136,16 @@ export default {
 	font-family: Nunito !important;
 	font-size: 1.25rem;
 	font-weight: 600;
+}
+#posts {
+	height: 100%;
+	background-image: linear-gradient(
+		to right,
+		#eea2a2 0%,
+		#bbc1bf 19%,
+		#57c6e1 42%,
+		#b49fda 79%,
+		#7ac5d8 100%
+	);
 }
 </style>

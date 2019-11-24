@@ -3,6 +3,18 @@
 		id="thanks"
 		class="about-scene"
 	>
+		<transition name="slide-fade">
+			<v-alert
+				dense
+				text
+				outlined
+				type="teal darken-4"
+				transition="slide-x-transition"
+				v-if="alertVisbile"
+			>
+				Hi <strong>{{ emailSentOK }}</strong>, I Got you message !
+			</v-alert>
+		</transition>
 		<section
 			class="section"
 			style="padding-top:8rem;"
@@ -58,5 +70,44 @@
 	</div>
 </template>
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			alertVisbile: false,
+		};
+	},
+	props: {
+		emailSentOK: {
+			type: String,
+		},
+	},
+	watch: {
+		$props: {
+			handler() {
+				if (this.$props.emailSentOK !== 'noName') {
+					this.alertVisbile = true;
+					setTimeout(() => (this.alertVisbile = false), 5000);
+				}
+			},
+			deep: true,
+			immediate: true,
+		},
+	},
+};
 </script>
+<style lang="scss" scoped>
+#thanks {
+	background-image: linear-gradient(to top, #f087e0dd 0%, #5ee7df 100%);
+}
+.slide-fade-enter-active {
+	transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+	transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+	transform: translateX(10px);
+	opacity: 0;
+}
+</style>

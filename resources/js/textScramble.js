@@ -52,50 +52,52 @@ class TextScramble {
     }
 }
 
-if (location.pathname == '/') {
-    const phrases = ['Hi, there 😈', 'My name is xyh 🐸', 'Here is my lab 🧪', 'Welcome 🧙‍♀️🧨'];
+export default TextScramble;
 
-    const el = document.querySelector('.changing-words');
-    const fx = new TextScramble(el);
+// if (location.pathname == '/') {
+//     var phrases = ['Hi, there 😈', 'My name is xyh 🐸', 'Here is my lab 🧪', 'Welcome 🧙‍♀️🧨'];
 
-    let counter = 0;
-    const next = () => {
-        fx.setText(phrases[counter]).then(() => {
-            setTimeout(next, 800);
-        });
-        counter = (counter + 1) % phrases.length;
-    };
+//     const el = document.querySelector('.changing-words');
+//     const fx = new TextScramble(el);
 
-    next();
+//     let counter = 0;
+//     const next = () => {
+//         fx.setText(phrases[counter]).then(() => {
+//             setTimeout(next, 800);
+//         });
+//         counter = (counter + 1) % phrases.length;
+//     };
 
-    var userInputDesk = document.getElementsByClassName('my-input')[0];
-    userInputDesk.addEventListener('keypress', function(e) {
-        var key = e.which || e.keyCode;
-        if (key === 13) {
-            if (userInputDesk.value != '') {
-                phrases.push(userInputDesk.value);
-                userInputDesk.value = '';
-            }
-        }
-    });
+//     next();
 
-    if (screen.width >= 768) {
-        var addButton = document.getElementsByClassName('add-words')[0];
-        addButton.addEventListener('click', function(e) {
-            if (userInputDesk.value != '') {
-                phrases.push(userInputDesk.value);
-                userInputDesk.value = '';
-            }
-        });
-    }
-    if (screen.width < 768) {
-        var userInputMoblie = document.getElementsByClassName('my-input')[1];
-        var addButton = document.getElementsByClassName('add-words')[0];
-        addButton.addEventListener('touchend', function(e) {
-            if (userInputMoblie.value != '') {
-                phrases.push(userInputMoblie.value);
-                userInputMoblie.value = '';
-            }
-        });
-    }
-}
+//     var userInputDesk = document.getElementsByClassName('my-input')[0];
+//     userInputDesk.addEventListener('keypress', function(e) {
+//         var key = e.which || e.keyCode;
+//         if (key === 13) {
+//             if (userInputDesk.value != '') {
+//                 phrases.push(userInputDesk.value);
+//                 userInputDesk.value = '';
+//             }
+//         }
+//     });
+
+//     if (screen.width >= 768) {
+//         var addButton = document.getElementsByClassName('add-words')[0];
+//         addButton.addEventListener('click', function(e) {
+//             if (userInputDesk.value != '') {
+//                 phrases.push(userInputDesk.value);
+//                 userInputDesk.value = '';
+//             }
+//         });
+//     }
+//     if (screen.width < 768) {
+//         var userInputMoblie = document.getElementsByClassName('my-input')[1];
+//         var addButton = document.getElementsByClassName('add-words')[0];
+//         addButton.addEventListener('touchend', function(e) {
+//             if (userInputMoblie.value != '') {
+//                 phrases.push(userInputMoblie.value);
+//                 userInputMoblie.value = '';
+//             }
+//         });
+//     }
+// }

@@ -1,9 +1,12 @@
 <template>
-	<div>
-		<Greeting></Greeting>
+	<div id="about">
+		<div class="d-none d-lg-block">
+			<Greeting></Greeting>
+		</div>
 		<Intro></Intro>
-		<Thanks></Thanks>
-		<my-form></my-form>
+		<my-form @sent="emailSent"></my-form>
+		<Thanks :emailSentOK='sent'></Thanks>
+
 	</div>
 </template>
 <script>
@@ -18,6 +21,16 @@ export default {
 		Intro: Intro,
 		Greeting: Greeting,
 		'my-form': MyForm,
+	},
+	data() {
+		return {
+			sent: 'noName',
+		};
+	},
+	methods: {
+		emailSent(value) {
+			this.sent = value;
+		},
 	},
 };
 </script>

@@ -3,23 +3,14 @@
 		id="greeting"
 		class="about-scene"
 	>
-		<transition name="slide-fade">
-			<v-alert
-				dense
-				text
-				outlined
-				type="success"
-				transition="slide-x-transition"
-				v-if="alertVisbile"
-			>
-				I'm a dense alert with the <strong>text</strong> prop and a <strong>type</strong> of success
-			</v-alert>
-		</transition>
 		<v-parallax
 			src="https://images.unsplash.com/photo-1514467159223-eae20502f859?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80"
 			jumbotron
 			class="animation"
 			height="1000"
+			data-aos="fade-in"
+			data-aos-duration="1000"
+			data-aos-once="true"
 		>
 			<img
 				src="/images/paper-plane.png"
@@ -28,7 +19,7 @@
 			>
 			<div class="alice-words">
 				<p
-					class="alice"
+					class="alice first-line"
 					data-aos="fade-in"
 					data-aos-offset="500"
 					data-aos-duration="4000"
@@ -59,7 +50,7 @@
 				>Wanna try this 🍎🍏</p>
 
 				<p
-					class="alice"
+					class="alice last-line"
 					data-aos="fade-in"
 					data-aos-offset="2500"
 					data-aos-duration="4000"
@@ -71,16 +62,8 @@
 </template>
 <script>
 import gsap from 'scrollmagic';
-import { TweenLite, TimelineLite } from 'gsap';
+import { TweenMax, TimelineMax } from 'gsap';
 export default {
-	data() {
-		return {
-			alertVisbile: false,
-		};
-	},
-	created() {
-		setTimeout(() => (this.alertVisbile = false), 1000);
-	},
 	mounted() {
 		const flightPath = {
 			curviness: 1.25,
@@ -96,9 +79,9 @@ export default {
 				{ x: window.innerWidth, y: -450 },
 			],
 		};
-		const tween = new TimelineLite();
+		const tween = new TimelineMax();
 		tween.add(
-			TweenLite.to('.paper-plane', 1, {
+			TweenMax.to('.paper-plane', 1, {
 				bezier: flightPath,
 				ease: Power1.easeInout,
 			})
@@ -106,28 +89,49 @@ export default {
 		const scene1 = this.$scrollmagic
 			.scene({
 				triggerElement: '.animation',
-				duration: 3000,
+				duration: 2500,
 				triggerHook: 0,
 			})
 			.setTween(tween)
 			//.addIndicators()
 			.setPin('.animation');
 
+		const tweenFadeImage = new TimelineMax().add([
+			TweenMax.to('.animation', 1, {
+				opacity: 0,
+			}),
+		]);
+
+		const scene2 = this.$scrollmagic
+			.scene({
+				triggerElement: '.last-line',
+				duration: 500,
+			})
+			.setTween(tweenFadeImage);
+		//.addIndicators();
+
+		const tweenFadeWords = new TimelineMax().add([
+			TweenMax.to('.alice-words', 1, {
+				opacity: 0,
+			}),
+		]);
+
+		const scene3 = this.$scrollmagic
+			.scene({
+				triggerElement: '.first-line',
+			})
+			.setTween(tweenFadeWords);
+		// 	.addIndicators();
+
 		this.$scrollmagic.addScene(scene1);
+		this.$scrollmagic.addScene(scene2);
+		this.$scrollmagic.addScene(scene3);
 	},
 };
 </script>
 <style lang="scss" scoped>
-.slide-fade-enter-active {
-	transition: all 0.3s ease;
-}
-.slide-fade-leave-active {
-	transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-	transform: translateX(10px);
-	opacity: 0;
+#greeting {
+	background-image: linear-gradient(to top, #b1f4cf 0%, #4d4d4d 100%);
 }
 .paper-plane {
 	position: absolute;
@@ -135,7 +139,6 @@ export default {
 	top: 40%;
 }
 .animation {
-	background-image: url('https://images.unsplash.com/photo-1514467159223-eae20502f859?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80');
 	height: 100vh;
 	position: relative;
 	overflow: hidden;
@@ -143,13 +146,13 @@ export default {
 .alice {
 	position: relative;
 	font-family: 'Times New Roman', Times, serif;
-	color: rgba($color: #000000, $alpha: 0.6);
+	color: rgba($color: #000000, $alpha: 0.5);
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 550;
 	left: 30%;
-	padding-top: 20px;
+	padding-top: 1%;
 	&-words {
-		margin-top: 280px;
+		margin-top: 14%;
 	}
 }
 </style>

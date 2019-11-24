@@ -25,3 +25,5 @@ Route::get('/phrases/list', 'XControllers\PhraseController@list');
 Route::get('/basic', function () {
     return App\XModels\Basic::firstOrFail();
 });
+
+Route::post('/message/create', 'XControllers\MessageController@create');

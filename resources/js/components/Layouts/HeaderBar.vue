@@ -41,17 +41,6 @@
 							</span>
 						</a>
 					</figure>
-
-					<figure class="media-left">
-						<a href="#">
-							<span
-								class="icon has-text-light is-large hovered-shadow tooltip is-tooltip-up"
-								:data-tooltip="basicInfo.wechat"
-							>
-								<i class="fa-lg fab fa-weixin"></i>
-							</span>
-						</a>
-					</figure>
 				</div>
 			</div>
 

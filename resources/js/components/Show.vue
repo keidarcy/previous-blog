@@ -1,5 +1,8 @@
 <template>
-	<div v-if="post">
+	<div
+		id="show"
+		v-if="post"
+	>
 		<div
 			class="big-pic"
 			data-aos="fade-right"
@@ -45,7 +48,11 @@
 											class="subtitle is-3"
 											style="padding-top:20px;"
 										>{{ basic.nick_name }}</span>
-										<div class="is-divider-vertical"></div>
+										<v-divider
+											class="mx-4"
+											inset
+											vertical
+										></v-divider>
 										<span>Published at : {{ post.post.updated_at }}</span>
 									</div>
 									<div class="mobile">
@@ -75,7 +82,9 @@
 										</div>
 									</div>
 								</div>
-								<div class="is-divider"></div>
+
+								<v-divider></v-divider>
+
 								<div
 									data-aos="fade-up"
 									data-aos-once="true"
@@ -107,7 +116,7 @@
 				data-aos="fade-up"
 				data-aos-offset="50"
 			>
-				<div class="is-divider"></div>
+				<v-divider inset></v-divider>
 				<h1 class="center artical-title">More Posts</h1>
 				<div class="columns">
 					<div
@@ -181,6 +190,17 @@ export default {
 };
 </script>
 <style scoped>
+#show {
+	background-image: linear-gradient(
+		to right,
+		#e4afcb 0%,
+		#b8cbb8 0%,
+		#b8cbb8 0%,
+		#e2c58b 30%,
+		#c2ce9c 64%,
+		#7edbdc 100%
+	);
+}
 .big-pic {
 	background-position: center;
 	background-repeat: no-repeat;

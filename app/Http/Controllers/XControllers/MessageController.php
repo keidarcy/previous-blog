@@ -23,7 +23,5 @@ class MessageController extends Controller
 
         Mail::to($request->email)->send(new MessageCreated($request));
         Mail::to('keidarcy.1015@gmail.com')->send(new MessageToMe($request));
-        
-        return redirect()->route('about')->with('status', config('frontend.message.sent'));
     }
 }
