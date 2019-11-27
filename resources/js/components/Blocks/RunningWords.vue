@@ -1,5 +1,5 @@
 <template>
-	<div class="pt-md-12">
+	<div class="pb-12 pb-md-0">
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">
 			</div>
@@ -144,7 +144,7 @@ export default {
 	},
 	data() {
 		return {
-			phrases: ['Hi, there 😈, My name is xyh 🐸', 'Here is my lab 🧪, Welcome 🧙‍♀️🧨'],
+			phrases: ['Hi, there 😈', 'My name is xyh 🐸', 'Here is my lab 🧪, Welcome 🧙‍♀️🧨'],
 			userWords: '',
 			runningWordsStatus: '',
 			inputStatus: '',
@@ -156,10 +156,7 @@ export default {
 	mounted() {
 		const el = document.querySelector('.changing-words');
 		const fx = new TextScramble(el);
-		this.phrases = [
-			...this.phrases,
-			`It\'s ${dateToStr12H(new Date(), 'Y-M-D h:m:s AP')} here in Tokyo`,
-		];
+		this.phrases = [...this.phrases, `It\'s ${dateToStr12H(new Date(), 'Y-M-D h:m:s AP')}`];
 		let counter = 0;
 		const next = () => {
 			fx.setText(this.phrases[counter]).then(() => {

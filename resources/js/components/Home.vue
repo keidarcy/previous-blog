@@ -37,11 +37,9 @@ export default {
 			alert: true,
 			sentences: [
 				'Hey, what bring you to here ?',
-				"Hey, how's your day today?",
+				'Could you change a mode for me?',
 				'I have 5 modes, which one do you like ?',
 				'Could you choose my mode, please ?',
-				"What's the weather there ?",
-				"Hi, my name is xyh! What's your name ?",
 			],
 			robotStatus: '',
 		};

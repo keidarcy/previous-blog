@@ -1,60 +1,98 @@
 <template>
 	<div class="pt-md-12">
 		<v-container>
-			<ul id="switches">
-				<li
-					:class="speakingStatus"
-					@mouseover="setStatus('speaking')"
-				> Speaking 🤖</li>
+			<v-container>
+				<ul id="switches">
+					<li
+						:class="speakingStatus"
+						@mouseover="setStatus('speaking')"
+					> Speaking 🤖</li>
 
-				<v-tooltip top>
-					<template v-slot:activator="{ on }">
-						<li
-							:class="listeningStatus"
-							@mouseover="setStatus('listening')"
-							v-on="on"
-						> Listening 🤡</li>
-					</template>
-					<span>I'm listening, what do you like, type your words there, I can repeat it 👻</span>
-				</v-tooltip>
+					<v-tooltip top>
+						<template v-slot:activator="{ on }">
+							<li
+								:class="listeningStatus"
+								@mouseover="setStatus('listening')"
+								v-on="on"
+							> Listening 🤡</li>
+						</template>
+						<span>I'm listening, what do you like, type your words there, I can repeat it 👻</span>
+					</v-tooltip>
 
-				<li
-					:class="thinkingStatus"
-					@mouseover="setStatus('thinking')"
-				> Thinking 🤔</li>
+					<v-tooltip top>
+						<template v-slot:activator="{ on }">
+							<li
+								:class="thinkingStatus"
+								@mouseover="setStatus('thinking')"
+								v-on="on"
+							> Thinking 🤔</li>
+						</template>
+						<span>Do you know what am I thinking ? I think you are gorgeous 🦄</span>
+					</v-tooltip>
 
-				<v-tooltip top>
-					<template v-slot:activator="{ on }">
-						<li
-							:class="computingStatus"
-							@mouseover="setStatus('computing')"
-							v-on="on"
-						> Computing 👾</li>
-					</template>
-					<span>This is me :)</span>
-				</v-tooltip>
+					<v-tooltip top>
+						<template v-slot:activator="{ on }">
+							<li
+								:class="computingStatus"
+								@mouseover="setStatus('computing')"
+								v-on="on"
+							> Computing 👾</li>
+						</template>
+						<span>This is me :)</span>
+					</v-tooltip>
 
-				<li
-					:class="neutralStatus"
-					@mouseover="setStatus('neutral')"
-				> Neutral 😐</li>
-
-			</ul>
+					<v-tooltip top>
+						<template v-slot:activator="{ on }">
+							<li
+								:class="neutralStatus"
+								@mouseover="setStatus('neutral')"
+								v-on="on"
+							> Neutral 😐</li>
+						</template>
+						<span>Today, I don't feel like doing anything 🤷‍♂️</span>
+					</v-tooltip>
+				</ul>
+			</v-container>
 			<v-container>
 				<div
 					id="bot"
 					:class="status"
-					class="pt-md-12 pr-12 pr-md-0"
+					class="pt-md-12 pr-md-0"
 				>
 					<div id="head">
 						<div id="left-ear">
 							<div id="left-ear-inner"></div>
 						</div>
-						<div id="face">
-							<div id="eyes">
-								<div id="left-eye"></div>
-								<div id="right-eye"></div>
+						<div
+							id="face"
+							@mouseover="showCheeks = true"
+							@mouseleave="showCheeks = false"
+						>
+							<div
+								id="eyes"
+								@mousedown="giveWink"
+								@mouseup="giveWink"
+								@touchstart="giveWink"
+								@touchend="giveWink"
+							>
+								<div
+									id="left-eye"
+									:class="wink"
+								></div>
+								<div
+									id="right-eye"
+									:class="wink"
+								></div>
 							</div>
+
+							<div
+								id="cheeks"
+								v-show="showCheeks"
+							>
+								<div id="left-cheek"></div>
+								<div id="right-cheek"></div>
+							</div>
+
 							<v-tooltip right>
 								<template v-slot:activator="{ on }">
 									<div
@@ -62,7 +100,7 @@
 										v-on="on"
 									></div>
 								</template>
-								<span>Am I cute 😍💅</span>
+								<span>am i cute 😍💅❓</span>
 							</v-tooltip>
 						</div>
 						<div id="right-ear">
@@ -84,6 +122,8 @@ export default {
 			thinkingStatus: '',
 			listeningStatus: '',
 			computingStatus: '',
+			showCheeks: false,
+			wink: '',
 		};
 	},
 	methods: {
@@ -136,6 +176,10 @@ export default {
 					break;
 			}
 		},
+		giveWink() {
+			if (!this.wink) this.wink = 'wink';
+			else this.wink = false;
+		},
 	},
 };
 </script>
@@ -146,10 +190,6 @@ export default {
 	border-radius: 25px;
 	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
 	transform: translateY(-7px);
-}
-body {
-	background-color: #000;
-	color: #fff;
 }
 
 #switches {
@@ -178,6 +218,19 @@ body {
 	min-height: 10em;
 	/*border: 1px solid lightblue;*/
 	margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	#bot {
+		position: relative;
+		text-align: left;
+		width: 18em;
+		height: 18em;
+		min-width: 10em;
+		min-height: 10em;
+		/*border: 1px solid lightblue;*/
+		margin: 0 auto;
+	}
 }
 
 #head {
@@ -274,6 +327,22 @@ body {
 	bottom: 20%;
 }
 
+#left-cheek,
+#right-cheek {
+	position: absolute;
+	width: 10%;
+	height: 8%;
+	margin-top: 50%;
+	margin-left: 10%;
+	border-radius: 100%;
+	background-color: rgb(241, 143, 159);
+	border: 0.15em solid #fff;
+}
+
+#right-cheek {
+	right: 5%;
+}
+
 /* Animations */
 #bot.neutral #left-eye,
 #bot.neutral #right-eye {
@@ -311,6 +380,11 @@ body {
 	animation: speak-mouth 1s infinite ease alternate;
 }
 
+#bot.speaking #left-eye.wink,
+#bot.speaking #right-eye.wink {
+	background-image: linear-gradient(to left, grey 0%, green 100%);
+}
+
 @keyframes speak-mouth {
 	0% {
 		width: 10%;
@@ -340,6 +414,10 @@ body {
 }
 
 /* Waiting (Thinking) */
+#bot.thinking #face {
+	border: 0.4em solid #9f97e4;
+}
+
 #bot.thinking #eyes {
 	animation: glance-eyes 8s infinite ease-in-out;
 	animation-delay: 2s;
@@ -351,13 +429,13 @@ body {
 }
 
 #bot.thinking #left-ear-inner {
-	animation: move-left-ear-inner 6s infinite ease alternate;
-	animation-delay: 4s;
+	animation: move-left-ear-inner 5s infinite ease alternate;
+	animation-delay: 1s;
 }
 
 #bot.thinking #right-ear-inner {
-	animation: move-right-ear-inner 6s infinite ease alternate;
-	animation-delay: 4s;
+	animation: move-right-ear-inner 5s infinite ease alternate;
+	animation-delay: 1s;
 }
 
 @keyframes glance-eyes {
@@ -525,6 +603,18 @@ body {
 	border: 0.5em solid #fff;
 	width: 10%;
 	left: 45%;
+}
+
+/* neutral */
+#bot.neutral #left-eye,
+#bot.neutral #right-eye {
+	height: 100%;
+	width: 25%;
+	border-radius: 50%;
+	transition: all 0.25s linear;
+	border: 0.3em dashed black;
+	animation-delay: 0.5s;
+	background-color: pink;
 }
 
 @keyframes border-dance {
