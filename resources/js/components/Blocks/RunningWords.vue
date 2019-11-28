@@ -25,7 +25,6 @@
 				</v-col>
 				<v-tooltip right>
 					<template v-slot:activator="{ on }">
-
 						<v-btn
 							class="mx-2"
 							fab
@@ -34,7 +33,13 @@
 							@click="addWords"
 							v-on="on"
 						>
-							<v-icon dark>mdi-plus</v-icon>
+							<v-badge color="purple lighten-1">
+								<template
+									v-slot:badge
+									v-if="userWordsLength>0"
+								>{{ userWordsLength }}</template>
+								<v-icon dark>mdi-plus</v-icon>
+							</v-badge>
 						</v-btn>
 					</template>
 					<span>What you type will add to My introduction 😉</span>
@@ -144,13 +149,14 @@ export default {
 	},
 	data() {
 		return {
-			phrases: ['Hi, there 😈', 'My name is xyh 🐸', 'Here is my lab 🧪, Welcome 🧙‍♀️🧨'],
+			phrases: ['Hi, there 😈, My name is xyh 🐸', 'Here is my lab 🧪, Welcome 🧙‍♀️🧨'],
 			userWords: '',
 			runningWordsStatus: '',
 			inputStatus: '',
 			sheet: false,
 			expansionStatus: 'StatusDis',
 			buttonStatus: 'StatusDis',
+			userWordsLength: 0,
 		};
 	},
 	mounted() {
@@ -173,6 +179,9 @@ export default {
 			} else {
 				this.phrases = [this.userWords, ...this.phrases];
 				this.userWords = '';
+				console.log(1);
+				console.log(this.phrases.length);
+				this.userWordsLength = this.phrases.length - 3;
 			}
 		},
 	},
