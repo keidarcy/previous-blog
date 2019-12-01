@@ -221,7 +221,6 @@ export default {
 		font-weight: 600;
 	}
 	.artical-body {
-		font-family: sans-serif !important;
 		color: #000 !important;
 	}
 	.bg-title {
@@ -236,7 +235,6 @@ export default {
 		font-weight: 600;
 	}
 	.artical-body {
-		font-family: sans-serif !important;
 		font-size: 18px;
 		color: #000 !important;
 	}
