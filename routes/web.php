@@ -9,10 +9,10 @@ Route::View('/welcome', 'frontend.pages.welcome', ['now' => Carbon\Carbon::now()
 // Route::get('/show/{post}', 'XControllers\PostController@show');
 
 Route::prefix('blog')->group(function () {
-    Route::get('/', 'BlogController@getPosts')->name('blog.index');
-    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@findPostBySlug')->name('blog.post');
-    Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag');
-    Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic');
+    Route::get('/', 'BlogController@getPosts')->name('blog.index')->middleware('auth');
+    Route::middleware('Canvas\Http\Middleware\ViewThrottle')->get('{slug}', 'BlogController@findPostBySlug')->name('blog.post')->middleware('auth');
+    Route::get('tag/{slug}', 'BlogController@getPostsByTag')->name('blog.tag')->middleware('auth');
+    Route::get('topic/{slug}', 'BlogController@getPostsByTopic')->name('blog.topic')->middleware('auth');
 });
 
 Route::prefix('/thisisxyyo')->group(function () {

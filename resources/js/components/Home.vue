@@ -27,6 +27,7 @@
 <script>
 import Robot from './Blocks/Robot.vue';
 import RunningWords from './Blocks/RunningWords.vue';
+
 export default {
 	components: {
 		RunningWords: RunningWords,

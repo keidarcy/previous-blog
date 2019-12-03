@@ -12,6 +12,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+        .chat-boy {
+            position: absolute;
+            right: 0%;
+            bottom: 0%;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,6 +27,9 @@
             <header-bar></header-bar>
 
             @yield('content')
+            <div class="chat-boy">
+                <chat-bot></chat-bot>
+            </div>
         </v-app>
         <footer-bar></footer-bar>
     </div>

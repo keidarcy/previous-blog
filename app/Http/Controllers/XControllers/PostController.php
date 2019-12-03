@@ -71,4 +71,41 @@ class PostController extends Controller
             return null;
         }
     }
+
+    public function getTopicsAndTagsNumber()
+    {
+        $posts = Post::all();
+        $tags = [];
+        foreach ($posts as $post) {
+            foreach ($post->tags as $postTag) {
+                $tags[] = $postTag->name;
+            }
+        }
+
+        $topics = [];
+        foreach ($posts as $post) {
+            foreach ($post->topic as $postTopic) {
+                $topics[] = $postTopic->name;
+            }
+        }
+
+        $topicName = [];
+        $topicNumber = [];
+        foreach (array_count_values($topics) as $index => $topic) {
+            $topicName[] = $topic;
+            $topicNumber[] = $index;
+        }
+
+        $tagName = [];
+        $tagNumber = [];
+        foreach (array_count_values($tags) as $index => $tag) {
+            $tagName[] = $tag;
+            $tagNumber[] = $index;
+        }
+
+        return ['topicName' => $topicName,
+                'topicNumber' => $topicNumber,
+                'tagName' => $tagName,
+                'tagNumber' => $tagNumber];
+    }
 }
