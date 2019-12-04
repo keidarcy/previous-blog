@@ -1,8 +1,12 @@
 <template>
-	<div>
-		<footer class="footer center has-text-weight-bold has-background-black">
-			<div style="flex-direction: row">
-				<v-container class="center">
+
+	<v-footer padless>
+		<v-col
+			class="text-center white--text black text font-weight-bold"
+			cols="12"
+		>
+			<div>
+				<v-container>
 					<a :href="basicInfo.facebook">
 						<v-icon
 							right
@@ -32,7 +36,7 @@
 					</v-tooltip>
 				</v-container>
 				<v-container>
-					<p class="center is-size-6 is-size-7-mobile"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
+					<p class="text--white"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
 					</p>
 				</v-container>
 
@@ -50,8 +54,8 @@
 					></v-img>
 				</v-overlay>
 			</div>
-		</footer>
-	</div>
+		</v-col>
+	</v-footer>
 </template>
 
 <script>
@@ -72,3 +76,11 @@ export default {
 	},
 };
 </script>
+<style lang="scss">
+// footer {
+// 	margin-top: auto;
+// 	bottom: 0 !important;
+// 	padding: 1.5rem !important;
+// 	z-index: 2;
+// }
+</style>

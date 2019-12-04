@@ -24,3 +24,5 @@ Route::prefix('/thisisxyyo')->group(function () {
 Route::any('/lab/{all}', function () {
     return view('frontend.pages.lab');
 })->where(['all' => '.*']);
+
+Route::View('/test', 'frontend.pages.test')->name('test')->middleware('auth');

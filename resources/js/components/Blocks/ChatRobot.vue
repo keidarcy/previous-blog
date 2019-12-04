@@ -5,7 +5,7 @@
 			<v-btn
 				color="pink"
 				small
-				@click="openChatting"
+				@click="isChatting = !isChatting"
 			>
 				<v-icon>mdi-robot </v-icon>
 			</v-btn>
@@ -23,10 +23,6 @@ export default {
 			isChatting: false,
 		};
 	},
-	methods: {
-		openChatting() {
-			this.isChatting = !this.isChatting;
-		},
-	},
+	methods: {},
 };
 </script>

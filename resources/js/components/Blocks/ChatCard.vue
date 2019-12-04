@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<login-button></login-button>
 		<v-card
 			class="mx-auto"
 			max-width="400"
@@ -49,7 +50,12 @@
 	</div>
 </template>
 <script>
-export default {};
+import LoginButton from './LoginButton.vue';
+export default {
+	components: {
+		'login-button': LoginButton,
+	},
+};
 </script>
 <style lang="scss">
 </style>

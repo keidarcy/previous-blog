@@ -38,6 +38,7 @@ import HeaderBar from './components/Layouts/HeaderBar.vue';
 import FooterBar from './components/Layouts/FooterBar.vue';
 
 import Posts from './components/Posts.vue';
+import Test from './components/Test.vue';
 import Show from './components/Show.vue';
 import Home from './components/Home.vue';
 import About from './components/About.vue';
@@ -57,6 +58,7 @@ const app = new Vue({
         Home: Home,
         About: About,
         Lab: Lab,
+        'test-dev': Test,
     },
     data() {
         return {

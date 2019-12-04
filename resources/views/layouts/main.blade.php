@@ -16,7 +16,7 @@
         .chat-boy {
             position: absolute;
             right: 0%;
-            bottom: 0%;
+            bottom: 20%;
         }
     </style>
 </head>
@@ -30,8 +30,8 @@
             <div class="chat-boy">
                 <chat-bot></chat-bot>
             </div>
+            <footer-bar></footer-bar>
         </v-app>
-        <footer-bar></footer-bar>
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>
