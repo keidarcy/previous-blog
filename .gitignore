@@ -13,3 +13,5 @@ yarn-error.log
 .env_*
 /.idea
 .prettierrc
+_ide_helper.php
+.vscode

@@ -13,11 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <style>
-        .chat-boy {
-            position: absolute;
-            right: 0%;
-            bottom: 20%;
-        }
+
     </style>
 </head>
 
@@ -27,9 +23,7 @@
             <header-bar></header-bar>
 
             @yield('content')
-            <div class="chat-boy">
-                <chat-bot></chat-bot>
-            </div>
+            <chat-bot></chat-bot>
             <footer-bar></footer-bar>
         </v-app>
     </div>
