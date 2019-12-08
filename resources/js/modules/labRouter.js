@@ -1,7 +1,7 @@
 import Calendar from '../components/VueRoutes/Calendar.vue';
 import Welcome from '../components/VueRoutes/Welcome.vue';
 import Login from '../components/VueRoutes/Login.vue';
-import SideBar from '../components/VueRoutes/SideBar.vue';
+// import SideBar from '../components/VueRoutes/SideBar.vue';
 
 export default {
     mode: 'history',
@@ -10,11 +10,11 @@ export default {
             name: 'Calendar',
             component: Calendar,
         },
-        {
-            path: '/lab/SideBar',
-            name: 'SideBar',
-            component: SideBar,
-        },
+        // {
+        //     path: '/lab/SideBar',
+        //     name: 'SideBar',
+        //     component: SideBar,
+        // },
         {
             path: '/lab/login',
             name: 'Login',

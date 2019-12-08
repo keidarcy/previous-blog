@@ -92,15 +92,15 @@ class PostController extends Controller
         $topicName = [];
         $topicNumber = [];
         foreach (array_count_values($topics) as $index => $topic) {
-            $topicName[] = $topic;
-            $topicNumber[] = $index;
+            $topicNumber[] = $topic;
+            $topicName[] = $index;
         }
 
         $tagName = [];
         $tagNumber = [];
         foreach (array_count_values($tags) as $index => $tag) {
-            $tagName[] = $tag;
-            $tagNumber[] = $index;
+            $tagNumber[] = $tag;
+            $tagName[] = $index;
         }
 
         return ['topicName' => $topicName,

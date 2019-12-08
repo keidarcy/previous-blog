@@ -1,6 +1,8 @@
 <template>
-
-	<v-footer padless>
+	<v-footer
+		padless
+		absolute
+	>
 		<v-col
 			class="text-center white--text black text font-weight-bold"
 			cols="12"
@@ -76,11 +78,3 @@ export default {
 	},
 };
 </script>
-<style lang="scss">
-// footer {
-// 	margin-top: auto;
-// 	bottom: 0 !important;
-// 	padding: 1.5rem !important;
-// 	z-index: 2;
-// }
-</style>

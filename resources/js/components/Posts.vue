@@ -41,76 +41,103 @@
 				class="title is-4 center"
 				v-else
 			>posts about {{ about }}</div>
-
-			<section class="section">
-				<div class="container">
-					<div v-if="isLoaded && articalsFilter.length">
-						<div class="columns is-multiline">
-							<div
-								class="column is-one-third center"
-								v-for="artical in articalsFilter"
-								:key="artical.id"
-							>
-								<div class="notification artical">
-									<div class="card">
-										<div class="card-image">
-											<figure class="image is-4by3">
-												<a :href="`/show/${artical.slug}`">
-													<img
-														:src="artical.featured_image"
-														alt="Placeholder image"
-													/>
-												</a>
-											</figure>
-										</div>
-										<div class="card-content">
-											<div class="media">
-												<div class="media-content">
-													<p class="title is-5">
-														<a :href="`/show/${artical.slug}`">{{ artical.title }}</a>
-													</p>
+			<v-row no-gutters>
+				<v-col
+					cols="12"
+					sm="12"
+					md="10"
+				>
+					<v-container>
+						<div v-if="isLoaded && articalsFilter.length">
+							<div class="columns is-multiline">
+								<div
+									class="column is-one-third center"
+									v-for="artical in articalsFilter"
+									:key="artical.id"
+								>
+									<div class="notification artical">
+										<div class="card">
+											<div class="card-image">
+												<figure class="image is-4by3">
+													<a :href="`/show/${artical.slug}`">
+														<img
+															:src="artical.featured_image"
+															alt="Placeholder image"
+														/>
+													</a>
+												</figure>
+											</div>
+											<div class="card-content">
+												<div class="media">
+													<div class="media-content">
+														<p class="title is-5">
+															<a :href="`/show/${artical.slug}`">{{ artical.title }}</a>
+														</p>
+													</div>
 												</div>
-											</div>
-											<br />
-											<div class="content">
-												<a :href="`/show/${artical.slug}`">{{ artical.summary }}</a>
 												<br />
+												<div class="content">
+													<a :href="`/show/${artical.slug}`">{{ artical.summary }}</a>
+													<br />
+												</div>
+												<div class="tags are-medium">
+													<a
+														:href="`/posts/${tag.slug}`"
+														v-for="tag in artical.tags"
+														:key="tag.id"
+													>
+														<span class="tag is-dark">{{ tag.name }}</span>&nbsp;
+													</a>
+												</div>
+												<time class="right">{{ artical.published_at }}</time>
 											</div>
-											<div class="tags are-medium">
-												<a
-													:href="`/posts/${tag.slug}`"
-													v-for="tag in artical.tags"
-													:key="tag.id"
-												>
-													<span class="tag is-dark">{{ tag.name }}</span>&nbsp;
-												</a>
-											</div>
-											<time class="right">{{ artical.published_at }}</time>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div
-						class="help is-danger "
-						v-else-if="isLoaded"
-					>Sorry, no result!
-					</div>
-				</div>
-			</section>
+						<div
+							class="help is-danger "
+							v-else-if="isLoaded"
+						>Sorry, no result!
+						</div>
+					</v-container>
+				</v-col>
+				<v-col
+					sm="3"
+					md="2"
+				>
+					<v-container class="pr-5 mr-5">
+						<Chart
+							@tagName="tagName"
+							@tagNumber="tagNumber"
+						/>
+						<Tags
+							class="my-5"
+							:tagsName='namesForTag'
+							:tagsNumber='numbersForTag'
+						/>
+					</v-container>
+				</v-col>
+			</v-row>
 		</div>
+		<div class="clear"></div>
 	</div>
 </template>
 
 <script>
+import Chart from './Blocks/Chart.vue';
+import Tags from './Blocks/Tags.vue';
 export default {
+	components: { Chart, Tags },
 	data() {
 		return {
 			articals: [],
 			textSearch: '',
 			isLoaded: false,
 			about: location.pathname.slice(7),
+			numbersForTag: [],
+			namesForTag: [],
 		};
 	},
 	computed: {
@@ -129,6 +156,16 @@ export default {
 			.then(response => (that.isLoaded = true))
 			.catch(error => console.log(error));
 	},
+	methods: {
+		tagName(value) {
+			this.namesForTag = value;
+			console.log(value);
+		},
+		tagNumber(value) {
+			this.numbersForTag = value;
+			console.log(value);
+		},
+	},
 };
 </script>
 <style lang="scss" scoped>
@@ -140,12 +177,16 @@ export default {
 #posts {
 	height: 100%;
 	background-image: linear-gradient(
-		to right,
+		to left,
 		#eea2a2 0%,
 		#bbc1bf 19%,
 		#57c6e1 42%,
 		#b49fda 79%,
 		#7ac5d8 100%
 	);
+}
+.clear {
+	clear: both;
+	height: 160px;
 }
 </style>

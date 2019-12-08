@@ -179,8 +179,6 @@ export default {
 			} else {
 				this.phrases = [this.userWords, ...this.phrases];
 				this.userWords = '';
-				console.log(1);
-				console.log(this.phrases.length);
 				this.userWordsLength = this.phrases.length - 3;
 			}
 		},
