@@ -35,6 +35,12 @@ textarea,
     font-weight: $font-weight !important;
 }
 
+.v-application .title {
+    font-family: Nunito !important;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
 .my-input::-webkit-input-placeholder,
 .my-input::-ms-input-placeholder,
 .my-input::-moz-placeholder,
@@ -77,6 +83,11 @@ textarea,
 .hamburger-inner::before,
 .hamburger-inner::after {
     background-color: $dark-green;
+}
+
+.clear {
+    clear: both;
+    height: 160px;
 }
 
 @import './nested/basic.scss';

@@ -8,6 +8,7 @@
 			draggable
 			color="cyan"
 			label
+			:href="`/posts/${tag}`"
 		>
 			<v-icon left>mdi-label</v-icon>
 			{{ tag }} ({{ tagsNumber[index] }})
@@ -36,9 +37,11 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.my-tag
+.my-tag {
 	transition all 0.3s ease 0s
 
-	&:hover
+	&:hover {
 		transform translateX(-7px)
+	}
+}
 </style>

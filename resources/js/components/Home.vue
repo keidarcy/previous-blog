@@ -20,7 +20,7 @@
 		<Robot @statusChanging="robotStatusChanging"></Robot>
 
 		<RunningWords :robotStatusNow='robotStatus'></RunningWords>
-
+		<div class="clear"></div>
 	</div>
 
 </template>
@@ -64,7 +64,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 #home {
-	height: 100vh;
 	background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
 }
 ._wrapper {

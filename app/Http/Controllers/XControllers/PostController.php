@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $related_posts = Post::all()->where('complete', 1)->except($post->id)->random(3);
+        $related_posts = Post::all()->where('complete', 1)->except($post->id)->random(6);
         $relates = [];
         foreach ($related_posts as $index => $related_post) {
             $relates[$index]['post'] = $related_post;

@@ -40,68 +40,20 @@
 			<div
 				class="title is-4 center"
 				v-else
-			>posts about {{ about }}</div>
+			>posts about {{ about }}
+				<return-button />
+			</div>
 			<v-row no-gutters>
 				<v-col
 					cols="12"
 					sm="12"
 					md="10"
 				>
-					<v-container>
-						<div v-if="isLoaded && articalsFilter.length">
-							<div class="columns is-multiline">
-								<div
-									class="column is-one-third center"
-									v-for="artical in articalsFilter"
-									:key="artical.id"
-								>
-									<div class="notification artical">
-										<div class="card">
-											<div class="card-image">
-												<figure class="image is-4by3">
-													<a :href="`/show/${artical.slug}`">
-														<img
-															:src="artical.featured_image"
-															alt="Placeholder image"
-														/>
-													</a>
-												</figure>
-											</div>
-											<div class="card-content">
-												<div class="media">
-													<div class="media-content">
-														<p class="title is-5">
-															<a :href="`/show/${artical.slug}`">{{ artical.title }}</a>
-														</p>
-													</div>
-												</div>
-												<br />
-												<div class="content">
-													<a :href="`/show/${artical.slug}`">{{ artical.summary }}</a>
-													<br />
-												</div>
-												<div class="tags are-medium">
-													<a
-														:href="`/posts/${tag.slug}`"
-														v-for="tag in artical.tags"
-														:key="tag.id"
-													>
-														<span class="tag is-dark">{{ tag.name }}</span>&nbsp;
-													</a>
-												</div>
-												<time class="right">{{ artical.published_at }}</time>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div
-							class="help is-danger "
-							v-else-if="isLoaded"
-						>Sorry, no result!
-						</div>
-					</v-container>
+					<artical-card
+						:articals="articals"
+						:isLoaded="isLoaded"
+						:articalsFilter="articalsFilter"
+					/>
 				</v-col>
 				<v-col
 					sm="3"
@@ -128,8 +80,10 @@
 <script>
 import Chart from './Blocks/Chart.vue';
 import Tags from './Blocks/Tags.vue';
+import ArticalCard from './Blocks/ArticalCard.vue';
+import ReturnButton from './Blocks/ReturnPostsButton.vue';
 export default {
-	components: { Chart, Tags },
+	components: { Chart, Tags, ArticalCard, ReturnButton },
 	data() {
 		return {
 			articals: [],
@@ -159,21 +113,14 @@ export default {
 	methods: {
 		tagName(value) {
 			this.namesForTag = value;
-			console.log(value);
 		},
 		tagNumber(value) {
 			this.numbersForTag = value;
-			console.log(value);
 		},
 	},
 };
 </script>
 <style lang="scss" scoped>
-.v-application .title {
-	font-family: Nunito !important;
-	font-size: 1.25rem;
-	font-weight: 600;
-}
 #posts {
 	height: 100%;
 	background-image: linear-gradient(
@@ -184,9 +131,5 @@ export default {
 		#b49fda 79%,
 		#7ac5d8 100%
 	);
-}
-.clear {
-	clear: both;
-	height: 160px;
 }
 </style>
