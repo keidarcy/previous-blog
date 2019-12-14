@@ -20,6 +20,7 @@
 		<Robot @statusChanging="robotStatusChanging"></Robot>
 
 		<RunningWords :robotStatusNow='robotStatus'></RunningWords>
+		<load-page />
 		<div class="clear"></div>
 	</div>
 
@@ -27,12 +28,9 @@
 <script>
 import Robot from './Blocks/Robot.vue';
 import RunningWords from './Blocks/RunningWords.vue';
-
+import LoadPage from './Blocks/Home/LoadPage.vue';
 export default {
-	components: {
-		RunningWords: RunningWords,
-		Robot: Robot,
-	},
+	components: { RunningWords, Robot, LoadPage },
 	data() {
 		return {
 			alert: true,
