@@ -41,8 +41,7 @@ import Posts from './components/Posts.vue';
 import Test from './components/Test.vue';
 import Show from './components/Show.vue';
 import Home from './components/Home.vue';
-import About from './components/About.vue';
-import ChatRobot from './components/Blocks/ChatRobot.vue';
+import ChatBot from './components/ChatBot.vue';
 
 import Lab from './components/VueRoutes/Lab.vue';
 
@@ -50,13 +49,12 @@ const app = new Vue({
     vuetify: new Vuetify(),
     el: '#app',
     components: {
-        'chat-bot': ChatRobot,
+        'chat-bot': ChatBot,
         'header-bar': HeaderBar,
         'footer-bar': FooterBar,
         Posts: Posts,
         Show: Show,
         Home: Home,
-        About: About,
         Lab: Lab,
         'test-dev': Test,
     },

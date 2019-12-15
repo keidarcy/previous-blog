@@ -1,118 +1,99 @@
 <template>
-	<div>
-		<div id="header">
-			<div
-				class="overlay moblie"
-				:style="overlay"
-			>
-				<div class="overlay-content">
-					<a href="/">
-						<p class=" hovered-link has-text-weight-bold has-text-white">HOME</p>
-					</a>
-					<a href="/posts">
-						<p class=" hovered-link has-text-weight-bold has-text-white">BLOG</p>
-					</a>
-					<a href="/about">
-						<p class=" hovered-link has-text-weight-bold has-text-white">ABOUT</p>
-					</a>
-					<div>
-						<v-switch
-							v-model="success"
-							inset
-							color="success"
-							class="moblie center"
-						></v-switch>
-					</div>
-				</div>
+	<div id="header">
+		<template>
+			<v-card v-if="home">
+				<v-app-bar
+					dark
+					flat
+					dense
+					color="grey darken-4"
+				>
+					<v-app-bar-nav-icon @click="changeLoadingState"></v-app-bar-nav-icon>
 
-				<div class="center overlay-icon">
-					<figure class="media-left">
-						<a :href="basicInfo.facebook">
-							<span class="icon has-text-light is-large hovered-shadow">
-								<i class="fa-lg fab fa-facebook-square"></i>
-							</span>
-						</a>
-					</figure>
+					<v-toolbar-title>xyyolab
 
-					<figure class="media-left">
-						<a :href="basicInfo.github">
-							<span class="icon has-text-light is-large hovered-shadow">
-								<i class="fa-lg fab fa-github-square"></i>
-							</span>
-						</a>
-					</figure>
-				</div>
-			</div>
+					</v-toolbar-title><a href="/">
+						<img
+							src="/images/logo-without-background.png"
+							alt="logo"
+							class="title-logo"
+						/></a>
 
-			<div class="header-section">
-				<section class="hero">
-					<div class="hero-head ">
-						<div class="navbar columns is-mobile is-marginless has-text-weight-bold has-background-black">
+					<v-spacer></v-spacer>
 
-							<div
-								class="column left"
-								style="z-index:11;"
+					<v-btn icon>
+						<v-icon>mdi-magnify</v-icon>
+					</v-btn>
+
+					<v-btn
+						icon
+						color="orange darken-2"
+						@click="$vuetify.goTo('#robot', options)"
+					>
+						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
+					</v-btn>
+
+					<template v-slot:extension>
+						<v-tabs
+							centered
+							slider-color="yellow"
+							background-color="transparent"
+						>
+							<v-tab
+								v-for="tab in tabs"
+								:key="tab.id"
+								@click="$vuetify.goTo(target(tab), options)"
 							>
-								<a href="/">
-									<img
-										src="/images/logo-without-background.png"
-										alt="logo"
-										class="logo-pic"
-									/></a>
-								<div style="flex-direction: row">
-									<a href="/">
-										<div class="logo-word">
-											<p class="logo-word-top-mobile left has-text-white mobile"><strong class="has-text-primary is-4">xy</strong>yo</p>
-											<p class="logo-word-top-desktop left has-text-white desktop"><strong class="has-text-primary is-4">xy</strong>yo</p>
-											<p class="logo-word-bottom-mobile left has-text-white mobile">
-												Laboratory.
-											</p>
-											<p class="logo-word-bottom-desktop left has-text-white desktop">
-												Laboratory.
-											</p>
-										</div>
-									</a>
-								</div>
-							</div>
+								{{ tab }}
+							</v-tab>
+							<a
+								class="blog-link"
+								href="/posts"
+							>
+								<v-tab>
+									BLOG
+								</v-tab>
+							</a>
+						</v-tabs>
+					</template>
+				</v-app-bar>
+			</v-card>
+			<v-app-bar
+				color="grey darken-4"
+				dark
+				v-else
+				elevate-on-scroll
+			>
 
-							<div class="column center desktop">
-								<a href="/">
-									<p class="navbar-item has-text-white hovered-link">HOME</p>
-								</a>
-								<a href="/posts">
-									<p class=" navbar-item has-text-white hovered-link">BLOG</p>
-								</a>
-								<a href="/about">
-									<p class="navbar-item has-text-white hovered-link">ABOUT</p>
-								</a>
-							</div>
+				<v-toolbar-title>xyyolab
 
-							<div class="column right">
-								<v-switch
-									v-model="success"
-									inset
-									color="success"
-									class="desktop"
-								></v-switch>
-								<button
-									@click='clickBurger'
-									:class="burger"
-									class="hamburger hamburger--emphatic mobile"
-									type="button"
-								>
-									<span class="hamburger-box">
-										<span class="hamburger-inner"></span>
-									</span>
-								</button>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
+				</v-toolbar-title>
+				<a href="/">
+					<img
+						src="/images/logo-without-background.png"
+						alt="logo"
+						class="title-logo"
+					/>
+				</a>
+
+				<v-spacer></v-spacer>
+
+				<v-btn icon>
+					<v-icon>mdi-magnify</v-icon>
+				</v-btn>
+				<a href="/posts">
+					<v-btn
+						icon
+						color="red darken-1"
+					>
+						<v-icon>mdi-pokeball mdi-spin</v-icon>
+
+					</v-btn>
+				</a>
+			</v-app-bar>
+		</template>
 	</div>
 </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
@@ -122,26 +103,62 @@ export default {
 			burger: '',
 			overlay: '',
 			success: '',
+			tabs: ['HOME', 'ABOUT', 'CONTACT'],
+			duration: 1000,
+			offset: 0,
+			easing: 'easeInOutCubic',
 		};
 	},
 	methods: {
-		...mapActions(['fetchBasicInfo']),
-		clickBurger() {
-			this.burger = !this.burger ? 'is-active' : '';
-			this.overlay = !this.overlay ? 'width:100%' : '';
+		...mapActions(['fetchBasicInfo', 'changeLoadingState']),
+		target(tab) {
+			return `#${tab.toLowerCase()}`;
 		},
 	},
-	computed: mapGetters(['basicInfo']),
+	//computed: mapGetters(['basicInfo']),
+	computed: {
+		...mapGetters(['loadingState']),
+		options() {
+			return {
+				duration: this.duration,
+				offset: this.offset,
+				easing: this.easing,
+			};
+		},
+		home() {
+			return location.pathname.length === 1 ? true : false;
+		},
+	},
 	created() {
 		this.fetchBasicInfo();
 	},
 };
 </script>
 <style lang="scss">
-.navbar {
-	height: 90px;
+$breakpoint-md: 768px !default;
+
+#header {
+	background: black;
 }
-.v-application p {
-	margin-bottom: 1px;
+
+.title-logo {
+	width: 2.75rem;
+	height: 2.75rem;
+	transition: all 0.5s;
+	transition-timing-function: ease-in-out;
+
+	&:hover {
+		transform: rotateZ(360deg);
+	}
+	@media only screen and (max-width: $breakpoint-md) {
+		width: 2rem;
+		height: 2rem;
+	}
+}
+.v-tab {
+	font-size: large;
+}
+.blog-link {
+	padding-top: 10px;
 }
 </style>

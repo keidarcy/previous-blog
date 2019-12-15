@@ -1,7 +1,6 @@
 <?php
 
 Route::View('/', 'frontend.pages.home')->name('home');
-Route::View('/about', 'frontend.pages.about')->name('about');
 Route::View('/posts/{slug?}', 'frontend.pages.post');
 Route::View('/show/{post}', 'frontend.pages.show');
 Route::View('/welcome', 'frontend.pages.welcome', ['now' => Carbon\Carbon::now()])->middleware('auth');

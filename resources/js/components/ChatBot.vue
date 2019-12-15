@@ -42,7 +42,7 @@
 							v-show="!hidden"
 						>
 							<v-icon v-if="isChatting">mdi-close</v-icon>
-							<v-icon v-else>mdi-robot</v-icon>
+							<v-icon v-else>mdi-ice-cream</v-icon>
 
 						</v-btn>
 					</v-fab-transition>
@@ -87,8 +87,8 @@
 	</div>
 </template>
 <script>
-import ChatCard from './ChatCard.vue';
-import { db } from '../../app.js';
+import ChatCard from './Blocks/ChatBot/ChatCard.vue';
+import { db } from '../app.js';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import * as firebaseui from 'firebaseui';
@@ -107,7 +107,7 @@ export default {
 	},
 	methods: {
 		handleScroll() {
-			this.isChatting ? '' : (this.hidden = window.scrollY < 50);
+			this.isChatting ? '' : (this.hidden = window.scrollY < 200);
 		},
 		googleLogout() {
 			firebase
@@ -163,8 +163,9 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-#firebaseui-auth-container
+#firebaseui-auth-container {
 	position fixed
 	right 0%
 	top 30%
+}
 </style>

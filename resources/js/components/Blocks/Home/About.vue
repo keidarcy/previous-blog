@@ -1,6 +1,6 @@
 <template>
 	<div
-		id="intro"
+		id="about"
 		class="about-scene"
 	>
 		<section
@@ -13,7 +13,7 @@
 						<div class="card">
 							<div
 								class="card-image"
-								data-aos="fade-left"
+								data-aos="fade-up"
 							>
 								<figure class="image is-4by3">
 									<img
@@ -24,7 +24,7 @@
 							</div>
 							<div
 								class="card-content"
-								data-aos="fade-right"
+								data-aos="fade-up"
 							>
 								<div class="content">
 									Hi! My name is no
@@ -56,7 +56,7 @@ export default {
 };
 </script>
 <style lang="scss">
-#intro {
-	background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+#about {
+	background-image: linear-gradient(to bottom, #000000 0%, #9890e3 100%);
 }
 </style>

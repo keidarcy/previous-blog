@@ -28,7 +28,7 @@
 	</div>
 </template>
 <script>
-import { db } from '../../app.js';
+import { db } from '../../../app.js';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import * as firebaseui from 'firebaseui';

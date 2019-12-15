@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import returnButton from './ReturnPostsButton.vue';
+import returnButton from '../ReturnPostsButton.vue';
 export default {
 	components: { returnButton },
 	data() {

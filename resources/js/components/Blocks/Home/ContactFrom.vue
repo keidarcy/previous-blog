@@ -1,8 +1,6 @@
 <template>
-	<v-app
-		id="my-form"
-		class="about-scene"
-	>
+	<v-app id="contact">
+
 		<v-row align="center">
 			<v-col
 				cols="12"
@@ -15,7 +13,7 @@
 						@submit.prevent="contactSubmit"
 						v-model="valid"
 						lazy-validation
-						data-aos="fade-down"
+						data-aos="fade-up"
 						data-aos-duration="1000"
 						data-aos-once="true"
 					>
@@ -54,13 +52,15 @@
 							color="cyan accent-3"
 							append-icon="mdi-fountain-pen-tip"
 						></v-textarea>
-						<v-row justify="center">
+						<div class="text-center">
 							<button class="my-button button">Send</button>
-						</v-row>
+						</div>
 					</v-form>
+
 				</v-container>
 			</v-col>
 		</v-row>
+
 	</v-app>
 </template>
 
@@ -93,7 +93,7 @@ export default {
 					.then(res => {
 						if (res.status === 200) {
 							window.location.reload();
-							this.$emit('sent', this.name);
+							// this.$emit('sent', this.name);
 							var elmnt = document.getElementById('thanks');
 							elmnt.scrollIntoView();
 						} else {
@@ -117,10 +117,15 @@ export default {
 		background-color: #2ee59d;
 	}
 }
-#my-form {
-	background-image: linear-gradient(to top, #5ee7df 0%, #9890e3 100%);
-	&input {
-		font-weight: 600 !important;
-	}
+.row {
+	margin-right: unset;
+	margin-left: unset;
+}
+#contact {
+	background-image: linear-gradient(to top, #5ee7df 0%, #65afe0 100%);
+	// &input {
+	// 	font-weight: 600 !important;
+	// }
+	min-height: 100vh;
 }
 </style>

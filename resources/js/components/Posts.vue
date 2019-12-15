@@ -78,9 +78,9 @@
 </template>
 
 <script>
-import Chart from './Blocks/Chart.vue';
-import Tags from './Blocks/Tags.vue';
-import ArticalCard from './Blocks/ArticalCard.vue';
+import Chart from './Blocks/Posts/Chart.vue';
+import Tags from './Blocks/Posts/Tags.vue';
+import ArticalCard from './Blocks/Posts/ArticalCard.vue';
 import ReturnButton from './Blocks/ReturnPostsButton.vue';
 export default {
 	components: { Chart, Tags, ArticalCard, ReturnButton },

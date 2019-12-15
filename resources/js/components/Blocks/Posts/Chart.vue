@@ -10,7 +10,6 @@
 					v-if="isLoaded"
 					:topicName="topicName"
 					:topicNumber="topicNumber"
-					:options="options"
 				/>
 			</div>
 		</template>
@@ -18,7 +17,7 @@
 </template>
 
 <script>
-import DoughnutChart from './DoughnutChart.vue';
+import DoughnutChart from '../DoughnutChart.vue';
 export default {
 	components: { DoughnutChart },
 	data() {
@@ -28,7 +27,6 @@ export default {
 			tagName: '',
 			tagNumber: '',
 			isLoaded: false,
-			options: {},
 		};
 	},
 	async beforeCreate() {

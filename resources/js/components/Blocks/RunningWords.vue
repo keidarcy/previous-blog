@@ -1,5 +1,12 @@
 <template>
-	<div class="pb-12 pb-md-0">
+	<div
+		class="pb-12 pb-md-0"
+		data-aos="flip-left"
+		data-aos-easing="ease-out-cubic"
+		data-aos-duration="2000"
+		data-aos-once="true"
+		data-aos-offset="-100"
+	>
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">
 			</div>
@@ -98,8 +105,8 @@
 							dark
 							v-on="on"
 						>
-							Don't click me &nbsp
-							<v-icon>fas fa-skull-crossbones fa-sm</v-icon>
+							Don't click me
+							<v-icon> fas fa-skull-crossbones fa-sm</v-icon>
 						</v-btn>
 					</template>
 					<v-sheet
@@ -123,7 +130,7 @@
 </template>
 
 <script>
-import TextScramble from '../../textScramble.js';
+import TextScramble from '../../modules/textScramble.js';
 function dateToStr12H(date, format) {
 	if (!format) {
 		format = 'Y/M/D h:m:s AP';

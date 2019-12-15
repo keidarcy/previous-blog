@@ -1,7 +1,12 @@
 <template>
 	<div class="pt-md-12">
 		<v-container>
-			<v-container>
+			<v-container
+				data-aos="flip-left"
+				data-aos-easing="ease-out-cubic"
+				data-aos-duration="2000"
+				data-aos-offset="-100"
+			>
 				<ul id="switches">
 					<li
 						:class="speakingStatus"
@@ -53,7 +58,11 @@
 					</v-tooltip>
 				</ul>
 			</v-container>
-			<v-container>
+			<v-container
+				data-aos="flip-left"
+				data-aos-easing="ease-out-cubic"
+				data-aos-duration="2000"
+			>
 				<div
 					id="bot"
 					:class="status"
@@ -415,7 +424,7 @@ export default {
 
 /* Waiting (Thinking) */
 #bot.thinking #face {
-	border: 0.4em solid #9f97e4;
+	border: 0.4em solid hotpink;
 }
 
 #bot.thinking #eyes {

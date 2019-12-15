@@ -2,9 +2,10 @@
 	<v-footer
 		padless
 		absolute
+		color="grey darken-4"
 	>
 		<v-col
-			class="text-center white--text black text font-weight-bold"
+			class="text-center white--text text font-weight-bold"
 			cols="12"
 		>
 			<div>
@@ -38,7 +39,7 @@
 					</v-tooltip>
 				</v-container>
 				<v-container>
-					<p class="text--white"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
+					<p class="text-last-line"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
 					</p>
 				</v-container>
 
@@ -78,3 +79,8 @@ export default {
 	},
 };
 </script>
+<style lang="stylus" scoped>
+.text-last-line {
+	color white
+}
+</style>

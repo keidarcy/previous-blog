@@ -2,12 +2,10 @@
 @import '~vuetify/dist/vuetify.min.css';
 @import 'node_modules/bulma/bulma';
 // pugins
-@import './pugins/hamburger.css';
-@import './pugins/overlay.scss';
+@import './pugins/animate.css';
 // Variables
 @import 'variables';
 //gerneal setting
-@import './pugins/animate.css';
 body {
     color: #4b5d73;
     font-size: 16px;

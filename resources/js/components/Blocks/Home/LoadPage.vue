@@ -1,15 +1,19 @@
 <template>
 
 	<v-dialog
-		v-model="loading"
+		v-model="loadingState"
 		fullscreen
 	>
-		<div
-			class="full"
-			data-aos="fade-in"
-			data-aos-duration="1000"
-			data-aos-once="true"
-		>
+		<div class="full">
+			<v-btn
+				icon
+				dark
+				@click="changeLoadingState"
+				color="grey darken-1"
+			>
+				<v-icon>mdi-dog-service mdi-36px</v-icon>
+			</v-btn>
+
 			<div class="display-3 front-hello animated fadeInDownBig">Hello.</div>
 			<div class="message">
 				<div class="ma-5">
@@ -21,6 +25,8 @@
 							:class="frontFirstLine"
 							@mouseover="mouseInFirstLine"
 							@mouseleave="mouseOutFirstLine"
+							@touchstart="mouseInFirstLine"
+							@touchend="mouseOutFirstLine"
 						>My name is
 							<span class="idea some-difference">
 								Xing Yahao
@@ -32,6 +38,8 @@
 							:class="backFirstLine"
 							@mouseover="mouseInFirstLine"
 							@mouseleave="mouseOutFirstLine"
+							@touchstart="mouseInFirstLine"
+							@touchend="mouseOutFirstLine"
 						>My Chinese name is <span class="some-difference idea">邢 亜豪.
 							</span>
 						</div>
@@ -45,12 +53,16 @@
 							:class="frontSecondLine"
 							@mouseover="mouseInSecondLine"
 							@mouseleave="mouseOutSecondLine"
+							@touchstart="mouseInSecondLine"
+							@touchend="mouseOutSecondLine"
 						>I want to create staffs that</div>
 						<div
 							class="display-1 animated back-word"
 							:class="backSecondLine"
 							@mouseover="mouseInSecondLine"
 							@mouseleave="mouseOutSecondLine"
+							@touchstart="mouseInSecondLine"
+							@touchend="mouseOutSecondLine"
 						>I'd like to
 						</div>
 					</div>
@@ -63,23 +75,27 @@
 							:class="frontThirdLine"
 							@mouseover="mouseInThirdLine"
 							@mouseleave="mouseOutThirdLine"
-						><span class="some-difference">make</span> a <span class="some-difference">difference.</span></div>
+							@touchstart="mouseInThirdLine"
+							@touchend="mouseOutThirdLine"
+						><span class="some-difference">make</span> a <span class="some-difference">difference</span>.</div>
 						<div
 							class="display-1 animated back-word pb-5"
 							:class="backThirdLine"
 							@mouseover="mouseInThirdLine"
 							@mouseleave="mouseOutThirdLine"
-						>turn <span class="some-difference idea">ideas</span> to <span class="some-difference idea">reality.</span></div>
+							@touchstart="mouseInThirdLine"
+							@touchend="mouseOutThirdLine"
+						>turn <span class="some-difference idea">ideas</span> to <span class="some-difference idea">reality</span>.</div>
 					</div>
 				</div>
 
-				<div class="pt-5 text-center front-button animated fadeInDownBig">
+				<div class="text-center front-button animated fadeInDownBig">
 					<v-hover v-slot:default="{ hover }">
 						<v-btn
 							:outlined="hover ? false : true"
 							x-large
 							color="#41C19A"
-							@click="loading=false"
+							@click="changeLoadingState"
 							class="loadBtn pulse animated infinite"
 						>View me<v-icon
 								class="pl-2"
@@ -94,6 +110,8 @@
 			tile
 			@mouseover="mouseInIcon"
 			@mouseleave="mouseOutIcon"
+			@touchstart="mouseInIcon"
+			@touchend="mouseOutIcon"
 			class="my-icon"
 			size="62"
 		>
@@ -110,6 +128,8 @@
 const inAnima = 'zoomIn';
 const OutAnima = 'zoomOut';
 const iconSwing = 'animated swing';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
 	data() {
 		return {
@@ -119,13 +139,16 @@ export default {
 			backSecondLine: 'notShow',
 			frontThirdLine: 'fadeInDownBig front-line-third',
 			backThirdLine: 'notShow',
-			loading: true,
 			frontWord: '',
 			backWord: '',
 			touchedIcon: '',
 		};
 	},
+	computed: {
+		...mapGetters(['loadingState']),
+	},
 	methods: {
+		...mapActions(['changeLoadingState']),
 		mouseInFirstLine() {
 			this.frontFirstLine = OutAnima;
 			this.backFirstLine = inAnima;
@@ -186,6 +209,11 @@ $wordInDuration: 2s;
 .full {
 	background-image: url(https://images.unsplash.com/photo-1516905041604-7935af78f572?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
 	background-position: center center;
+
+	@media only screen and (max-width: $breakpoint-md) {
+		background-image: unset;
+		background: black;
+	}
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -204,6 +232,10 @@ $wordInDuration: 2s;
 	display: block;
 	position: absolute;
 	background-color: rgba(116, 116, 116, 0.5);
+	@media only screen and (max-width: $breakpoint-md) {
+		background-color: transparent;
+		bottom: 20%;
+	}
 	color: #fff;
 	padding: 0.5em;
 }
@@ -223,7 +255,6 @@ $wordInDuration: 2s;
 	}
 	&-1 {
 		@extend %display-text;
-		line-height: 0.5;
 		@media only screen and (max-width: $breakpoint-md) {
 			font-size: 30px !important;
 		}
@@ -285,6 +316,11 @@ $wordInDuration: 2s;
 	&-button {
 		animation-duration: $wordInDuration;
 		animation-delay: $wordInDuration * 3.1;
+	}
+}
+.third-line {
+	@media only screen and (max-width: $breakpoint-md) {
+		padding-top: 10px;
 	}
 }
 .notShow {

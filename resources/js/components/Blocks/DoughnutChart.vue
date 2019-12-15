@@ -1,9 +1,10 @@
 <script>
-import { Doughnut } from 'vue-chartjs';
+import { Pie } from 'vue-chartjs';
 import * as palette from 'google-palette';
-
+import Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 export default {
-	extends: Doughnut,
+	extends: Pie,
 	data() {
 		return {
 			animateRotate: true,
@@ -18,14 +19,15 @@ export default {
 			type: Array,
 			default: [],
 		},
-		options: {
-			type: Object,
-			default: {},
-		},
 	},
 	mounted() {
+		Chart.defaults.global.defaultFontSize = 15;
+		Chart.defaults.global.defaultFontFamily = 'Nunito';
+		console.log(ChartDataLabels);
+		console.log(Chart);
 		this.renderChart({
-			type: 'doughnut',
+			type: 'Pie',
+			plugins: [ChartDataLabels],
 			labels: this.topicName,
 			datasets: [
 				{
@@ -39,7 +41,17 @@ export default {
 					data: this.topicNumber,
 				},
 			],
-			options: this.options,
+			options: {
+				plugins: {
+					datalabels: {
+						labels: {
+							title: {
+								color: 'blue',
+							},
+						},
+					},
+				},
+			},
 		});
 	},
 };
