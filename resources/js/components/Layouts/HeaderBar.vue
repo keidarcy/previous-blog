@@ -20,10 +20,23 @@
 						/></a>
 
 					<v-spacer></v-spacer>
-
-					<v-btn icon>
-						<v-icon>mdi-magnify</v-icon>
+					<v-spacer></v-spacer>
+					<v-spacer></v-spacer>
+					<v-spacer></v-spacer>
+					<v-btn icon　class="mt-5">
+						<v-icon>mdi-feature-search-outline</v-icon>
 					</v-btn>
+					<v-autocomplete
+						v-model="selected"
+						:loading="loading"
+						:items="items"
+						class="mt-8"
+						href="/"
+						hide-no-data
+						@change="goRoute(selected)"
+						@focus="getSearchData"
+						label="What's you favorite color 👾?"
+					></v-autocomplete>
 
 					<v-btn
 						icon
@@ -78,9 +91,18 @@
 
 				<v-spacer></v-spacer>
 
-				<v-btn icon>
-					<v-icon>mdi-magnify</v-icon>
-				</v-btn>
+				<v-autocomplete
+					v-model="selected"
+					:loading="loading"
+					:items="items"
+					class="mt-8"
+					href="/"
+					hide-no-data
+					@change="goRoute(selected)"
+					@focus="getSearchData"
+					label="What's you favorite color 👾?"
+				></v-autocomplete>
+
 				<a href="/posts">
 					<v-btn
 						icon
@@ -107,15 +129,36 @@ export default {
 			duration: 1000,
 			offset: 0,
 			easing: 'easeInOutCubic',
+			apiPosts: [],
+			apiTags: [],
+			loading: false,
+			selected: '',
 		};
 	},
 	methods: {
-		...mapActions(['fetchBasicInfo', 'changeLoadingState']),
+		...mapActions(['changeLoadingState']),
 		target(tab) {
 			return `#${tab.toLowerCase()}`;
 		},
+		getSearchData() {
+			this.loading = true;
+			axios
+				.get('/api/search/posts')
+				.then(response => {
+					this.apiPosts = response.data.posts;
+					this.apiTags = response.data.tags;
+					this.loading = false;
+				})
+				.catch(error => console.log(error));
+		},
+		goRoute(data) {
+			let index = this.apiPosts.map(post => post.title).indexOf(data);
+			if (index > -1)
+				window.location.replace('/show/' + this.apiPosts.map(post => post.slug)[index]);
+			else index = this.apiTags.map(tag => tag.name).indexOf(data);
+			window.location.replace('/posts/' + this.apiTags.map(tag => tag.slug)[index]);
+		},
 	},
-	//computed: mapGetters(['basicInfo']),
 	computed: {
 		...mapGetters(['loadingState']),
 		options() {
@@ -128,9 +171,9 @@ export default {
 		home() {
 			return location.pathname.length === 1 ? true : false;
 		},
-	},
-	created() {
-		this.fetchBasicInfo();
+		items() {
+			return [...this.apiTags.map(tag => tag.name), ...this.apiPosts.map(post => post.title)];
+		},
 	},
 };
 </script>

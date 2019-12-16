@@ -108,4 +108,15 @@ class PostController extends Controller
                 'tagName' => $tagName,
                 'tagNumber' => $tagNumber];
     }
+
+    public function getPostsForSearchApi()
+    {
+        $posts = Post::where('complete', 1)
+        ->orderByDesc('created_at')
+        ->select('title', 'slug', 'id')
+        ->get();
+        $tags = Tag::select('name', 'slug')->get();
+
+        return ['posts'=>$posts,'tags'=>$tags];
+    }
 }

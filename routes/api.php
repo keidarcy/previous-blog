@@ -29,3 +29,5 @@ Route::get('/basic', function () {
 Route::post('/message/create', 'XControllers\MessageController@create');
 
 Route::get('/number/topics/tags', 'XControllers\PostController@getTopicsAndTagsNumber');
+
+Route::get('/search/posts', 'XControllers\PostController@getPostsForSearchApi');
