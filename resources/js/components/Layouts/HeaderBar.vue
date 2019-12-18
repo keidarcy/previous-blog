@@ -12,39 +12,48 @@
 
 					<v-toolbar-title>xyyolab
 
-					</v-toolbar-title><a href="/">
-						<img
-							src="/images/logo-without-background.png"
-							alt="logo"
-							class="title-logo"
-						/></a>
-
+						<a href="/">
+							<img
+								src="/images/logo-without-background.png"
+								alt="logo"
+								class="title-logo"
+							/></a>
+					</v-toolbar-title>
 					<v-spacer></v-spacer>
-					<v-spacer></v-spacer>
-					<v-spacer></v-spacer>
-					<v-spacer></v-spacer>
-					<v-btn icon　class="mt-5">
-						<v-icon>mdi-feature-search-outline</v-icon>
-					</v-btn>
-					<v-autocomplete
-						v-model="selected"
-						:loading="loading"
-						:items="items"
-						class="mt-8"
-						href="/"
-						hide-no-data
-						@change="goRoute(selected)"
-						@focus="getSearchData"
-						label="What's you favorite color 👾?"
-					></v-autocomplete>
-
-					<v-btn
-						icon
-						color="orange darken-2"
-						@click="$vuetify.goTo('#robot', options)"
-					>
-						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
-					</v-btn>
+					<v-container class="mt-12">
+						<v-row>
+							<v-col
+								offset-md="7"
+								md="4"
+							>
+								<v-autocomplete
+									:placeholder="placeholder"
+									v-model="selected"
+									:loading="loading"
+									:items="items"
+									href="/"
+									auto-select-first
+									prepend-inner-icon="mdi-feature-search-outline"
+									hide-no-data
+									clearable
+									ref="search"
+									color="orange darken-2"
+									@change="goRoute(selected)"
+									@keyup="getSearchData"
+								>
+								</v-autocomplete>
+							</v-col>
+							<v-col md="1">
+								<v-btn
+									icon
+									color="orange darken-2"
+									@click="$vuetify.goTo('#robot', options)"
+								>
+									<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
+								</v-btn>
+							</v-col>
+						</v-row>
+					</v-container>
 
 					<template v-slot:extension>
 						<v-tabs
@@ -89,29 +98,43 @@
 					/>
 				</a>
 
-				<v-spacer></v-spacer>
-
-				<v-autocomplete
-					v-model="selected"
-					:loading="loading"
-					:items="items"
-					class="mt-8"
-					href="/"
-					hide-no-data
-					@change="goRoute(selected)"
-					@focus="getSearchData"
-					label="What's you favorite color 👾?"
-				></v-autocomplete>
-
-				<a href="/posts">
-					<v-btn
-						icon
-						color="red darken-1"
+				<v-row>
+					<v-col
+						class="offset-md-5 mt-2 offset-4 "
+						md="6"
 					>
-						<v-icon>mdi-pokeball mdi-spin</v-icon>
+						<v-autocomplete
+							:placeholder="placeholder"
+							v-model="selected"
+							:loading="loading"
+							:items="items"
+							href="/"
+							prepend-inner-icon="mdi-feature-search-outline"
+							hide-no-data
+							auto-select-first
+							clearable
+							ref="search"
+							color="red darken-1"
+							@change="goRoute(selected)"
+							@keyup="getSearchData"
+						></v-autocomplete>
+					</v-col>
+					<v-col
+						md="1"
+						class="d-flex justify-end"
+					>
 
-					</v-btn>
-				</a>
+						<a href="/posts">
+							<v-btn
+								icon
+								color="red darken-1"
+							>
+								<v-icon>mdi-pokeball mdi-spin mdi-36px</v-icon>
+
+							</v-btn>
+						</a>
+					</v-col>
+				</v-row>
 			</v-app-bar>
 		</template>
 	</div>
@@ -133,6 +156,7 @@ export default {
 			apiTags: [],
 			loading: false,
 			selected: '',
+			placeholder: '',
 		};
 	},
 	methods: {
@@ -141,22 +165,28 @@ export default {
 			return `#${tab.toLowerCase()}`;
 		},
 		getSearchData() {
-			this.loading = true;
-			axios
-				.get('/api/search/posts')
-				.then(response => {
-					this.apiPosts = response.data.posts;
-					this.apiTags = response.data.tags;
-					this.loading = false;
-				})
-				.catch(error => console.log(error));
+			this.loading = !this.loading;
+			if (this.loading) {
+				axios
+					.get('/api/search/posts')
+					.then(response => {
+						this.apiPosts = response.data.posts;
+						this.apiTags = response.data.tags;
+						this.loading = !this.loading;
+					})
+					.catch(error => console.log(error));
+			}
 		},
 		goRoute(data) {
-			let index = this.apiPosts.map(post => post.title).indexOf(data);
-			if (index > -1)
-				window.location.replace('/show/' + this.apiPosts.map(post => post.slug)[index]);
-			else index = this.apiTags.map(tag => tag.name).indexOf(data);
-			window.location.replace('/posts/' + this.apiTags.map(tag => tag.slug)[index]);
+			if (typeof data !== 'undefined') {
+				let index = this.apiPosts.map(post => post.title).indexOf(data);
+				if (index > -1) {
+					window.location.replace('/show/' + this.apiPosts.map(post => post.slug)[index]);
+				} else {
+					index = this.apiTags.map(tag => tag.name).indexOf(data);
+					window.location.replace('/posts/' + this.apiTags.map(tag => tag.slug)[index]);
+				}
+			}
 		},
 	},
 	computed: {
@@ -174,6 +204,18 @@ export default {
 		items() {
 			return [...this.apiTags.map(tag => tag.name), ...this.apiPosts.map(post => post.title)];
 		},
+	},
+	mounted() {
+		window.addEventListener('keyup', e => {
+			const key = e.which || e.keyCode;
+			if (key == 191) {
+				this.$refs.search.focus();
+				this.selected = '';
+			}
+		});
+		if (window.innerWidth > 760) {
+			this.placeholder = "Search(' / ' to focus)";
+		}
 	},
 };
 </script>
@@ -194,7 +236,6 @@ $breakpoint-md: 768px !default;
 		transform: rotateZ(360deg);
 	}
 	@media only screen and (max-width: $breakpoint-md) {
-		width: 2rem;
 		height: 2rem;
 	}
 }

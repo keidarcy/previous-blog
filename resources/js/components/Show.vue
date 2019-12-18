@@ -17,7 +17,7 @@
 				>{{ post.post.title }}</h1>
 				<div class="columns">
 					<div
-						class="artical-backround column is-10 is-offset-1"
+						class="artical-in-show column is-10 is-offset-1"
 						data-aos="fade-up"
 						data-aos-once="true"
 						data-aos-offset="-100"
@@ -150,10 +150,10 @@ export default {
 	);
 }
 
-.artical-backround {
-	background-color: #ffffff;
-	box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
-	margin-top: 3rem;
+.artical-in-show {
+	box-shadow: 0 8.2px 14.6px -33px rgba(0, 0, 0, 0.303),
+		0 14.3px 23.3px -33px rgba(0, 0, 0, 0.437), 0 18.7px 30.5px -33px rgba(0, 0, 0, 0.511),
+		0 22.9px 41px -33px rgba(0, 0, 0, 0.558), 0 40px 65px -33px rgba(0, 0, 0, 0.59);
 }
 
 @media (min-width: 768px) {

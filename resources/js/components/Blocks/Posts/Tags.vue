@@ -10,7 +10,10 @@
 			label
 			:href="`/posts/${tag}`"
 		>
-			<v-icon left>mdi-label</v-icon>
+			<v-icon
+				left
+				class="my-tag-icon"
+			>mdi-rocket</v-icon>
 			{{ tag }} ({{ tagsNumber[index] }})
 		</v-chip>
 	</div>
@@ -36,12 +39,17 @@ export default {
 	},
 };
 </script>
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 .my-tag {
-	transition all 0.3s ease 0s
+	transition: all 0.3s ease 0s;
 
 	&:hover {
-		transform translateX(-7px)
+		transform: translateX(-7px);
+	}
+
+	&-icon:hover {
+		transform: translateY(-8px);
+		color: coral;
 	}
 }
 </style>

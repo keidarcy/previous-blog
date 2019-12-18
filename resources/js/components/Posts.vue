@@ -3,22 +3,7 @@
 		<div data-aos="fade-up">
 			<section class="section">
 				<div class="container">
-					<div class="control has-icons-left has-icons-right desktop">
-						<input
-							type="text"
-							class="input my-input is-large"
-							placeholder="Search for title ;) "
-							v-model="textSearch"
-							:class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
-						/>
-						<span class="icon is-large is-right">
-							<i class="fab fa-searchengin"></i>
-						</span>
-						<span class="icon is-large is-left">
-							<i class="fas fa-hat-wizard"></i>
-						</span>
-					</div>
-					<div class="control has-icons-left has-icons-right mobile">
+					<div class="control has-icons-left has-icons-right">
 						<input
 							type="text"
 							class="input my-input is-mediumn"

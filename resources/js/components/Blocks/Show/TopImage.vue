@@ -14,13 +14,14 @@
 			</section>
 		</div>
 		<div v-else>
-			<!-- <v-carousel style="height:100%">
+			<v-carousel style="height:100%">
 				<v-carousel-item
 					v-for="(item,i) in items"
 					v-bind:src="item.src"
 					:key="i"
-				></v-carousel-item>
-			</v-carousel> -->
+				>
+				</v-carousel-item>
+			</v-carousel>
 		</div>
 	</div>
 </template>
@@ -40,18 +41,16 @@ export default {
 			isMobile: true,
 			items: [
 				{
-					src:
-						'https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80',
+					src: 'https://source.unsplash.com/random/600x1000',
 				},
 				{
-					src:
-						'https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80',
+					src: 'https://source.unsplash.com/random/600x1010',
 				},
 				{
-					src: 'https://vuetifyjs.com/static/doc-images/carousel/bird.jpg',
+					src: 'https://source.unsplash.com/random/600x1020',
 				},
 				{
-					src: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg',
+					src: 'https://source.unsplash.com/random/600x1030',
 				},
 			],
 		};

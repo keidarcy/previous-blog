@@ -22,11 +22,11 @@
     position: relative;
     top: 0px;
     right: 0px;
-    box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
+    box-shadow: 0 8.2px 14.6px -33px rgba(0, 0, 0, 0.303), 0 14.3px 23.3px -33px rgba(0, 0, 0, 0.437), 0 18.7px 30.5px -33px rgba(0, 0, 0, 0.511), 0 22.9px 41px -33px rgba(0, 0, 0, 0.558), 0 40px 65px -33px rgba(0, 0, 0, 0.59);
     transition: 400ms all 0ms ease-in-out;
     &:hover {
         top: -13px;
-        box-shadow: 0px 0px 3px 5px #71db77;
+        box-shadow: 0 8.2px 14.6px -33px #71db77, 0 14.3px 23.3px -33px #71db77, 0 18.7px 30.5px -33px #71db77, 0 22.9px 41px -33px #71db77, 0 40px 65px -33px #71db77, ;
         color: #71db77;
     }
     &-body {

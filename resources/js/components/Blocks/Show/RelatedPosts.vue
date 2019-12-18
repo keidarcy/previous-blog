@@ -1,5 +1,4 @@
 <template>
-
 	<v-container
 		data-aos="fade-up"
 		data-aos-offset="50"
@@ -8,7 +7,7 @@
 		<p class="big-title text-center">More Posts</p>
 		<v-slide-group
 			:show-arrows="!isMobile"
-			class="pl-1"
+			class="pl-1 related-posts"
 		>
 			<v-slide-item
 				v-for="relate in relatedPosts"
@@ -48,7 +47,6 @@
 			</v-slide-item>
 		</v-slide-group>
 	</v-container>
-
 </template>
 
 <script>
@@ -69,5 +67,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.related-posts > div > div.v-slide-group__content {
+	padding-bottom: 100px !important;
+}
 </style>

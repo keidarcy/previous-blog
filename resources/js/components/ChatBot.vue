@@ -21,8 +21,9 @@
 					dark
 					small
 					color="green"
+					@click="goTop"
 				>
-					<v-icon>mdi-pencil</v-icon>
+					<v-icon>mdi-fruit-watermelon</v-icon>
 				</v-btn>
 				<v-btn
 					fab
@@ -120,6 +121,9 @@ export default {
 				.catch(error => {
 					console.log(error);
 				});
+		},
+		goTop() {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		},
 	},
 	mounted() {
