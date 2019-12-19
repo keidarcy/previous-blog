@@ -154,6 +154,7 @@ export default {
 	box-shadow: 0 8.2px 14.6px -33px rgba(0, 0, 0, 0.303),
 		0 14.3px 23.3px -33px rgba(0, 0, 0, 0.437), 0 18.7px 30.5px -33px rgba(0, 0, 0, 0.511),
 		0 22.9px 41px -33px rgba(0, 0, 0, 0.558), 0 40px 65px -33px rgba(0, 0, 0, 0.59);
+	border-radius: 30px;
 }
 
 @media (min-width: 768px) {

@@ -18,15 +18,13 @@
 </head>
 
 <body>
-    <div id="app">
-        <v-app>
-            <header-bar></header-bar>
+    <v-app id="app">
+        <header-bar></header-bar>
 
-            @yield('content')
-            <chat-bot></chat-bot>
-            <footer-bar></footer-bar>
-        </v-app>
-    </div>
+        @yield('content')
+        <chat-bot></chat-bot>
+        <footer-bar></footer-bar>
+    </v-app>
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 
