@@ -4,7 +4,6 @@
 			<v-container
 				data-aos="flip-left"
 				data-aos-easing="ease-out-cubic"
-				data-aos-duration="2000"
 				data-aos-offset="-100"
 			>
 				<ul id="switches">
@@ -61,7 +60,6 @@
 			<v-container
 				data-aos="flip-left"
 				data-aos-easing="ease-out-cubic"
-				data-aos-duration="2000"
 			>
 				<div
 					id="bot"

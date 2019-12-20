@@ -13,8 +13,7 @@
 						@submit.prevent="contactSubmit"
 						v-model="valid"
 						lazy-validation
-						data-aos="fade-up"
-						data-aos-duration="1000"
+						data-aos="flip-left"
 						data-aos-once="true"
 					>
 						<input

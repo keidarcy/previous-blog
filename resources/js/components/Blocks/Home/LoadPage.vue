@@ -197,6 +197,9 @@ export default {
 			this.backThirdLine = OutAnima;
 			this.touchedIcon = '';
 		},
+		mounted() {
+			document.getElementById('particle').scrollIntoView();
+		},
 	},
 };
 </script>

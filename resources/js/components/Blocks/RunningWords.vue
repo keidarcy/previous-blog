@@ -3,9 +3,7 @@
 		class="pb-12 pb-md-0"
 		data-aos="flip-left"
 		data-aos-easing="ease-out-cubic"
-		data-aos-duration="2000"
 		data-aos-once="true"
-		data-aos-offset="-100"
 	>
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">

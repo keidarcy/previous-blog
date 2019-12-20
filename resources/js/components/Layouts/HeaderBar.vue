@@ -1,142 +1,151 @@
 <template>
 	<div id="header">
-		<template>
-			<v-card v-if="home">
-				<v-app-bar
-					dark
-					flat
-					dense
-					color="grey darken-4"
-				>
-					<v-app-bar-nav-icon @click="changeLoadingState"></v-app-bar-nav-icon>
+		<v-app-bar
+			dark
+			flat
+			dense
+			color="grey darken-4"
+			v-if="home"
+		>
+			<v-toolbar-title>
+				xy<a
+					class="css-title-text"
+					@click="changeLoadingState"
+				>yo</a>lab
+			</v-toolbar-title>
+			<a href="/">
+				<img
+					src="/images/logo-without-background.png"
+					alt="logo"
+					class="title-logo"
+				/>
+			</a>
 
-					<v-toolbar-title>xyyolab
-
-						<a href="/">
-							<img
-								src="/images/logo-without-background.png"
-								alt="logo"
-								class="title-logo"
-							/></a>
-					</v-toolbar-title>
-					<v-spacer></v-spacer>
-					<v-container class="mt-12">
-						<v-row>
-							<v-col
-								offset-md="7"
-								md="4"
-							>
-								<v-autocomplete
-									:placeholder="placeholder"
-									v-model="selected"
-									:loading="loading"
-									:items="items"
-									href="/"
-									auto-select-first
-									prepend-inner-icon="mdi-feature-search-outline"
-									hide-no-data
-									clearable
-									ref="search"
-									color="orange darken-2"
-									@change="goRoute(selected)"
-									@keyup="getSearchData"
-								>
-								</v-autocomplete>
-							</v-col>
-							<v-col md="1">
-								<v-btn
-									icon
-									color="orange darken-2"
-									@click="$vuetify.goTo('#robot', options)"
-								>
-									<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
-								</v-btn>
-							</v-col>
-						</v-row>
-					</v-container>
-
-					<template v-slot:extension>
-						<v-tabs
-							centered
-							slider-color="yellow"
-							background-color="transparent"
-						>
-							<v-tab
-								v-for="tab in tabs"
-								:key="tab.id"
-								@click="$vuetify.goTo(target(tab), options)"
-							>
-								{{ tab }}
-							</v-tab>
-							<a
-								class="blog-link"
-								href="/posts"
-							>
-								<v-tab>
-									BLOG
-								</v-tab>
-							</a>
-						</v-tabs>
-					</template>
-				</v-app-bar>
-			</v-card>
-			<v-app-bar
-				color="grey darken-4"
-				dark
-				v-else
-				elevate-on-scroll
-			>
-
-				<v-toolbar-title>xyyolab
-
-				</v-toolbar-title>
-				<a href="/">
-					<img
-						src="/images/logo-without-background.png"
-						alt="logo"
-						class="title-logo"
-					/>
-				</a>
-
+			<!-- <v-container class="mt-12">
 				<v-row>
 					<v-col
-						class="offset-md-5 mt-2 offset-4 "
-						md="6"
+						offset-md="7"
+						md="4"
+					> -->
+			<v-row>
+				<v-col
+					class="offset-md-8 mt-2 offset-4 "
+					md="3"
+				>
+					<v-autocomplete
+						:placeholder="placeholder"
+						v-model="selected"
+						:loading="loading"
+						:items="items"
+						href="/"
+						auto-select-first
+						prepend-inner-icon="mdi-feature-search-outline"
+						hide-no-data
+						clearable
+						ref="search"
+						color="orange darken-2"
+						@change="goRoute(selected)"
+						@keyup="getSearchData"
 					>
-						<v-autocomplete
-							:placeholder="placeholder"
-							v-model="selected"
-							:loading="loading"
-							:items="items"
-							href="/"
-							prepend-inner-icon="mdi-feature-search-outline"
-							hide-no-data
-							auto-select-first
-							clearable
-							ref="search"
-							color="red darken-1"
-							@change="goRoute(selected)"
-							@keyup="getSearchData"
-						></v-autocomplete>
-					</v-col>
-					<v-col
-						md="1"
-						class="d-flex justify-end"
+					</v-autocomplete>
+				</v-col>
+				<v-col
+					md="1"
+					class="d-flex justify-end"
+				>
+					<v-btn
+						icon
+						color="orange darken-2"
+						@click="$vuetify.goTo('#robot', options)"
 					>
-
-						<a href="/posts">
-							<v-btn
-								icon
-								color="red darken-1"
-							>
-								<v-icon>mdi-pokeball mdi-spin mdi-36px</v-icon>
-
-							</v-btn>
-						</a>
-					</v-col>
+						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
+					</v-btn>
+				</v-col>
+			</v-row>
+			<!-- </v-col>
 				</v-row>
-			</v-app-bar>
-		</template>
+			</v-container> -->
+
+			<template v-slot:extension>
+				<v-tabs
+					centered
+					slider-color="yellow"
+					background-color="transparent"
+				>
+					<v-tab
+						v-for="tab in tabs"
+						:key="tab.id"
+						@click="$vuetify.goTo(target(tab), options)"
+					>
+						{{ tab }}
+					</v-tab>
+					<a
+						class="blog-link"
+						href="/posts"
+					>
+						<v-tab>
+							BLOG
+						</v-tab>
+					</a>
+				</v-tabs>
+			</template>
+		</v-app-bar>
+
+		<v-app-bar
+			color="grey darken-4"
+			dark
+			v-else
+		>
+
+			<v-toolbar-title>
+				xyyolab
+			</v-toolbar-title>
+			<a href="/">
+				<img
+					src="/images/logo-without-background.png"
+					alt="logo"
+					class="title-logo"
+				/>
+			</a>
+
+			<v-row>
+				<v-col
+					class="offset-md-5 mt-2 offset-4 "
+					md="6"
+				>
+					<v-autocomplete
+						:placeholder="placeholder"
+						v-model="selected"
+						:loading="loading"
+						:items="items"
+						href="/"
+						prepend-inner-icon="mdi-feature-search-outline"
+						hide-no-data
+						auto-select-first
+						clearable
+						ref="search"
+						color="red darken-1"
+						@change="goRoute(selected)"
+						@keyup="getSearchData"
+					></v-autocomplete>
+				</v-col>
+				<v-col
+					md="1"
+					class="d-flex justify-end"
+				>
+
+					<a href="/posts">
+						<v-btn
+							icon
+							color="red darken-1"
+						>
+							<v-icon>mdi-pokeball mdi-spin mdi-36px</v-icon>
+
+						</v-btn>
+					</a>
+				</v-col>
+			</v-row>
+		</v-app-bar>
 	</div>
 </template>
 <script>
@@ -225,7 +234,15 @@ $breakpoint-md: 768px !default;
 #header {
 	background: black;
 }
-
+.css-title-text {
+	color: #64ffda !important;
+}
+.v-toolbar__title {
+	@media only screen and (max-width: $breakpoint-md) {
+		overflow: unset;
+		font-size: 1rem;
+	}
+}
 .title-logo {
 	width: 2.75rem;
 	height: 2.75rem;
