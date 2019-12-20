@@ -5,7 +5,7 @@ const state = {
 
 const getters = {
     basicInfo: state => state.basic,
-    loadingState: state => state.loading
+    loadingState: state => state.loading,
 };
 
 const actions = {
@@ -15,13 +15,12 @@ const actions = {
     },
     changeLoadingState({ commit }) {
         commit('setLoading', state.loading);
-    }
+    },
 };
 
 const mutations = {
     setBasicInfo: (state, data) => (state.basic = data),
     setLoading: (state, status) => (state.loading = !status),
-
 };
 
 export default {

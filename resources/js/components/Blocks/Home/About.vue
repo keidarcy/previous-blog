@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="about"
-		class="about-scene"
-	>
+	<div id="about">
 		<section
 			class="section"
 			style="padding-top:10rem;"

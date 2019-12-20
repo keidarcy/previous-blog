@@ -1,6 +1,6 @@
 <template>
 	<div id="home">
-		<!-- <LoadPage /> -->
+		<LoadPage />
 		<ParticleCanvas />
 		<About />
 		<Robot />

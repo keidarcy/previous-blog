@@ -32,14 +32,14 @@
 										>
 											<img
 												class="is-rounded"
-												:src="basic.little_picture"
+												:src="basicInfo.little_picture"
 												alt="ops"
 											/>
 										</figure>
 										<span
 											class="subtitle is-3"
 											style="padding-top:20px;"
-										>{{ basic.nick_name }}</span>
+										>{{ basicInfo.nick_name }}</span>
 										<v-divider
 											class="mx-4"
 											inset
@@ -55,7 +55,7 @@
 											<figure class="image is-64x64">
 												<img
 													class="is-rounded"
-													:src="basic.little_picture"
+													:src="basicInfo.little_picture"
 													alt="ops"
 												/>
 											</figure>
@@ -64,7 +64,7 @@
 											class="center"
 											style="padding-top:20px;"
 										>
-											<span class="subtitle is-4">{{ basic.nick_name }}</span>
+											<span class="subtitle is-4">{{ basicInfo.nick_name }}</span>
 										</div>
 										<div
 											class="center"
@@ -102,22 +102,16 @@
 				</div>
 			</div>
 		</section>
-
 		<related-posts :relatedPosts="post.relates" />
 		<div class="clear"></div>
 	</div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import RelatedPosts from './Blocks/Show/RelatedPosts.vue';
 import TopImage from './Blocks/Show/TopImage.vue';
 export default {
 	components: { RelatedPosts, TopImage },
-	props: {
-		basic: {
-			required: true,
-			type: Object,
-		},
-	},
 	data() {
 		return {
 			post: '',
@@ -134,6 +128,13 @@ export default {
 				that.loading = false;
 			})
 			.catch(error => console.log(error));
+	},
+	methods: {
+		...mapActions(['fetchBasicInfo']),
+	},
+	computed: mapGetters(['basicInfo']),
+	created() {
+		this.fetchBasicInfo();
 	},
 };
 </script>
