@@ -8,53 +8,16 @@
 						v-for="artical in articalsFilter"
 						:key="artical.id"
 					>
-						<!-- <div class="notification artical">
-							<div class="card">
-								<div class="card-image">
-									<figure class="image is-4by3 artical-image">
-										<a :href="`/show/${artical.slug}`">
-											<img
-												:src="artical.featured_image"
-												alt="Placeholder image"
-											/>
-										</a>
-									</figure>
-								</div>
-								<div class="card-content">
-									<div class="media">
-										<div class="media-content">
-											<p class="title is-5">
-												<a :href="`/show/${artical.slug}`">{{ artical.title }}</a>
-											</p>
-										</div>
-									</div>
-									<br />
-									<div class="content">
-										<a :href="`/show/${artical.slug}`">{{ artical.summary }}</a>
-										<br />
-									</div>
-									<div class="tags are-medium">
-										<a
-											:href="`/posts/${tag.slug}`"
-											v-for="tag in artical.tags"
-											:key="tag.id"
-										>
-											<span class="tag is-dark">{{ tag.name }}</span>&nbsp;
-										</a>
-									</div>
-									<time class="right">{{ artical.published_at }}</time>
-								</div>
-							</div>
-						</div> -->
 						<v-card
-							class="artical pt-5 pb-3"
+							class="artical py-5 d-flex justify-center"
 							max-width="450"
-							color="grey lighten-4"
+							:color="isMobile"
 						>
 							<v-card
-								class="mx-2 ml-5"
-								max-width="380"
-							><a :href="`/show/${artical.slug}`">
+								class="mx-2"
+								max-width="400"
+							>
+								<a :href="`/show/${artical.slug}`">
 									<v-img
 										class="white--text align-end artical-image"
 										height="360px"
@@ -91,7 +54,7 @@
 										{{ tag.name }}
 									</v-chip>
 								</v-card-actions>
-								<p class="pb-3 mx-5 font-italic">{{ artical.published_at }}</p>
+								<p class="pb-2 mx-5 font-italic">{{ artical.published_at }}</p>
 							</v-card>
 						</v-card>
 
@@ -121,7 +84,9 @@ import returnButton from '../ReturnPostsButton.vue';
 export default {
 	components: { returnButton },
 	data() {
-		return {};
+		return {
+			isMobile: '',
+		};
 	},
 	props: {
 		articals: {
@@ -135,6 +100,9 @@ export default {
 		articalsFilter: {
 			type: Array,
 		},
+	},
+	mounted() {
+		window.innerWidth > 800 ? '' : (this.isMobile = 'transparent');
 	},
 };
 </script>

@@ -95,6 +95,7 @@ export default {
 			placeholder: '',
 			pressedKey: '',
 			isPosts: 0,
+			options: { duration: 1500, offset: 0, easing: 'easeInOutCubic' },
 		};
 	},
 	methods: {
@@ -140,7 +141,7 @@ export default {
 		// }
 		goHomeScollTo(sec) {
 			if (this.$router.currentRoute.name === 'Home') {
-				document.getElementById(sec).scrollIntoView({ block: 'end', behavior: 'smooth' });
+				this.$vuetify.goTo('#' + sec, this.options);
 			} else {
 				this.$router.push({ name: 'Home' });
 			}
@@ -148,14 +149,6 @@ export default {
 	},
 	computed: {
 		...mapGetters(['loadingState']),
-		options() {
-			return {
-				duration: 1000,
-				offset: 0,
-				easing: 'easeInOutCubic',
-			};
-		},
-
 		items() {
 			return [...this.apiTags.map(tag => tag.name), ...this.apiPosts.map(post => post.title)];
 		},
