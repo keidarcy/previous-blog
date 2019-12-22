@@ -11,7 +11,7 @@
 						<v-card
 							class="artical py-5 d-flex justify-center"
 							max-width="450"
-							:color="isMobile"
+							:color="isMobileColor"
 						>
 							<v-card
 								class="mx-2"
@@ -21,7 +21,7 @@
 									<v-img
 										class="white--text align-end artical-image"
 										height="360px"
-										width="400px"
+										:width="isMobileWidth"
 										:src="artical.featured_image"
 									>
 									</v-img>
@@ -85,7 +85,8 @@ export default {
 	components: { returnButton },
 	data() {
 		return {
-			isMobile: '',
+			isMobileColor: 'grey lighten-4',
+			isMobileWidth: '400px',
 		};
 	},
 	props: {
@@ -102,7 +103,8 @@ export default {
 		},
 	},
 	mounted() {
-		window.innerWidth > 800 ? '' : (this.isMobile = 'transparent');
+		window.innerWidth > 800 ? '' : (this.isMobileColor = 'transparent');
+		window.innerWidth > 800 ? '' : (this.isMobileWidth = '330px');
 	},
 };
 </script>
