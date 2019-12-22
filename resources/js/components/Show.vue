@@ -13,14 +13,12 @@
 					class="center big-title"
 					data-aos="fade-up"
 					data-aos-once="true"
-					data-aos-offset="-100"
 				>{{ post.post.title }}</h1>
 				<div class="columns">
 					<div
 						class="artical-in-show column is-10 is-offset-1"
 						data-aos="fade-up"
 						data-aos-once="true"
-						data-aos-offset="-100"
 					>
 						<div class="artical-hearder">
 							<section class="section">

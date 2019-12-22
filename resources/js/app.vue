@@ -1,9 +1,12 @@
 <template>
 	<div>
 		<header-bar />
-
-		<router-view></router-view>
-
+		<transition
+			enter-active-class="animated fadeInLeft delay-1s"
+			leave-active-class="animated fadeOutRight"
+		>
+			<router-view></router-view>
+		</transition>
 		<chat-bot />
 		<footer-bar />
 	</div>
@@ -16,3 +19,5 @@ export default {
 	components: { HeaderBar, FooterBar, ChatBot },
 };
 </script>
+<style lang="scss" scoped>
+</style>

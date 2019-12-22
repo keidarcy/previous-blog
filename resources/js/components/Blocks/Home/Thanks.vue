@@ -4,6 +4,7 @@
 			class="section"
 			style="padding-top:8rem;"
 			data-aos="fade-up"
+			data-aos-once="true"
 		>
 			<div class="container">
 				<div class="center">

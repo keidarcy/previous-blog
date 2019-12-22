@@ -5,13 +5,12 @@
 			flat
 			dense
 			color="grey darken-4"
-			v-if="home"
 		>
 			<v-toolbar-title>
-				xy<a
+				xy<span
 					class="css-title-text"
 					@click="changeLoadingState"
-				>yo</a>lab
+				>yo</span>lab
 			</v-toolbar-title>
 			<a href="/">
 				<img
@@ -20,13 +19,6 @@
 					class="title-logo"
 				/>
 			</a>
-
-			<!-- <v-container class="mt-12">
-				<v-row>
-					<v-col
-						offset-md="7"
-						md="4"
-					> -->
 			<v-row>
 				<v-col
 					class="offset-md-8 mt-2 offset-4 "
@@ -62,89 +54,31 @@
 					</v-btn>
 				</v-col>
 			</v-row>
-			<!-- </v-col>
-				</v-row>
-			</v-container> -->
-
 			<template v-slot:extension>
 				<v-tabs
 					centered
 					slider-color="yellow"
 					background-color="transparent"
+					v-model="isPosts"
 				>
-					<v-tab
-						v-for="tab in tabs"
-						:key="tab.id"
-						@click="$vuetify.goTo(target(tab), options)"
-					>
-						{{ tab }}
+					<v-tab @click="goHomeScollTo('particle')">
+						Home
 					</v-tab>
-					<a
-						class="blog-link"
-						href="/posts"
-					>
-						<v-tab>
-							BLOG
-						</v-tab>
-					</a>
+
+					<v-tab @click="goHomeScollTo('about')">
+						ABOUT
+					</v-tab>
+
+					<v-tab @click="goHomeScollTo('contact')">
+						CONTACT
+					</v-tab>
+
+					<v-tab>
+						<router-link :to="{ name: 'Posts' }">BLOG</router-link>
+					</v-tab>
+
 				</v-tabs>
 			</template>
-		</v-app-bar>
-
-		<v-app-bar
-			color="grey darken-4"
-			dark
-			v-else
-		>
-
-			<v-toolbar-title>
-				xyyolab
-			</v-toolbar-title>
-			<a href="/">
-				<img
-					src="/images/logo-without-background.png"
-					alt="logo"
-					class="title-logo"
-				/>
-			</a>
-
-			<v-row>
-				<v-col
-					class="offset-md-5 mt-2 offset-4 "
-					md="6"
-				>
-					<v-autocomplete
-						:placeholder="placeholder"
-						v-model="selected"
-						:loading="loading"
-						:items="items"
-						href="/"
-						prepend-inner-icon="mdi-feature-search-outline"
-						hide-no-data
-						auto-select-first
-						clearable
-						ref="search"
-						color="red darken-1"
-						@change="goRoute(selected)"
-						@keyup="getSearchData"
-					></v-autocomplete>
-				</v-col>
-				<v-col
-					md="1"
-					class="d-flex justify-end"
-				>
-
-					<a href="/posts">
-						<v-btn
-							icon
-							color="red darken-1"
-						>
-							<v-icon>mdi-pokeball mdi-spin mdi-36px</v-icon>
-
-						</v-btn>
-					</a>
-				</v-col>
-			</v-row>
 		</v-app-bar>
 	</div>
 </template>
@@ -154,18 +88,13 @@ export default {
 	name: 'header-bar',
 	data() {
 		return {
-			burger: '',
-			overlay: '',
-			success: '',
-			tabs: ['HOME', 'ABOUT', 'CONTACT'],
-			duration: 1000,
-			offset: 0,
-			easing: 'easeInOutCubic',
 			apiPosts: [],
 			apiTags: [],
 			loading: false,
 			selected: '',
 			placeholder: '',
+			pressedKey: '',
+			isPosts: 0,
 		};
 	},
 	methods: {
@@ -174,16 +103,20 @@ export default {
 			return `#${tab.toLowerCase()}`;
 		},
 		getSearchData() {
-			this.loading = !this.loading;
-			if (this.loading) {
-				axios
-					.get('/api/search/posts')
-					.then(response => {
-						this.apiPosts = response.data.posts;
-						this.apiTags = response.data.tags;
-						this.loading = !this.loading;
-					})
-					.catch(error => console.log(error));
+			console.log(this.loading);
+			console.log(this.pressedKey);
+			if (this.pressedKey !== 38 && this.pressedKey !== 40) {
+				this.loading = !this.loading;
+				if (this.loading) {
+					axios
+						.get('/api/search/posts')
+						.then(response => {
+							this.apiPosts = response.data.posts;
+							this.apiTags = response.data.tags;
+							this.loading = !this.loading;
+						})
+						.catch(error => console.log(error));
+				}
 			}
 		},
 		goRoute(data) {
@@ -197,34 +130,50 @@ export default {
 				}
 			}
 		},
+		// if (index > -1) {
+		// 	const slug = this.apiPosts.map(post => post.slug)[index];
+		// 	this.$router.push({ name: 'Show', params: { slug } });
+		// } else {
+		// 	index = this.apiTags.map(tag => tag.name).indexOf(data);
+		// 	const slug = this.apiTags.map(tag => tag.slug)[index];
+		// 	this.$router.push({ name: 'Posts', params: { slug } });
+		// }
+		goHomeScollTo(sec) {
+			if (this.$router.currentRoute.name === 'Home') {
+				document.getElementById(sec).scrollIntoView({ block: 'end', behavior: 'smooth' });
+			} else {
+				this.$router.push({ name: 'Home' });
+			}
+		},
 	},
 	computed: {
 		...mapGetters(['loadingState']),
 		options() {
 			return {
-				duration: this.duration,
-				offset: this.offset,
-				easing: this.easing,
+				duration: 1000,
+				offset: 0,
+				easing: 'easeInOutCubic',
 			};
 		},
-		home() {
-			return location.pathname.length === 1 ? true : false;
-		},
+
 		items() {
 			return [...this.apiTags.map(tag => tag.name), ...this.apiPosts.map(post => post.title)];
 		},
 	},
 	mounted() {
+		if (window.innerWidth > 760) {
+			this.placeholder = "Search(' / ' to focus)";
+		}
 		window.addEventListener('keyup', e => {
 			const key = e.which || e.keyCode;
 			if (key == 191) {
 				this.$refs.search.focus();
 				this.selected = '';
+			} else {
+				this.pressedKey = key;
 			}
 		});
-		if (window.innerWidth > 760) {
-			this.placeholder = "Search(' / ' to focus)";
-		}
+		location.pathname.length === 1 ? 0 : (this.isPosts = 3);
 	},
 };
 </script>
@@ -236,12 +185,16 @@ $breakpoint-md: 768px !default;
 }
 .css-title-text {
 	color: #64ffda !important;
+	cursor: pointer;
 }
 .v-toolbar__title {
 	@media only screen and (max-width: $breakpoint-md) {
 		overflow: unset;
 		font-size: 1rem;
 	}
+}
+.v-application a {
+	color: unset !important;
 }
 .title-logo {
 	width: 2.75rem;

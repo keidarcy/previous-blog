@@ -2,11 +2,7 @@
 	<div id="particle">
 		<div
 			id="particle-canvas"
-			data-aos="zoom-out-up"
-			data-aos-duration="2000"
-			data-aos-easing="ease-in-out"
-			data-aos-once="false"
-			data-aos-anchor-placement="top-center"
+			class="animated fadeIn slow"
 		>
 		</div>
 	</div>
@@ -55,10 +51,6 @@ export default {
 </script>
 
 <style scoped>
-#particle {
-	height: 100vh;
-	background-image: linear-gradient(to bottom, #b1f4cf 0%, #9890e3 100%);
-}
 #particle-canvas {
 	height: 100vh;
 	background-image: linear-gradient(to bottom, #b1f4cf 0%, #9890e3 100%);

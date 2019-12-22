@@ -11,6 +11,7 @@
 							<div
 								class="card-image"
 								data-aos="fade-up"
+								data-aos-once="true"
 							>
 								<figure class="image is-4by3">
 									<img
@@ -22,6 +23,7 @@
 							<div
 								class="card-content"
 								data-aos="fade-up"
+								data-aos-once="true"
 							>
 								<div class="content">
 									Hi! My name is no

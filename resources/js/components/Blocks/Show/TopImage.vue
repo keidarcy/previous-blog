@@ -7,7 +7,7 @@
 			:style="{ backgroundImage: `url(${image})` }"
 			v-if="!isMobile"
 		>
-			<section class="hero is-medium big-pic">
+			<section class="hero is-medium big-pic is-large">
 				<div class="hero-body">
 					<h1 class="left bg-title has-text-white">{{ title }}</h1>
 				</div>

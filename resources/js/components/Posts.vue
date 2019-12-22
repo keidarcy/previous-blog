@@ -1,63 +1,63 @@
 <template>
 	<div id="posts">
-		<div data-aos="fade-up">
-			<section class="section">
-				<div class="container">
-					<div class="control has-icons-left has-icons-right">
-						<input
-							type="text"
-							class="input my-input is-mediumn"
-							placeholder="Search for title ;) "
-							v-model="textSearch"
-							:class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
-						/>
-						<span class="icon is-mediumn is-right">
-							<i class="fab fa-searchengin"></i>
-						</span>
-						<span class="icon is-mediumn is-left">
-							<i class="fas fa-hat-wizard"></i>
-						</span>
-					</div>
-				</div>
-			</section>
-
-			<div v-if="about==''"></div>
-			<div
-				class="title is-4 center"
-				v-else
-			>posts about {{ about }}
-				<return-button />
-			</div>
-			<v-row no-gutters>
-				<v-col
-					cols="12"
-					sm="12"
-					md="10"
-				>
-					<artical-card
-						:articals="articals"
-						:isLoaded="isLoaded"
-						:articalsFilter="articalsFilter"
+		<!-- <div data-aos="fade-up"> -->
+		<section class="section">
+			<div class="container">
+				<div class="control has-icons-left has-icons-right">
+					<input
+						type="text"
+						class="input my-input is-mediumn"
+						placeholder="Search for title ;) "
+						v-model="textSearch"
+						:class="[isLoaded && articalsFilter.length==0 ? 'is-danger' : 'is-primary']"
 					/>
-				</v-col>
-				<v-col
-					sm="3"
-					md="2"
-				>
-					<v-container class="pr-5 mr-5">
-						<Chart
-							@tagName="tagName"
-							@tagNumber="tagNumber"
-						/>
-						<Tags
-							class="my-5"
-							:tagsName='namesForTag'
-							:tagsNumber='numbersForTag'
-						/>
-					</v-container>
-				</v-col>
-			</v-row>
+					<span class="icon is-mediumn is-right">
+						<i class="fab fa-searchengin"></i>
+					</span>
+					<span class="icon is-mediumn is-left">
+						<i class="fas fa-hat-wizard"></i>
+					</span>
+				</div>
+			</div>
+		</section>
+
+		<div v-if="about==''"></div>
+		<div
+			class="title is-4 center"
+			v-else
+		>posts about {{ about }}
+			<return-button />
 		</div>
+		<v-row no-gutters>
+			<v-col
+				cols="12"
+				sm="12"
+				md="10"
+			>
+				<artical-card
+					:articals="articals"
+					:isLoaded="isLoaded"
+					:articalsFilter="articalsFilter"
+				/>
+			</v-col>
+			<v-col
+				sm="3"
+				md="2"
+			>
+				<v-container class="pr-5 mr-5">
+					<Chart
+						@tagName="tagName"
+						@tagNumber="tagNumber"
+					/>
+					<Tags
+						class="my-5"
+						:tagsName='namesForTag'
+						:tagsNumber='numbersForTag'
+					/>
+				</v-container>
+			</v-col>
+		</v-row>
+		<!-- </div> -->
 		<div class="clear"></div>
 	</div>
 </template>

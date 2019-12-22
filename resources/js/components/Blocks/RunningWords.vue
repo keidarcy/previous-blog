@@ -1,9 +1,9 @@
 <template>
 	<div
 		class="pb-12 pb-md-0"
-		data-aos="flip-left"
-		data-aos-easing="ease-out-cubic"
+		data-aos="fade-up"
 		data-aos-once="true"
+		data-aos-easing="ease-out-cubic"
 	>
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">

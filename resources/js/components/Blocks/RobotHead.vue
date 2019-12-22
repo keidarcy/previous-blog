@@ -2,9 +2,10 @@
 	<div class="pt-md-12">
 		<v-container>
 			<v-container
-				data-aos="flip-left"
 				data-aos-easing="ease-out-cubic"
 				data-aos-offset="-100"
+				data-aos="fade-up"
+				data-aos-once="true"
 			>
 				<ul id="switches">
 					<li
@@ -58,8 +59,9 @@
 				</ul>
 			</v-container>
 			<v-container
-				data-aos="flip-left"
 				data-aos-easing="ease-out-cubic"
+				data-aos="fade-up"
+				data-aos-once="true"
 			>
 				<div
 					id="bot"
