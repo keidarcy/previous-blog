@@ -140,13 +140,12 @@
 
 .artical-image {
     box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
-    -webkit-filter: grayscale(0) blur(0);
     filter: grayscale(0) blur(0);
-    -webkit-transition: 0.3s ease-in-out;
+    transform: scale(1);
     transition: 0.3s ease-in-out;
 }
 
 .artical-image:hover {
-    -webkit-filter: grayscale(100%) blur(1px);
     filter: grayscale(100%) blur(1px);
+    transform: scale(1.02);
 }

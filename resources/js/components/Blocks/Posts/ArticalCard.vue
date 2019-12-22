@@ -8,7 +8,7 @@
 						v-for="artical in articalsFilter"
 						:key="artical.id"
 					>
-						<div class="notification artical">
+						<!-- <div class="notification artical">
 							<div class="card">
 								<div class="card-image">
 									<figure class="image is-4by3 artical-image">
@@ -45,7 +45,56 @@
 									<time class="right">{{ artical.published_at }}</time>
 								</div>
 							</div>
-						</div>
+						</div> -->
+						<v-card
+							class="artical pt-5 pb-3"
+							max-width="450"
+							color="grey lighten-4"
+						>
+							<v-card
+								class="mx-2 ml-5"
+								max-width="380"
+							><a :href="`/show/${artical.slug}`">
+									<v-img
+										class="white--text align-end artical-image"
+										height="360px"
+										width="400px"
+										:src="artical.featured_image"
+									>
+									</v-img>
+								</a>
+								<v-card-subtitle class="pb-1 title">
+									<a :href="`/show/${artical.slug}`">
+										{{ artical.title }}
+									</a>
+								</v-card-subtitle>
+								<v-spacer></v-spacer>
+								<v-card-text class="text--primary subtitle-1">
+									<a :href="`/show/${artical.slug}`">{{ artical.summary }}</a>
+								</v-card-text>
+
+								<v-card-actions>
+									<v-chip
+										class="my-tag grey darken-3 mx-1 my-1"
+										text-color="white darken-3"
+										v-for="tag in artical.tags"
+										:key="tag.id"
+										draggable
+										label
+										:href="`/posts/${tag.name}`"
+									>
+										<v-icon
+											color="red lighten-3"
+											left
+											class="my-tag-icon"
+										>mdi-gamepad-square-outline</v-icon>
+										{{ tag.name }}
+									</v-chip>
+								</v-card-actions>
+								<p class="pb-3 mx-5 font-italic">{{ artical.published_at }}</p>
+							</v-card>
+						</v-card>
+
 					</div>
 				</div>
 			</div>
@@ -90,6 +139,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.my-tag {
+	transition: all 0.2s;
+
+	&:hover {
+		transform: translateY(-5px);
+	}
+
+	&-icon:hover {
+		transform: translateY(-8px);
+	}
+}
 .error-emoji {
 	color: rgba(0, 0, 0, 0.4);
 	font-size: 300px;
@@ -104,6 +164,10 @@ export default {
 	position: absolute;
 	top: 0%;
 	right: 0%;
+}
+.theme--light.v-card .v-card__subtitle,
+.theme--light.v-card > .v-card__text {
+	color: unset;
 }
 </style>
 
