@@ -125,28 +125,30 @@
     transform: translateY(-7px);
 }
 
-#sunglasses {
-    width: 200px;
-    animation-delay: 2.5s;
-    animation-duration: 1.5s;
-}
-
-.ty {
-    font-weight: 900;
-    font-size: 7rem;
-    font-kerning: normal;
-    line-height: 7rem;
-    text-align: center;
-}
-
 .artical-image {
     box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
     filter: grayscale(0) blur(0);
     transform: scale(1);
     transition: 0.3s ease-in-out;
+    &:hover {
+        filter: grayscale(100%) blur(1px);
+        transform: scale(1.02);
+    }
 }
 
-.artical-image:hover {
-    filter: grayscale(100%) blur(1px);
-    transform: scale(1.02);
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 65%;
+    //: padding-bottom 80%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }

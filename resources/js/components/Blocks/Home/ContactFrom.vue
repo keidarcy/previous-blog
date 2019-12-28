@@ -1,19 +1,19 @@
 <template>
-	<v-app id="contact">
+	<div id="contact">
 
-		<v-row align="center">
+		<v-row>
 			<v-col
 				cols="12"
 				md="6"
-				offset-md="3"
 			>
-				<v-container>
+				<v-container class="ma-12 pt-md-12">
 					<v-form
 						ref="loginForm"
 						@submit.prevent="contactSubmit"
 						v-model="valid"
 						lazy-validation
-						data-aos="fade-up"
+						data-aos="zoom-in-up"
+						data-aos-duration="2000"
 						data-aos-once="true"
 					>
 						<input
@@ -55,16 +55,31 @@
 							<button class="my-button button">Send</button>
 						</div>
 					</v-form>
-
+					<div
+						class="display-1 pt-12 text-right"
+						data-aos="zoom-in-up"
+						data-aos-duration="2000"
+					>glad to hear any voice from you 😉
+					</div>
 				</v-container>
+			</v-col>
+			<v-col md="6">
+
+				<v-container class="ma-12">
+					<contact-svg />
+				</v-container>
+				<left-arrow-contact />
 			</v-col>
 		</v-row>
 
-	</v-app>
+	</div>
 </template>
 
 <script>
+import LeftArrowContact from './LeftArrowContact.vue';
+import ContactSvg from './ContactSvg.vue';
 export default {
+	components: { ContactSvg, LeftArrowContact },
 	data() {
 		return {
 			valid: true,
@@ -117,14 +132,16 @@ export default {
 	}
 }
 .row {
-	margin-right: unset;
-	margin-left: unset;
+	margin-right: unset !important;
 }
 #contact {
 	background-image: linear-gradient(to top, #5ee7df 0%, #65afe0 100%);
-	// &input {
-	// 	font-weight: 600 !important;
-	// }
 	min-height: 100vh;
+}
+.display-1 {
+	font-family: unset !important;
+	@media screen and (max-width: 600px) {
+		font-size: 1rem !important;
+	}
 }
 </style>

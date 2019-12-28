@@ -48,7 +48,7 @@
 					<v-btn
 						icon
 						color="orange darken-2"
-						@click="$vuetify.goTo('#robot', options)"
+						@click="$vuetify.goTo('.robot-head', options)"
 					>
 						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
 					</v-btn>
@@ -61,8 +61,8 @@
 					background-color="transparent"
 					v-model="isPosts"
 				>
-					<v-tab @click="goHomeScollTo('particle')">
-						Home
+					<v-tab>
+						<router-link :to="{ name: 'Home' }">Home</router-link>
 					</v-tab>
 
 					<v-tab @click="goHomeScollTo('about')">

@@ -98,7 +98,7 @@
 							@click="changeLoadingState"
 							class="loadBtn pulse animated infinite"
 						>View me<v-icon
-								class="pl-2"
+								class="pl-2 heartBeat animated infinite"
 								:color="hover ? 'pink' : '#41C19A'"
 							>mdi-heart</v-icon>
 						</v-btn>
@@ -376,7 +376,7 @@ $wordInDuration: 2s;
 
 	transition-timing-function: ease-in-out;
 	&:hover {
-		transform: rotateZ(-40deg) scale(1.1);
+		transform: rotateZ(-40deg) scale(1.3);
 	}
 }
 </style>

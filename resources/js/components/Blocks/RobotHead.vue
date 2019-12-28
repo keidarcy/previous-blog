@@ -1,12 +1,7 @@
 <template>
-	<div class="pt-md-12">
+	<div class="pt-md-12 robot-head">
 		<v-container>
-			<v-container
-				data-aos-easing="ease-out-cubic"
-				data-aos-offset="-100"
-				data-aos="fade-up"
-				data-aos-once="true"
-			>
+			<v-container>
 				<ul id="switches">
 					<li
 						:class="speakingStatus"
@@ -59,14 +54,14 @@
 				</ul>
 			</v-container>
 			<v-container
-				data-aos-easing="ease-out-cubic"
-				data-aos="fade-up"
+				data-aos="zoom-in-up"
+				data-aos-duration="2000"
 				data-aos-once="true"
 			>
 				<div
 					id="bot"
 					:class="status"
-					class="pt-md-12 pr-md-0"
+					class="pt-md-12"
 				>
 					<div id="head">
 						<div id="left-ear">
@@ -245,8 +240,6 @@ export default {
 #head {
 	position: relative;
 	display: inline-block;
-	margin-top: 15%;
-	margin-left: 10%;
 	width: 80%;
 	height: 70%;
 	/*border : 1px solid yellow;*/

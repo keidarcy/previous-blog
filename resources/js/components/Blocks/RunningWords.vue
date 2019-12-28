@@ -1,10 +1,5 @@
 <template>
-	<div
-		class="pb-12 pb-md-0"
-		data-aos="fade-up"
-		data-aos-once="true"
-		data-aos-easing="ease-out-cubic"
-	>
+	<div class="pb-12 pb-md-0">
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">
 			</div>

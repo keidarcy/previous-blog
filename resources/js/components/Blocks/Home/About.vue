@@ -1,50 +1,61 @@
 <template>
 	<div id="about">
-		<section
-			class="section"
-			style="padding-top:10rem;"
-		>
-			<div class="container">
-				<div class="columns">
-					<div class="column is-6 is-offset-3">
-						<div class="card">
-							<div
-								class="card-image"
-								data-aos="fade-up"
-								data-aos-once="true"
-							>
-								<figure class="image is-4by3">
-									<img
-										:src="basicInfo.big_picture"
-										alt="Placeholder image"
-									/>
-								</figure>
+		<v-row>
+			<v-col
+				cols="12"
+				md="5"
+				class="offset-md-1"
+			>
+				<v-card
+					class="ma-12 pt-md-12 "
+					max-width="600"
+					color="transparent"
+					elevation="0"
+					data-aos="zoom-in-up"
+					data-aos-duration="2000"
+					data-aos-once="true"
+				>
+					<v-img
+						class="ma-2 artical about-image white--text align-end"
+						:src="basicInfo.big_picture"
+					>
+					</v-img>
+
+					<v-card-text class="white--text text-center">
+						<div
+							class="display-1"
+							data-aos="zoom-in-up"
+							data-aos-duration="2000"
+							data-aos-once="true"
+						>
+							<div>
+								Hi! I'm developer 👨‍💻.
 							</div>
-							<div
-								class="card-content"
-								data-aos="fade-up"
-								data-aos-once="true"
-							>
-								<div class="content">
-									Hi! My name is no
-									<a :href="basicInfo.facebook">
-										<strong>{{ basicInfo.full_name }} ( {{ basicInfo.chinese_name }} )</strong>
-									</a>.
-									<br />
-									<br />
-									<div v-html="basicInfo.introduction"></div>
-								</div>
+							<div>
+								I use <span class="word-vue">Vue</span> and <span class="word-laravel">Laravel</span> to build
+								<br>
+								this blog to record somthing.
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+					</v-card-text>
+				</v-card>
+			</v-col>
+			<v-col md="6">
+				<v-container class="ma-12 pt-md-12">
+					<about-svg />
+				</v-container>
+				<left-arrow-about />
+			</v-col>
+		</v-row>
+
 	</div>
 </template>
 <script>
+import LeftArrowAbout from './LeftArrowAbout.vue';
+import AboutSvg from './AboutSvg.vue';
 import { mapGetters, mapActions } from 'vuex';
 export default {
+	components: { AboutSvg, LeftArrowAbout },
 	methods: {
 		...mapActions(['fetchBasicInfo']),
 	},
@@ -54,8 +65,50 @@ export default {
 	},
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 #about {
 	background-image: linear-gradient(to bottom, #000000 0%, #9890e3 100%);
+}
+.code-word {
+	font-style: italic;
+	font-weight: 600;
+	font-size: 2rem;
+	@media screen and (max-width: 600px) {
+		font-size: 1rem !important;
+	}
+}
+.word {
+	&-vue {
+		color: #4dba87;
+		@extend .code-word;
+	}
+	&-laravel {
+		color: #d14332;
+		@extend .code-word;
+	}
+}
+.about-image {
+	box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
+	filter: grayscale(50%) blur(0.5px);
+	transform: scale(1);
+	transition: 0.3s ease-in-out;
+	&:hover {
+		filter: grayscale(0) blur(0);
+		transform: scale(1.1);
+	}
+}
+.v-application .display-1 {
+	font-family: unset !important;
+	line-height: 1.2;
+	color: snow;
+	& > div {
+		line-height: 2;
+	}
+	@media screen and (max-width: 600px) {
+		font-size: 1rem !important;
+	}
+}
+.row {
+	margin-right: unset !important;
 }
 </style>
