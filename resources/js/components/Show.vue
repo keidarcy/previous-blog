@@ -13,6 +13,7 @@
 					class="center big-title"
 					data-aos="fade-up"
 					data-aos-once="true"
+					data-aos-offset="200"
 				>{{ post.post.title }}</h1>
 				<div class="columns">
 					<div

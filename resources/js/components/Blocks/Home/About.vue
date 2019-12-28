@@ -5,29 +5,24 @@
 				cols="12"
 				md="5"
 				class="offset-md-1"
+				data-aos="zoom-in-up"
+				data-aos-duration="2000"
+				data-aos-once="true"
 			>
 				<v-card
 					class="ma-12 pt-md-12 "
 					max-width="600"
 					color="transparent"
 					elevation="0"
-					data-aos="zoom-in-up"
-					data-aos-duration="2000"
-					data-aos-once="true"
 				>
 					<v-img
 						class="ma-2 artical about-image white--text align-end"
-						:src="basicInfo.big_picture"
+						src="/images/self-squar.png"
 					>
 					</v-img>
 
 					<v-card-text class="white--text text-center">
-						<div
-							class="display-1"
-							data-aos="zoom-in-up"
-							data-aos-duration="2000"
-							data-aos-once="true"
-						>
+						<div class="display-1">
 							<div>
 								Hi! I'm developer 👨‍💻.
 							</div>
@@ -89,11 +84,10 @@ export default {
 }
 .about-image {
 	box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
-	filter: grayscale(50%) blur(0.5px);
 	transform: scale(1);
+	border-radius: 5px;
 	transition: 0.3s ease-in-out;
 	&:hover {
-		filter: grayscale(0) blur(0);
 		transform: scale(1.1);
 	}
 }

@@ -104,7 +104,7 @@ export default {
 	},
 	mounted() {
 		window.innerWidth > 800 ? '' : (this.isMobileColor = 'transparent');
-		window.innerWidth > 800 ? '' : (this.isMobileWidth = '330px');
+		window.innerWidth > 800 ? '' : (this.isMobileWidth = '340px');
 	},
 };
 </script>
