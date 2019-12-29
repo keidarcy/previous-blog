@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $related_posts = Post::all()->where('complete', 1)->except($post->id)->random(3);
+        $related_posts = Post::all()->where('complete', 1)->except($post->id)->random(6);
         $relates = [];
         foreach ($related_posts as $index => $related_post) {
             $relates[$index]['post'] = $related_post;
@@ -70,5 +70,53 @@ class PostController extends Controller
         } else {
             return null;
         }
+    }
+
+    public function getTopicsAndTagsNumber()
+    {
+        $posts = Post::all();
+        $tags = [];
+        foreach ($posts as $post) {
+            foreach ($post->tags as $postTag) {
+                $tags[] = $postTag->name;
+            }
+        }
+
+        $topics = [];
+        foreach ($posts as $post) {
+            foreach ($post->topic as $postTopic) {
+                $topics[] = $postTopic->name;
+            }
+        }
+
+        $topicName = [];
+        $topicNumber = [];
+        foreach (array_count_values($topics) as $index => $topic) {
+            $topicNumber[] = $topic;
+            $topicName[] = $index;
+        }
+
+        $tagName = [];
+        $tagNumber = [];
+        foreach (array_count_values($tags) as $index => $tag) {
+            $tagNumber[] = $tag;
+            $tagName[] = $index;
+        }
+
+        return ['topicName' => $topicName,
+                'topicNumber' => $topicNumber,
+                'tagName' => $tagName,
+                'tagNumber' => $tagNumber];
+    }
+
+    public function getPostsForSearchApi()
+    {
+        $posts = Post::where('complete', 1)
+        ->orderByDesc('created_at')
+        ->select('title', 'slug', 'id')
+        ->get();
+        $tags = Tag::select('name', 'slug')->get();
+
+        return ['posts'=>$posts,'tags'=>$tags];
     }
 }

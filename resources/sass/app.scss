@@ -2,13 +2,12 @@
 @import '~vuetify/dist/vuetify.min.css';
 @import 'node_modules/bulma/bulma';
 // pugins
-@import './pugins/hamburger.css';
-@import './pugins/overlay.scss';
+@import './pugins/animate.css';
 // Variables
 @import 'variables';
 //gerneal setting
 body {
-    color: #4b5d73;
+    color: $font-color;
     font-size: 16px;
     font-family: $font-family;
     font-weight: $font-weight;
@@ -18,13 +17,6 @@ body {
     flex-direction: column;
     background-color: $body-bg !important;
     margin-top: auto;
-}
-
-footer {
-    margin-top: auto;
-    bottom: 0 !important;
-    padding: 1.5rem !important;
-    z-index: 2;
 }
 
 a {
@@ -40,6 +32,12 @@ textarea,
 .v-application {
     font-family: $font-family !important;
     font-weight: $font-weight !important;
+}
+
+.v-application .title {
+    font-family: Nunito !important;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .my-input::-webkit-input-placeholder,
@@ -84,6 +82,11 @@ textarea,
 .hamburger-inner::before,
 .hamburger-inner::after {
     background-color: $dark-green;
+}
+
+.clear {
+    clear: both;
+    height: 160px;
 }
 
 @import './nested/basic.scss';

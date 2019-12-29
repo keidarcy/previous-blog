@@ -22,12 +22,13 @@
     position: relative;
     top: 0px;
     right: 0px;
-    box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
+    box-shadow: 0 8.2px 14.6px -33px rgba(0, 0, 0, 0.303), 0 14.3px 23.3px -33px rgba(0, 0, 0, 0.437), 0 18.7px 30.5px -33px rgba(0, 0, 0, 0.511), 0 22.9px 41px -33px rgba(0, 0, 0, 0.558), 0 40px 65px -33px rgba(0, 0, 0, 0.59);
     transition: 400ms all 0ms ease-in-out;
     &:hover {
         top: -13px;
-        box-shadow: 0px 0px 3px 5px rgba(9, 9, 16, 0.2);
+        box-shadow: 0 8.2px 14.6px -33px #71db77, 0 14.3px 23.3px -33px #71db77, 0 18.7px 30.5px -33px #71db77, 0 22.9px 41px -33px #71db77, 0 40px 65px -33px #71db77, ;
         color: #71db77;
+        border: medium 10px black;
     }
     &-body {
         font-size: 25px;
@@ -59,6 +60,11 @@
         color: black;
         flex: 1;
     }
+    .big-title {
+        font-family: Nunito !important;
+        font-size: 1.5rem !important;
+        font-weight: 600;
+    }
 }
 
 @media (min-width: $layout-breakpoint) {
@@ -80,6 +86,11 @@
         color: black;
         flex: 1;
     }
+    .big-title {
+        font-family: Nunito !important;
+        font-size: 3rem !important;
+        font-weight: 600;
+    }
 }
 
 .my-button,
@@ -90,7 +101,7 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 700;
-    color: #000 !important;
+    color: #000;
     background-color: #fff;
     border: none;
     border-radius: 45px;
@@ -103,27 +114,41 @@
 .my-button:hover {
     background-color: #2ee59d;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff !important;
+    color: #fff;
     transform: translateY(-7px);
 }
 
 .my-button-2:hover {
     background-color: #ff3860;
     box-shadow: 0px 15px 20px rgba(222, 44, 71, 0.4);
-    color: #fff !important;
+    color: #fff;
     transform: translateY(-7px);
 }
 
-#sunglasses {
-    width: 200px;
-    animation-delay: 2.5s;
-    animation-duration: 1.5s;
+.artical-image {
+    box-shadow: 0px 0px 6px 2px rgba(9, 9, 16, 0.2);
+    filter: grayscale(0) blur(0);
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+    &:hover {
+        filter: grayscale(100%) blur(1px);
+        transform: scale(1.02);
+    }
 }
 
-.ty {
-    font-weight: 900;
-    font-size: 7rem;
-    font-kerning: normal;
-    line-height: 7rem;
-    text-align: center;
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 65%;
+    //: padding-bottom 80%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }

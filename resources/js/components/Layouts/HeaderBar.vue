@@ -1,147 +1,211 @@
 <template>
-	<div>
-		<div id="header">
-			<div
-				class="overlay moblie"
-				:style="overlay"
-			>
-				<div class="overlay-content">
-					<a href="/">
-						<p class=" hovered-link has-text-weight-bold has-text-white">HOME</p>
-					</a>
-					<a href="/posts">
-						<p class=" hovered-link has-text-weight-bold has-text-white">BLOG</p>
-					</a>
-					<a href="/about">
-						<p class=" hovered-link has-text-weight-bold has-text-white">ABOUT</p>
-					</a>
-					<div>
-						<v-switch
-							v-model="success"
-							inset
-							color="success"
-							class="moblie center"
-						></v-switch>
-					</div>
-				</div>
+	<div id="header">
+		<v-app-bar
+			dark
+			flat
+			dense
+			color="grey darken-4"
+		>
+			<v-toolbar-title>
+				xy<span
+					class="css-title-text"
+					@click="changeLoadingState"
+				>yo</span>lab
+			</v-toolbar-title>
+			<a href="/">
+				<img
+					src="/images/logo-without-background.png"
+					alt="logo"
+					class="title-logo"
+				/>
+			</a>
+			<v-row>
+				<v-col
+					class="offset-md-8 mt-2 offset-4 "
+					md="3"
+				>
+					<v-autocomplete
+						:placeholder="placeholder"
+						v-model="selected"
+						:loading="loading"
+						:items="items"
+						href="/"
+						auto-select-first
+						prepend-inner-icon="mdi-feature-search-outline"
+						hide-no-data
+						clearable
+						ref="search"
+						color="orange darken-2"
+						@change="goRoute(selected)"
+						@keyup="getSearchData"
+					>
+					</v-autocomplete>
+				</v-col>
+				<v-col
+					md="1"
+					class="d-flex justify-end"
+				>
+					<v-btn
+						icon
+						color="orange darken-2"
+						@click="$vuetify.goTo('.robot-head', options)"
+					>
+						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
+					</v-btn>
+				</v-col>
+			</v-row>
+			<template v-slot:extension>
+				<v-tabs
+					centered
+					slider-color="yellow"
+					background-color="transparent"
+					v-model="isPosts"
+				>
+					<v-tab>
+						<router-link :to="{ name: 'Home' }">Home</router-link>
+					</v-tab>
 
-				<div class="center overlay-icon">
-					<figure class="media-left">
-						<a :href="basicInfo.facebook">
-							<span class="icon has-text-light is-large hovered-shadow">
-								<i class="fa-lg fab fa-facebook-square"></i>
-							</span>
-						</a>
-					</figure>
+					<v-tab @click="goHomeScollTo('about')">
+						ABOUT
+					</v-tab>
 
-					<figure class="media-left">
-						<a :href="basicInfo.github">
-							<span class="icon has-text-light is-large hovered-shadow">
-								<i class="fa-lg fab fa-github-square"></i>
-							</span>
-						</a>
-					</figure>
-				</div>
-			</div>
+					<v-tab @click="goHomeScollTo('contact')">
+						CONTACT
+					</v-tab>
 
-			<div class="header-section">
-				<section class="hero">
-					<div class="hero-head ">
-						<div class="navbar columns is-mobile is-marginless has-text-weight-bold has-background-black">
+					<v-tab>
+						<router-link :to="{ name: 'Posts' }">BLOG</router-link>
+					</v-tab>
 
-							<div
-								class="column left"
-								style="z-index:11;"
-							>
-								<a href="/">
-									<img
-										src="/images/logo-without-background.png"
-										alt="logo"
-										class="logo-pic"
-									/></a>
-								<div style="flex-direction: row">
-									<a href="/">
-										<div class="logo-word">
-											<p class="logo-word-top-mobile left has-text-white mobile"><strong class="has-text-primary is-4">xy</strong>yo</p>
-											<p class="logo-word-top-desktop left has-text-white desktop"><strong class="has-text-primary is-4">xy</strong>yo</p>
-											<p class="logo-word-bottom-mobile left has-text-white mobile">
-												Laboratory.
-											</p>
-											<p class="logo-word-bottom-desktop left has-text-white desktop">
-												Laboratory.
-											</p>
-										</div>
-									</a>
-								</div>
-							</div>
-
-							<div class="column center desktop">
-								<a href="/">
-									<p class="navbar-item has-text-white hovered-link">HOME</p>
-								</a>
-								<a href="/posts">
-									<p class=" navbar-item has-text-white hovered-link">BLOG</p>
-								</a>
-								<a href="/about">
-									<p class="navbar-item has-text-white hovered-link">ABOUT</p>
-								</a>
-							</div>
-
-							<div class="column right">
-								<v-switch
-									v-model="success"
-									inset
-									color="success"
-									class="desktop"
-								></v-switch>
-								<button
-									@click='clickBurger'
-									:class="burger"
-									class="hamburger hamburger--emphatic mobile"
-									type="button"
-								>
-									<span class="hamburger-box">
-										<span class="hamburger-inner"></span>
-									</span>
-								</button>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
+				</v-tabs>
+			</template>
+		</v-app-bar>
 	</div>
 </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
 	name: 'header-bar',
 	data() {
 		return {
-			burger: '',
-			overlay: '',
-			success: '',
+			apiPosts: [],
+			apiTags: [],
+			loading: false,
+			selected: '',
+			placeholder: '',
+			pressedKey: '',
+			isPosts: 0,
+			options: { duration: 1500, offset: 0, easing: 'easeInOutCubic' },
 		};
 	},
 	methods: {
-		...mapActions(['fetchBasicInfo']),
-		clickBurger() {
-			this.burger = !this.burger ? 'is-active' : '';
-			this.overlay = !this.overlay ? 'width:100%' : '';
+		...mapActions(['changeLoadingState']),
+		target(tab) {
+			return `#${tab.toLowerCase()}`;
+		},
+		getSearchData() {
+			console.log(this.loading);
+			console.log(this.pressedKey);
+			if (this.pressedKey !== 38 && this.pressedKey !== 40) {
+				this.loading = !this.loading;
+				if (this.loading) {
+					axios
+						.get('/api/search/posts')
+						.then(response => {
+							this.apiPosts = response.data.posts;
+							this.apiTags = response.data.tags;
+							this.loading = !this.loading;
+						})
+						.catch(error => console.log(error));
+				}
+			}
+		},
+		goRoute(data) {
+			if (typeof data !== 'undefined') {
+				let index = this.apiPosts.map(post => post.title).indexOf(data);
+				if (index > -1) {
+					window.location.replace('/show/' + this.apiPosts.map(post => post.slug)[index]);
+				} else {
+					index = this.apiTags.map(tag => tag.name).indexOf(data);
+					window.location.replace('/posts/' + this.apiTags.map(tag => tag.slug)[index]);
+				}
+			}
+		},
+		// if (index > -1) {
+		// 	const slug = this.apiPosts.map(post => post.slug)[index];
+		// 	this.$router.push({ name: 'Show', params: { slug } });
+		// } else {
+		// 	index = this.apiTags.map(tag => tag.name).indexOf(data);
+		// 	const slug = this.apiTags.map(tag => tag.slug)[index];
+		// 	this.$router.push({ name: 'Posts', params: { slug } });
+		// }
+		goHomeScollTo(sec) {
+			if (this.$router.currentRoute.name === 'Home') {
+				this.$vuetify.goTo('#' + sec, this.options);
+			} else {
+				this.$router.push({ name: 'Home' });
+			}
 		},
 	},
-	computed: mapGetters(['basicInfo']),
-	created() {
-		this.fetchBasicInfo();
+	computed: {
+		...mapGetters(['loadingState']),
+		items() {
+			return [...this.apiTags.map(tag => tag.name), ...this.apiPosts.map(post => post.title)];
+		},
+	},
+	mounted() {
+		if (window.innerWidth > 760) {
+			this.placeholder = "Search(' / ' to focus)";
+		}
+		window.addEventListener('keyup', e => {
+			const key = e.which || e.keyCode;
+			if (key == 191) {
+				this.$refs.search.focus();
+				this.selected = '';
+			} else {
+				this.pressedKey = key;
+			}
+		});
+		location.pathname.length === 1 ? 0 : (this.isPosts = 3);
 	},
 };
 </script>
 <style lang="scss">
-.navbar {
-	height: 90px;
+$breakpoint-md: 768px !default;
+
+#header {
+	background: black;
 }
-.v-application p {
-	margin-bottom: 1px;
+.css-title-text {
+	color: #64ffda !important;
+	cursor: pointer;
+}
+.v-toolbar__title {
+	@media only screen and (max-width: $breakpoint-md) {
+		overflow: unset;
+		font-size: 1rem;
+	}
+}
+.v-application a {
+	color: unset !important;
+}
+.title-logo {
+	width: 2.75rem;
+	height: 2.75rem;
+	transition: all 0.5s;
+	transition-timing-function: ease-in-out;
+
+	&:hover {
+		transform: rotateZ(360deg);
+	}
+	@media only screen and (max-width: $breakpoint-md) {
+		height: 2rem;
+	}
+}
+.v-tab {
+	font-size: large;
+}
+.blog-link {
+	padding-top: 10px;
 }
 </style>

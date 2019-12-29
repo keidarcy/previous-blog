@@ -1,11 +1,14 @@
 <template>
-	<div class="pt-12">
+	<div class="pb-12 pb-md-0">
 		<v-container :class="runningWordsStatus">
 			<div class="changing-words center">
 			</div>
 		</v-container>
 
-		<v-container :class="inputStatus">
+		<v-container
+			:class="inputStatus"
+			class="pb-12 pb-md-0"
+		>
 			<v-row>
 				<v-col
 					md="4"
@@ -22,7 +25,6 @@
 				</v-col>
 				<v-tooltip right>
 					<template v-slot:activator="{ on }">
-
 						<v-btn
 							class="mx-2"
 							fab
@@ -31,14 +33,23 @@
 							@click="addWords"
 							v-on="on"
 						>
-							<v-icon dark>mdi-plus</v-icon>
+							<v-badge color="purple lighten-1">
+								<template
+									v-slot:badge
+									v-if="userWordsLength>0"
+								>{{ userWordsLength }}</template>
+								<v-icon dark>mdi-plus</v-icon>
+							</v-badge>
 						</v-btn>
 					</template>
 					<span>What you type will add to My introduction 😉</span>
 				</v-tooltip>
 			</v-row>
 		</v-container>
-		<v-container :class="expansionStatus">
+		<v-container
+			:class="expansionStatus"
+			class="pb-12 pb-md-0"
+		>
 			<v-row>
 				<v-col
 					md="6"
@@ -54,14 +65,14 @@
 							<v-expansion-panel-content>
 								Your limitation—it's only your imagination.
 								<v-img
-									src="/images/me-in-moutain.jpeg"
-									height="250"
+									src="/images/waitan.jpg"
+									height="150"
 								></v-img>
 							</v-expansion-panel-content>
 						</v-expansion-panel>
 						<v-expansion-panel>
 							<v-expansion-panel-header>
-								<strong>Lack of Inspration ?</strong>
+								Lack of Inspration ?
 								<template v-slot:actions>
 									<v-icon color="green">$expand</v-icon>
 								</template></v-expansion-panel-header>
@@ -69,8 +80,8 @@
 								我们的征途，是星辰大海 <br>
 								My Conquest Is the Sea of Stars
 								<v-img
-									src="/images/waitan.jpg"
-									height="250"
+									src="/images/me-in-moutain.jpeg"
+									height="150"
 								></v-img>
 							</v-expansion-panel-content>
 						</v-expansion-panel>
@@ -87,8 +98,8 @@
 							dark
 							v-on="on"
 						>
-							Don't click me &nbsp
-							<v-icon>fas fa-skull-crossbones fa-sm</v-icon>
+							Don't click me
+							<v-icon> fas fa-skull-crossbones fa-sm</v-icon>
 						</v-btn>
 					</template>
 					<v-sheet
@@ -99,7 +110,6 @@
 						<a href="/lab/login">
 							<v-btn
 								class="mt-6"
-								flat
 								color="teal lighten-5"
 								@click="sheet = !sheet"
 							>Adventure Tour</v-btn>
@@ -113,7 +123,7 @@
 </template>
 
 <script>
-import TextScramble from '../../textScramble.js';
+import TextScramble from '../../modules/textScramble.js';
 function dateToStr12H(date, format) {
 	if (!format) {
 		format = 'Y/M/D h:m:s AP';
@@ -146,15 +156,13 @@ export default {
 			sheet: false,
 			expansionStatus: 'StatusDis',
 			buttonStatus: 'StatusDis',
+			userWordsLength: 0,
 		};
 	},
 	mounted() {
 		const el = document.querySelector('.changing-words');
 		const fx = new TextScramble(el);
-		this.phrases = [
-			...this.phrases,
-			`It\'s ${dateToStr12H(new Date(), 'Y-M-D h:m:s AP')} here in Tokyo`,
-		];
+		this.phrases = [...this.phrases, `It\'s ${dateToStr12H(new Date(), 'Y-M-D h:m:s AP')}`];
 		let counter = 0;
 		const next = () => {
 			fx.setText(this.phrases[counter]).then(() => {
@@ -171,6 +179,7 @@ export default {
 			} else {
 				this.phrases = [this.userWords, ...this.phrases];
 				this.userWords = '';
+				this.userWordsLength = this.phrases.length - 3;
 			}
 		},
 	},

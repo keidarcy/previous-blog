@@ -1,8 +1,15 @@
 <template>
-	<div>
-		<footer class="footer center has-text-weight-bold has-background-black">
-			<div style="flex-direction: row">
-				<v-container class="center">
+	<v-footer
+		padless
+		absolute
+		color="grey darken-4"
+	>
+		<v-col
+			class="text-center white--text text font-weight-bold"
+			cols="12"
+		>
+			<div>
+				<v-container>
 					<a :href="basicInfo.facebook">
 						<v-icon
 							right
@@ -32,7 +39,7 @@
 					</v-tooltip>
 				</v-container>
 				<v-container>
-					<p class="center is-size-6 is-size-7-mobile"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
+					<p class="text-last-line"> Made With 🎩 & 💖 @<span class="has-text-primary">xyyolab</span>&nbsp2019
 					</p>
 				</v-container>
 
@@ -45,13 +52,13 @@
 					</v-btn>
 					<v-img
 						src="/images/my-qrcode.png"
-						height="500"
-						width="500"
+						height="400"
+						width="400"
 					></v-img>
 				</v-overlay>
 			</div>
-		</footer>
-	</div>
+		</v-col>
+	</v-footer>
 </template>
 
 <script>
@@ -72,3 +79,8 @@ export default {
 	},
 };
 </script>
+<style lang="stylus" scoped>
+.text-last-line {
+	color white
+}
+</style>
