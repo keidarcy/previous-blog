@@ -2,7 +2,6 @@ import Posts from '../components/Posts.vue';
 import Show from '../components/Show.vue';
 import Home from '../components/Home.vue';
 import Calendar from '../components/VueRoutes/Calendar.vue';
-import Welcome from '../components/VueRoutes/Welcome.vue';
 import Login from '../components/VueRoutes/Login.vue';
 import Test from '../components/Test.vue';
 import NotFound from '../components/404.vue';
@@ -37,11 +36,6 @@ export default {
             path: '/lab/login',
             name: 'Login',
             component: Login,
-        },
-        {
-            path: '/lab/Welcome',
-            name: 'Welcome',
-            component: Welcome,
         },
         {
             path: '/test',

@@ -20,7 +20,7 @@ class PostController extends Controller
     public function list()
     {
         $posts = Post::where('complete', 1)
-            ->orderByDesc('created_at')
+            ->orderByDesc('updated_at')
             ->get();
         $data = [];
         foreach ($posts as $post) {
