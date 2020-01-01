@@ -20,7 +20,7 @@ class XyyoLabTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser
-            //->loginAs(User::find(1))
+            ->loginAs(User::find(1))
             ->visit(new HomePage)
             ->assert();
         });
