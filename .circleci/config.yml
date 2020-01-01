@@ -40,7 +40,7 @@ jobs:
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
       - run: vendor/bin/phpunit
-      - run: php artisan db:seed --class=UsersTableSeeder
+      #- run: php artisan db:seed --class=UsersTableSeeder
       - run: php artisan db:seed --class=PostsTableSeeder
       - run:
           name: Start Chrome Driver
