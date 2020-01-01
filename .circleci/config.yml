@@ -41,7 +41,23 @@ jobs:
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
       - run: php artisan db:seed
-      - run: ./vendor/bin/phpunit
+
+      - run:
+        name: Start Chrome Driver
+        command: ./vendor/laravel/dusk/bin/chromedriver-linux
+        background: true
+
+      - run:
+          name: Run Laravel Server
+          command: php artisan serve
+          background: true
+
+      - run:
+        name: Run Laravel Dusk Tests
+        command: php artisan dusk
+
+      - store_artifacts:
+          path: tests/Browser/screenshots
 
       - store_test_results:
           path: tests/_output
