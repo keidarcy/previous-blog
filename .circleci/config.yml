@@ -6,17 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      # Specify the version you desire here
       - image: circleci/php:7.3-stretch-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:3
 
     steps:
       - checkout
@@ -54,15 +44,13 @@ jobs:
           paths:
             - node_modules
             - ~/.yarn
-      # prepare the database
-      # - run: touch storage/testing.sqlite
-      # - run: php artisan migrate --env=testing --database=sqlite_testing --force
-      # # run tests with phpunit or codecept
-      # #- run: ./vendor/bin/phpunit
-      # # this example uses codecept but you're not limited to it
-      # - run: ./vendor/bin/codecept build
-      # - run: ./vendor/bin/codecept run --xml result.xml
-      # - store_test_results:
-      #     path: tests/_output
-      # - store_artifacts:
-      #     path: tests/_output
+      prepare the database
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      # run tests with phpunit or codecept
+      - run: ./vendor/bin/phpunit
+      # this example uses codecept but you're not limited to it
+      - store_test_results:
+          path: tests/_output
+      - store_artifacts:
+          path: tests/_output
