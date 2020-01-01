@@ -31,3 +31,5 @@ Route::post('/message/create', 'XControllers\MessageController@create');
 Route::get('/number/topics/tags', 'XControllers\PostController@getTopicsAndTagsNumber');
 
 Route::get('/search/posts', 'XControllers\PostController@getPostsForSearchApi');
+
+Route::get('/group', 'XControllers\PostController@TryGroup');

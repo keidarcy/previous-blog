@@ -74,39 +74,13 @@ class PostController extends Controller
 
     public function getTopicsAndTagsNumber()
     {
-        $posts = Post::all();
-        $tags = [];
-        foreach ($posts as $post) {
-            foreach ($post->tags as $postTag) {
-                $tags[] = $postTag->name;
-            }
-        }
+        $tags = Post::with('tags')->get()->pluck('tags')->flatten()->pluck('name');
+        $topics = Post::with('topic')->get()->pluck('topic')->flatten()->pluck('name');
 
-        $topics = [];
-        foreach ($posts as $post) {
-            foreach ($post->topic as $postTopic) {
-                $topics[] = $postTopic->name;
-            }
-        }
-
-        $topicName = [];
-        $topicNumber = [];
-        foreach (array_count_values($topics) as $index => $topic) {
-            $topicNumber[] = $topic;
-            $topicName[] = $index;
-        }
-
-        $tagName = [];
-        $tagNumber = [];
-        foreach (array_count_values($tags) as $index => $tag) {
-            $tagNumber[] = $tag;
-            $tagName[] = $index;
-        }
-
-        return ['topicName' => $topicName,
-                'topicNumber' => $topicNumber,
-                'tagName' => $tagName,
-                'tagNumber' => $tagNumber];
+        return ['topicName' => $topics->countBy()->keys(),
+                'topicNumber' => $topics->countBy()->values(),
+                'tagName' => $tags->countBy()->keys(),
+                'tagNumber' => $tags->countBy()->values()];
     }
 
     public function getPostsForSearchApi()
@@ -118,5 +92,21 @@ class PostController extends Controller
         $tags = Tag::select('name', 'slug')->get();
 
         return ['posts'=>$posts,'tags'=>$tags];
+    }
+
+    public function tryGroup()
+    {
+        $posts = Post::latest()->get()->groupBy(function ($post) {
+            if ($post->created_at->isToday()) {
+                return 'today';
+            } elseif ($post->created_at->isCurrentWeek()) {
+                return 'this week';
+            } elseif ($post->created_at->isCurrentMonth()) {
+                return 'last week';
+            } else {
+                return 'old';
+            }
+        });
+        return $posts;
     }
 }
