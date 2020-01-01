@@ -19,7 +19,8 @@ class XyyoLabTest extends DuskTestCase
     public function testXyyoExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser
+            //->loginAs(User::find(1))
             ->visit(new HomePage)
             ->assert();
         });
