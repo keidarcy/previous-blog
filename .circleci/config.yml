@@ -46,15 +46,15 @@ jobs:
         command: ./vendor/laravel/dusk/bin/chromedriver-linux
         background: true
       - run:
-          name: Run Laravel Server
-          command: php artisan serve
-          background: true
+        name: Run Laravel Server
+        command: php artisan serve
+        background: true
       - run:
         name: Run Laravel Dusk Tests
         command: php artisan dusk
       - store_artifacts:
-          path: tests/Browser/screenshots
+        path: tests/Browser/screenshots
       - store_test_results:
-          path: tests/_output
+        path: tests/_output
       - store_artifacts:
-          path: tests/_output
+        path: tests/_output
