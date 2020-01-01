@@ -10,33 +10,32 @@ jobs:
       - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "composer.lock" }}
-            - v1-dependencies-
+      # - restore_cache:
+      #     keys:
+      #       - v1-dependencies-{{ checksum "composer.lock" }}
+      #       - v1-dependencies-
 
       - run: cp .env.testing .env
       - run: composer install -n --ignore-platform-reqs
       - run: php artisan key:generate
       - run: php artisan dusk:chrome-driver
 
-      - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
+      # - save_cache:
+      #     key: composer-v1-{{ checksum "composer.lock" }}
+      #     paths:
+      #       - vendor
 
-      - restore_cache:
-          keys:
-            - node-v4-{{ checksum "package.json" }}
-            - node-v4-
-
+      # - restore_cache:
+      #     keys:
+      #       - node-v4-{{ checksum "package.json" }}
+      #       - node-v4-
       - run: npm install
 
-      - save_cache:
-          key: node-v4-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-            - ~/.yarn
+      # - save_cache:
+      #     key: node-v4-{{ checksum "package.json" }}
+      #     paths:
+      #       - node_modules
+      #       - ~/.yarn
 
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
