@@ -75,7 +75,7 @@ class PostController extends Controller
     public function getTopicsAndTagsNumber()
     {
         $tags = Post::with('tags')->get()->pluck('tags')->flatten()->pluck('name');
-        $topics = Post::with('topic')->get()->pluck('tags')->flatten()->pluck('name');
+        $topics = Post::with('topic')->get()->pluck('topic')->flatten()->pluck('name');
 
         return ['topicName' => $topics->countBy()->keys(),
                 'topicNumber' => $topics->countBy()->values(),
