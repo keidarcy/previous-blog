@@ -32,11 +32,11 @@ class XyyoLabTest extends DuskTestCase
                     ->assertVisible('.my-input');
         });
 
-        $this->browse(function (Browser $browser) {
-            $slug = Post::first()->slug;
-            $browser->visit('/show/'.$slug)
-                    ->waitFor('.big-pic')
-                    ->assertVisible('.big-pic');
-        });
+        // $this->browse(function (Browser $browser) {
+        //     $slug = Post::first()->slug;
+        //     $browser->visit('/show/'.$slug)
+        //             ->waitFor('.big-pic')
+        //             ->assertVisible('.big-pic');
+        // });
     }
 }
