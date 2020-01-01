@@ -30,8 +30,7 @@ jobs:
       #       - node-v4-{{ checksum "package.json" }}
       #       - node-v4-
       - run: npm install
-      - run: npm run production
-      - run: vendor/bin/phpunit
+
       # - save_cache:
       #     key: node-v4-{{ checksum "package.json" }}
       #     paths:
@@ -40,26 +39,22 @@ jobs:
 
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: vendor/bin/phpunit
       - run: php artisan db:seed
-
-      - run:
-        name: Start Chrome Driver
-        command: ./vendor/laravel/dusk/bin/chromedriver-linux
-        background: true
-
-      - run:
-          name: Run Laravel Server
-          command: php artisan serve
-          background: true
-
-      - run:
-        name: Run Laravel Dusk Tests
-        command: php artisan dusk
-
-      - store_artifacts:
-          path: tests/Browser/screenshots
-
-      - store_test_results:
-          path: tests/_output
-      - store_artifacts:
-          path: tests/_output
+      # - run:
+      #   name: Start Chrome Driver
+      #   command: ./vendor/laravel/dusk/bin/chromedriver-linux
+      #   background: true
+      # - run:
+      #     name: Run Laravel Server
+      #     command: php artisan serve
+      #     background: true
+      # - run:
+      #   name: Run Laravel Dusk Tests
+      #   command: php artisan dusk
+      # - store_artifacts:
+      #     path: tests/Browser/screenshots
+      # - store_test_results:
+      #     path: tests/_output
+      # - store_artifacts:
+      #     path: tests/_output
