@@ -19,7 +19,8 @@ class XyyoLabTest extends DuskTestCase
     public function testXyyoExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser
+            //->loginAs(User::find(1))
             ->visit(new HomePage)
             ->assert();
         });
@@ -31,11 +32,11 @@ class XyyoLabTest extends DuskTestCase
                     ->assertVisible('.my-input');
         });
 
-        $this->browse(function (Browser $browser) {
-            $slug = Post::first()->slug;
-            $browser->visit('/show/'.$slug)
-                    ->waitFor('.big-pic')
-                    ->assertVisible('.big-pic');
-        });
+        // $this->browse(function (Browser $browser) {
+        //     $slug = Post::first()->slug;
+        //     $browser->visit('/show/'.$slug)
+        //             ->waitFor('.big-pic')
+        //             ->assertVisible('.big-pic');
+        // });
     }
 }
