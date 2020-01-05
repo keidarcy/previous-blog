@@ -69,8 +69,10 @@
 							md="6"
 						>
 							<div class="error-emoji">(·_·)</div>
-							<div class="error-message help is-danger center">No Posts Found!</div>
-							<return-button />
+							<div class="error-message help is-danger center">
+								Posts Found
+							</div>
+							<return-button>Go to play with all posts</return-button>
 						</v-col>
 					</v-row>
 				</v-col>
@@ -80,7 +82,7 @@
 </template>
 
 <script>
-import returnButton from '../ReturnPostsButton.vue';
+import returnButton from '../../modules/ReturnPostsButton.vue';
 export default {
 	components: { returnButton },
 	data() {

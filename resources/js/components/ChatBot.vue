@@ -16,15 +16,16 @@
 				color="pink"
 				transition="slide-y-reverse-transition"
 			>
-				<v-btn
-					fab
-					dark
-					small
-					color="green"
-					@click="goTop"
-				>
-					<v-icon>mdi-fruit-watermelon</v-icon>
-				</v-btn>
+				<scroll-link href='#app'>
+					<v-btn
+						fab
+						dark
+						small
+						color="green"
+					>
+						<v-icon>mdi-fruit-watermelon</v-icon>
+					</v-btn>
+				</scroll-link>
 				<v-btn
 					fab
 					dark
@@ -94,6 +95,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
+import ScrollLink from './modules/ScrollLink.vue';
 export default {
 	data() {
 		return {
@@ -106,6 +108,7 @@ export default {
 			isLoggedIn: false,
 		};
 	},
+	components: { ScrollLink },
 	methods: {
 		handleScroll() {
 			this.isChatting ? '' : (this.hidden = window.scrollY < 200);
@@ -121,9 +124,6 @@ export default {
 				.catch(error => {
 					console.log(error);
 				});
-		},
-		goTop() {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
 		},
 	},
 	mounted() {

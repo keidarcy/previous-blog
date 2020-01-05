@@ -26,7 +26,7 @@
 			class="title is-4 center"
 			v-else
 		>posts about {{ about }}
-			<return-button />
+			<return-button>Go back to posts list 😉</return-button>
 		</div>
 		<v-row no-gutters>
 			<v-col
@@ -66,7 +66,7 @@
 import Chart from './Blocks/Posts/Chart.vue';
 import Tags from './Blocks/Posts/Tags.vue';
 import ArticalCard from './Blocks/Posts/ArticalCard.vue';
-import ReturnButton from './Blocks/ReturnPostsButton.vue';
+import ReturnButton from './modules/ReturnPostsButton.vue';
 export default {
 	components: { Chart, Tags, ArticalCard, ReturnButton },
 	data() {

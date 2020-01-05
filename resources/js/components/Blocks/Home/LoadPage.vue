@@ -221,8 +221,6 @@ $wordInDuration: 2s;
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #999;
-}
-.full {
 	height: 100%;
 }
 .message {

@@ -45,13 +45,15 @@
 					md="1"
 					class="d-flex justify-end"
 				>
-					<v-btn
-						icon
-						color="orange darken-2"
-						@click="$vuetify.goTo('.robot-head', options)"
-					>
-						<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
-					</v-btn>
+					<scroll-link href=".robot-head">
+						<v-btn
+							icon
+							color="orange darken-2"
+						>
+							<v-icon class="animated wobble infinite slow">mdi-robot mdi-36px</v-icon>
+						</v-btn>
+
+					</scroll-link>
 				</v-col>
 			</v-row>
 			<template v-slot:extension>
@@ -83,9 +85,11 @@
 	</div>
 </template>
 <script>
+import ScrollLink from '../modules/ScrollLink.vue';
 import { mapGetters, mapActions } from 'vuex';
 export default {
 	name: 'header-bar',
+	components: { ScrollLink },
 	data() {
 		return {
 			apiPosts: [],
@@ -94,6 +98,7 @@ export default {
 			selected: '',
 			placeholder: '',
 			pressedKey: '',
+			href: '',
 			isPosts: 0,
 			options: { duration: 1500, offset: 0, easing: 'easeInOutCubic' },
 		};
@@ -102,6 +107,9 @@ export default {
 		...mapActions(['changeLoadingState']),
 		target(tab) {
 			return `#${tab.toLowerCase()}`;
+		},
+		scrollTo(selector) {
+			document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
 		},
 		getSearchData() {
 			console.log(this.loading);
