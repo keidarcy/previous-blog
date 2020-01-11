@@ -5,8 +5,11 @@ namespace App\Http\Controllers\XControllers;
 use App\XModels\Tag;
 use App\XModels\Post;
 use Canvas\Topic;
+use Canvas\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class PostController extends Controller
 {
@@ -19,9 +22,26 @@ class PostController extends Controller
      */
     public function list()
     {
-        $posts = Post::where('complete', 1)
+        $posts=  Cache::remember('posts.all', 60*60, function () {
+            return Post::where('complete', 1)
             ->orderByDesc('updated_at')
             ->get();
+        });
+
+        $trendings = Redis::zrevrange('trending_posts', 0, -1);
+        if ($trendings) {
+            $trending_posts = [];
+            foreach ($trendings as $number => $trending) {
+                foreach ($posts as $index => $post) {
+                    if ($post->slug == $trending) {
+                        $trending_posts[$number] = $post;
+                    } else {
+                        $without_trending_posts[$index] = $post;
+                    }
+                }
+            }
+            $posts = array_unique(array_merge($trending_posts, $without_trending_posts));
+        }
         $data = [];
         foreach ($posts as $post) {
             $post['tags'] = $post->tags;
@@ -44,6 +64,8 @@ class PostController extends Controller
             $relates[$index]['post'] = $related_post;
             $relates[$index]['post']['tags'] = $related_post->tags;
         }
+        Redis::zincrBy("trending_posts", 1, $post->slug);
+        View::Create(['post_id' => $post->id]);
         $data = [
             'post'   => $post,
             'tags'   => $post->tags,

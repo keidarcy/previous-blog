@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\XModels\Basic;
 use Laravel\Dusk\DuskServiceProvider;
+use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment(['local', 'test'])) {
             $this->app->register(DuskServiceProvider::class);
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
+        if ($this->app->isLocal()) {
+            $this->app->register(TelescopeServiceProvider::class);
         }
     }
 
