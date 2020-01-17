@@ -20,7 +20,7 @@ export default {
 			background:
 				'https://images.unsplash.com/photo-1503437313881-503a91226402?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80.jpg',
 			interactive: true,
-			speed: 'slow',
+			speed: 'fast',
 			density: 'high',
 		};
 		var particleCanvas = new ParticleNetwork(canvasDiv, options);

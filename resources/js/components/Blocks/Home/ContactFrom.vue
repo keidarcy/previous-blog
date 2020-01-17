@@ -52,7 +52,9 @@
 							append-icon="mdi-fountain-pen-tip"
 						></v-textarea>
 						<div class="text-center">
-							<button class="my-button button">Send</button>
+							<submit-button>
+								{{ submitButton }}
+							</submit-button>
 						</div>
 					</v-form>
 					<div
@@ -78,8 +80,9 @@
 <script>
 import LeftArrowContact from './LeftArrowContact.vue';
 import ContactSvg from './ContactSvg.vue';
+import SubmitButton from './SubmitButton.vue';
 export default {
-	components: { ContactSvg, LeftArrowContact },
+	components: { ContactSvg, LeftArrowContact, SubmitButton },
 	data() {
 		return {
 			valid: true,
@@ -91,6 +94,7 @@ export default {
 			name: '',
 			nameRules: [v => !!v || 'Tell me your name plz 😭'],
 			message: '',
+			submitButton: 'mdi-send',
 			messageRules: [v => !!v || 'Tell me comething plz'],
 			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 		};
@@ -98,6 +102,10 @@ export default {
 	methods: {
 		contactSubmit() {
 			if (this.$refs.loginForm.validate()) {
+				this.submitButton = 'mdi-chart-donut mdi-spin';
+				document
+					.getElementsByClassName('my-button')[0]
+					.setAttribute('disabled', 'disabled');
 				const formData = new FormData();
 				formData.append('name', this.name);
 				formData.append('email', this.email);
@@ -106,18 +114,16 @@ export default {
 					.post('/api/message/create', formData)
 					.then(res => {
 						if (res.status === 200) {
-							window.location.reload();
-							// this.$emit('sent', this.name);
-							var elmnt = document.getElementById('thanks');
-							elmnt.scrollIntoView();
+							this.submitButton = 'mdi-send';
+							document
+								.getElementById('thanks')
+								.scrollIntoView({ behavior: 'smooth' });
+							setTimeout(() => alert('thanks I got it 😉'), 1000);
 						} else {
 							console.log(res.status);
 						}
 					})
 					.catch(error => console.log(error));
-				//with vue router : router.go('/some_url.php')this.$router.push('Welcome')
-			} else {
-				console.log(99);
 			}
 		},
 	},

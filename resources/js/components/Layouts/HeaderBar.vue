@@ -112,8 +112,6 @@ export default {
 			document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
 		},
 		getSearchData() {
-			console.log(this.loading);
-			console.log(this.pressedKey);
 			if (this.pressedKey !== 38 && this.pressedKey !== 40) {
 				this.loading = !this.loading;
 				if (this.loading) {

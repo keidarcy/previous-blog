@@ -54,7 +54,12 @@
 										{{ tag.name }}
 									</v-chip>
 								</v-card-actions>
-								<p class="pb-2 mx-5 font-italic">{{ artical.published_at }}</p>
+								<div class="pb-2 mx-5 font-italic">
+									<span
+										v-if="artical.views"
+										v-text="`${artical.views} views | `"
+									> </span>{{ artical.published_at|convertTime }}
+								</div>
 							</v-card>
 						</v-card>
 
@@ -82,6 +87,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import returnButton from '../../modules/ReturnPostsButton.vue';
 export default {
 	components: { returnButton },
@@ -107,6 +113,11 @@ export default {
 	mounted() {
 		window.innerWidth > 800 ? '' : (this.isMobileColor = 'transparent');
 		window.innerWidth > 800 ? '' : (this.isMobileWidth = '340px');
+	},
+	filters: {
+		convertTime(time) {
+			return moment(time).format('MMM Do YY');
+		},
 	},
 };
 </script>

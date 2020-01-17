@@ -28,17 +28,22 @@ class PostController extends Controller
             ->get();
         });
 
-        $trendings = Redis::zrevrange('trending_posts', 0, -1);
+        //dump(Redis::zrevrange('trending_posts', 0, -1));
+        $trendings = Redis::zrevrange('trending_posts', 0, -1, ['WITHSCORES' => true]);
+        //dd(array_values(Redis::zrevrange('trending_posts', 0, -1, ['WITHSCORES'=>true])));
         if ($trendings) {
             $trending_posts = [];
-            foreach ($trendings as $number => $trending) {
+            $increment = 0;
+            foreach ($trendings as $slug => $viewCount) {
                 foreach ($posts as $index => $post) {
-                    if ($post->slug == $trending) {
-                        $trending_posts[$number] = $post;
+                    if ($post->slug == $slug) {
+                        $trending_posts[$increment] = $post;
                     } else {
                         $without_trending_posts[$index] = $post;
                     }
                 }
+                $trending_posts[$increment]['views'] = $viewCount;
+                $increment ++;
             }
             $posts = array_unique(array_merge($trending_posts, $without_trending_posts));
         }
